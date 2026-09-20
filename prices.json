@@ -1,0 +1,12 @@
+{
+  "_source_jev": "https://docs.typesafe.ai/models.md, read 2026-09-20: '$42 / $0.042' per billion / per million tokens, and 'Output tokens incur no charges.'",
+  "_source_claude": "https://platform.claude.com/docs/en/about-claude/pricing, read 2026-09-20: Claude Sonnet 5 base input $2 / MTok, output $10 / MTok. Haiku 4.5 $1 / $5.",
+  "_note": "No prompt caching is used in this benchmark, so base input rates apply to both.",
+
+  "jev:jev-latest":   { "input_per_mtok": 0.042, "output_per_mtok": 0.0 },
+  "jev:jev-1.13.0":   { "input_per_mtok": 0.042, "output_per_mtok": 0.0 },
+  "jev":              { "input_per_mtok": 0.042, "output_per_mtok": 0.0 },
+
+  "llm:claude-sonnet-5":       { "input_per_mtok": 2.0, "output_per_mtok": 10.0 },
+  "llm:claude-haiku-4-5-20251001": { "input_per_mtok": 1.0, "output_per_mtok": 5.0 }
+}
