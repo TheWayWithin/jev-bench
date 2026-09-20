@@ -25,6 +25,14 @@ Write-up: **[Jev is not an LLM](https://jamiewatters.work/journey/jev-is-not-an-
 The frontier models are perfect on constructed controls and fall over on real published sentences.
 Jev is the reverse. That inversion, not the headline accuracy, is what the benchmark is for.
 
+**Three models scoring 85.7% is a coincidence of totals, not a duplicated file.** That is 36 of 42
+three times over, reached by different routes. Jev's misses are `ctl-03`, `ctl-17`, `rb-04`,
+`rz-03`, `rz-04`, `sb-03`; GPT-5.4's are `rb-04`, `rz-03`, `rz-05`, `rz-06`, `sb-03`, `sb-06`;
+Sonnet 5's are `rb-04`, `rz-03`, `rz-04`, `rz-07`, `sb-03`, `sb-07`. No two models produced
+identical answers: the closest pair agreed on 40 of 42 and the rest on 36 to 38. Check it yourself
+against the JSONL files in `results/`. Note the structural difference the tie hides: two of Jev's
+six errors are in the easy set, while every error the three frontier models made is in the hard 18.
+
 **On calibration.** GPT-5.4 and Gemini put all 42 answers in their top confidence bucket. Sonnet 5
 put 39 of 42 there. All three were right about 85% of the time, so their stated confidence cannot
 tell you which answers to check. Jev used four buckets: its top bucket (0.8 and above, 29 items) was
