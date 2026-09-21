@@ -38,12 +38,23 @@ put 39 of 42 there. All three were right about 85% of the time, so their stated 
 tell you which answers to check. Jev used four buckets: its top bucket (0.8 and above, 29 items) was
 right 93.1% of the time and everything below was right 60 to 80%.
 
+**On risk and coverage** (added 21 September, from the same runs, no new model calls). Auto-accept
+every verdict at or above a confidence threshold and escalate the rest. On all 42 claims Jev's
+threshold is a working dial: at 0.95 it keeps 57.1% of claims and is wrong on 4.2% of them, at 0.80
+it keeps 69.0% and is wrong on 6.9%. GPT-5.4's dial does nothing at all — 100% coverage and 14.3%
+error at every threshold from 0.60 to 0.90 — and Gemini's is the same shape. Sonnet 5's does move.
+
+**On the hard 18, no model's threshold reaches an error rate you would accept.** Jev's best is
+14.3% error at 38.9% coverage; nothing in the grid gets under 10%. Run `risk_coverage.py` for the
+full grid, the gate view, and the cascade.
+
 ## What is in here
 
 ```
 dataset/claims.jsonl   the 42 labelled claims, one JSON object per line
 run.py                 runs one or both systems, writes results/<system>-<model>-<timestamp>.jsonl
 score.py               accuracy, per class, reliability table, cost, latency, and the decision rule
+risk_coverage.py       coverage and error rate at each confidence threshold, plus the cascade
 prices.json            published prices, each with the page it was read from
 results/               every run from 20 September, plus the scored output and the verdict
 bench.sh               wrapper so you do not have to remember the venv path
@@ -105,7 +116,13 @@ cp .env.example .env     # then paste your keys in
 bash bench.sh --system jev --tier A      # 18 claims, the hard half
 bash bench.sh --system both              # all 42, both systems
 .venv/bin/python score.py results/jev-<ts>.jsonl results/llm-<model>-<ts>.jsonl
+
+# how much checking you could stop doing: coverage and error rate per threshold
+python3 risk_coverage.py results/*.jsonl
+python3 risk_coverage.py --cascade results/jev-<ts>.jsonl results/llm-<model>-<ts>.jsonl
 ```
+
+`risk_coverage.py` needs no keys and no venv: it reads the JSONL files that are already here.
 
 You need a `TYPESAFE_API_KEY` from [console.typesafe.ai](https://console.typesafe.ai/) and an
 `OPENROUTER_API_KEY` from [openrouter.ai](https://openrouter.ai/keys). Pick baselines with

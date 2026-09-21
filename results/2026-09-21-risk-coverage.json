@@ -1,0 +1,972 @@
+[
+  {
+    "file": "jev-20260920-114958.jsonl",
+    "run": "Jev (jev-latest)",
+    "tier_a": [
+      {
+        "threshold": 0.95,
+        "n": 18,
+        "accepted": 5,
+        "coverage": 0.2777777777777778,
+        "errors": 1,
+        "error_rate": 0.2,
+        "escalated": 0.7222222222222222,
+        "waved_through": 1,
+        "auto_published": 2,
+        "auto_published_share": 0.1111111111111111,
+        "bad_published_rate": 0.5,
+        "escape_rate": 0.08333333333333333,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.9,
+        "n": 18,
+        "accepted": 7,
+        "coverage": 0.3888888888888889,
+        "errors": 1,
+        "error_rate": 0.14285714285714285,
+        "escalated": 0.6111111111111112,
+        "waved_through": 1,
+        "auto_published": 3,
+        "auto_published_share": 0.16666666666666666,
+        "bad_published_rate": 0.3333333333333333,
+        "escape_rate": 0.08333333333333333,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.85,
+        "n": 18,
+        "accepted": 8,
+        "coverage": 0.4444444444444444,
+        "errors": 2,
+        "error_rate": 0.25,
+        "escalated": 0.5555555555555556,
+        "waved_through": 1,
+        "auto_published": 3,
+        "auto_published_share": 0.16666666666666666,
+        "bad_published_rate": 0.3333333333333333,
+        "escape_rate": 0.08333333333333333,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.8,
+        "n": 18,
+        "accepted": 10,
+        "coverage": 0.5555555555555556,
+        "errors": 2,
+        "error_rate": 0.2,
+        "escalated": 0.4444444444444444,
+        "waved_through": 1,
+        "auto_published": 4,
+        "auto_published_share": 0.2222222222222222,
+        "bad_published_rate": 0.25,
+        "escape_rate": 0.08333333333333333,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.7,
+        "n": 18,
+        "accepted": 11,
+        "coverage": 0.6111111111111112,
+        "errors": 2,
+        "error_rate": 0.18181818181818182,
+        "escalated": 0.3888888888888889,
+        "waved_through": 1,
+        "auto_published": 5,
+        "auto_published_share": 0.2777777777777778,
+        "bad_published_rate": 0.2,
+        "escape_rate": 0.08333333333333333,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.6,
+        "n": 18,
+        "accepted": 11,
+        "coverage": 0.6111111111111112,
+        "errors": 2,
+        "error_rate": 0.18181818181818182,
+        "escalated": 0.3888888888888889,
+        "waved_through": 1,
+        "auto_published": 5,
+        "auto_published_share": 0.2777777777777778,
+        "bad_published_rate": 0.2,
+        "escape_rate": 0.08333333333333333,
+        "waved_ids": [
+          "sb-03"
+        ]
+      }
+    ],
+    "all": [
+      {
+        "threshold": 0.95,
+        "n": 42,
+        "accepted": 24,
+        "coverage": 0.5714285714285714,
+        "errors": 1,
+        "error_rate": 0.041666666666666664,
+        "escalated": 0.42857142857142855,
+        "waved_through": 1,
+        "auto_published": 10,
+        "auto_published_share": 0.23809523809523808,
+        "bad_published_rate": 0.1,
+        "escape_rate": 0.04,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.9,
+        "n": 42,
+        "accepted": 26,
+        "coverage": 0.6190476190476191,
+        "errors": 1,
+        "error_rate": 0.038461538461538464,
+        "escalated": 0.38095238095238093,
+        "waved_through": 1,
+        "auto_published": 11,
+        "auto_published_share": 0.2619047619047619,
+        "bad_published_rate": 0.09090909090909091,
+        "escape_rate": 0.04,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.85,
+        "n": 42,
+        "accepted": 27,
+        "coverage": 0.6428571428571429,
+        "errors": 2,
+        "error_rate": 0.07407407407407407,
+        "escalated": 0.35714285714285715,
+        "waved_through": 1,
+        "auto_published": 11,
+        "auto_published_share": 0.2619047619047619,
+        "bad_published_rate": 0.09090909090909091,
+        "escape_rate": 0.04,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.8,
+        "n": 42,
+        "accepted": 29,
+        "coverage": 0.6904761904761905,
+        "errors": 2,
+        "error_rate": 0.06896551724137931,
+        "escalated": 0.30952380952380953,
+        "waved_through": 1,
+        "auto_published": 12,
+        "auto_published_share": 0.2857142857142857,
+        "bad_published_rate": 0.08333333333333333,
+        "escape_rate": 0.04,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.7,
+        "n": 42,
+        "accepted": 32,
+        "coverage": 0.7619047619047619,
+        "errors": 3,
+        "error_rate": 0.09375,
+        "escalated": 0.23809523809523808,
+        "waved_through": 2,
+        "auto_published": 14,
+        "auto_published_share": 0.3333333333333333,
+        "bad_published_rate": 0.14285714285714285,
+        "escape_rate": 0.08,
+        "waved_ids": [
+          "sb-03",
+          "ctl-17"
+        ]
+      },
+      {
+        "threshold": 0.6,
+        "n": 42,
+        "accepted": 32,
+        "coverage": 0.7619047619047619,
+        "errors": 3,
+        "error_rate": 0.09375,
+        "escalated": 0.23809523809523808,
+        "waved_through": 2,
+        "auto_published": 14,
+        "auto_published_share": 0.3333333333333333,
+        "bad_published_rate": 0.14285714285714285,
+        "escape_rate": 0.08,
+        "waved_ids": [
+          "sb-03",
+          "ctl-17"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "llm-openai-gpt-5.4-20260920-142048.jsonl",
+    "run": "openai/gpt-5.4",
+    "tier_a": [
+      {
+        "threshold": 0.95,
+        "n": 18,
+        "accepted": 17,
+        "coverage": 0.9444444444444444,
+        "errors": 5,
+        "error_rate": 0.29411764705882354,
+        "escalated": 0.05555555555555555,
+        "waved_through": 2,
+        "auto_published": 5,
+        "auto_published_share": 0.2777777777777778,
+        "bad_published_rate": 0.4,
+        "escape_rate": 0.16666666666666666,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.9,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.3333333333333333,
+        "escalated": 0.0,
+        "waved_through": 2,
+        "auto_published": 5,
+        "auto_published_share": 0.2777777777777778,
+        "bad_published_rate": 0.4,
+        "escape_rate": 0.16666666666666666,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.85,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.3333333333333333,
+        "escalated": 0.0,
+        "waved_through": 2,
+        "auto_published": 5,
+        "auto_published_share": 0.2777777777777778,
+        "bad_published_rate": 0.4,
+        "escape_rate": 0.16666666666666666,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.8,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.3333333333333333,
+        "escalated": 0.0,
+        "waved_through": 2,
+        "auto_published": 5,
+        "auto_published_share": 0.2777777777777778,
+        "bad_published_rate": 0.4,
+        "escape_rate": 0.16666666666666666,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.7,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.3333333333333333,
+        "escalated": 0.0,
+        "waved_through": 2,
+        "auto_published": 5,
+        "auto_published_share": 0.2777777777777778,
+        "bad_published_rate": 0.4,
+        "escape_rate": 0.16666666666666666,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.6,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.3333333333333333,
+        "escalated": 0.0,
+        "waved_through": 2,
+        "auto_published": 5,
+        "auto_published_share": 0.2777777777777778,
+        "bad_published_rate": 0.4,
+        "escape_rate": 0.16666666666666666,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      }
+    ],
+    "all": [
+      {
+        "threshold": 0.95,
+        "n": 42,
+        "accepted": 41,
+        "coverage": 0.9761904761904762,
+        "errors": 5,
+        "error_rate": 0.12195121951219512,
+        "escalated": 0.023809523809523808,
+        "waved_through": 2,
+        "auto_published": 16,
+        "auto_published_share": 0.38095238095238093,
+        "bad_published_rate": 0.125,
+        "escape_rate": 0.08,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.9,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.14285714285714285,
+        "escalated": 0.0,
+        "waved_through": 2,
+        "auto_published": 16,
+        "auto_published_share": 0.38095238095238093,
+        "bad_published_rate": 0.125,
+        "escape_rate": 0.08,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.85,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.14285714285714285,
+        "escalated": 0.0,
+        "waved_through": 2,
+        "auto_published": 16,
+        "auto_published_share": 0.38095238095238093,
+        "bad_published_rate": 0.125,
+        "escape_rate": 0.08,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.8,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.14285714285714285,
+        "escalated": 0.0,
+        "waved_through": 2,
+        "auto_published": 16,
+        "auto_published_share": 0.38095238095238093,
+        "bad_published_rate": 0.125,
+        "escape_rate": 0.08,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.7,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.14285714285714285,
+        "escalated": 0.0,
+        "waved_through": 2,
+        "auto_published": 16,
+        "auto_published_share": 0.38095238095238093,
+        "bad_published_rate": 0.125,
+        "escape_rate": 0.08,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.6,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.14285714285714285,
+        "escalated": 0.0,
+        "waved_through": 2,
+        "auto_published": 16,
+        "auto_published_share": 0.38095238095238093,
+        "bad_published_rate": 0.125,
+        "escape_rate": 0.08,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "llm-anthropic-claude-sonnet-5-20260920-141849.jsonl",
+    "run": "anthropic/claude-sonnet-5",
+    "tier_a": [
+      {
+        "threshold": 0.95,
+        "n": 18,
+        "accepted": 5,
+        "coverage": 0.2777777777777778,
+        "errors": 2,
+        "error_rate": 0.4,
+        "escalated": 0.7222222222222222,
+        "waved_through": 1,
+        "auto_published": 2,
+        "auto_published_share": 0.1111111111111111,
+        "bad_published_rate": 0.5,
+        "escape_rate": 0.08333333333333333,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.9,
+        "n": 18,
+        "accepted": 11,
+        "coverage": 0.6111111111111112,
+        "errors": 3,
+        "error_rate": 0.2727272727272727,
+        "escalated": 0.3888888888888889,
+        "waved_through": 2,
+        "auto_published": 6,
+        "auto_published_share": 0.3333333333333333,
+        "bad_published_rate": 0.3333333333333333,
+        "escape_rate": 0.16666666666666666,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.85,
+        "n": 18,
+        "accepted": 15,
+        "coverage": 0.8333333333333334,
+        "errors": 5,
+        "error_rate": 0.3333333333333333,
+        "escalated": 0.16666666666666666,
+        "waved_through": 2,
+        "auto_published": 7,
+        "auto_published_share": 0.3888888888888889,
+        "bad_published_rate": 0.2857142857142857,
+        "escape_rate": 0.16666666666666666,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.8,
+        "n": 18,
+        "accepted": 16,
+        "coverage": 0.8888888888888888,
+        "errors": 6,
+        "error_rate": 0.375,
+        "escalated": 0.1111111111111111,
+        "waved_through": 3,
+        "auto_published": 8,
+        "auto_published_share": 0.4444444444444444,
+        "bad_published_rate": 0.375,
+        "escape_rate": 0.25,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.7,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.3333333333333333,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 9,
+        "auto_published_share": 0.5,
+        "bad_published_rate": 0.3333333333333333,
+        "escape_rate": 0.25,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.6,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.3333333333333333,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 9,
+        "auto_published_share": 0.5,
+        "bad_published_rate": 0.3333333333333333,
+        "escape_rate": 0.25,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      }
+    ],
+    "all": [
+      {
+        "threshold": 0.95,
+        "n": 42,
+        "accepted": 24,
+        "coverage": 0.5714285714285714,
+        "errors": 2,
+        "error_rate": 0.08333333333333333,
+        "escalated": 0.42857142857142855,
+        "waved_through": 1,
+        "auto_published": 11,
+        "auto_published_share": 0.2619047619047619,
+        "bad_published_rate": 0.09090909090909091,
+        "escape_rate": 0.04,
+        "waved_ids": [
+          "sb-03"
+        ]
+      },
+      {
+        "threshold": 0.9,
+        "n": 42,
+        "accepted": 31,
+        "coverage": 0.7380952380952381,
+        "errors": 3,
+        "error_rate": 0.0967741935483871,
+        "escalated": 0.2619047619047619,
+        "waved_through": 2,
+        "auto_published": 15,
+        "auto_published_share": 0.35714285714285715,
+        "bad_published_rate": 0.13333333333333333,
+        "escape_rate": 0.08,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.85,
+        "n": 42,
+        "accepted": 37,
+        "coverage": 0.8809523809523809,
+        "errors": 5,
+        "error_rate": 0.13513513513513514,
+        "escalated": 0.11904761904761904,
+        "waved_through": 2,
+        "auto_published": 17,
+        "auto_published_share": 0.40476190476190477,
+        "bad_published_rate": 0.11764705882352941,
+        "escape_rate": 0.08,
+        "waved_ids": [
+          "sb-03",
+          "rz-03"
+        ]
+      },
+      {
+        "threshold": 0.8,
+        "n": 42,
+        "accepted": 39,
+        "coverage": 0.9285714285714286,
+        "errors": 6,
+        "error_rate": 0.15384615384615385,
+        "escalated": 0.07142857142857142,
+        "waved_through": 3,
+        "auto_published": 19,
+        "auto_published_share": 0.4523809523809524,
+        "bad_published_rate": 0.15789473684210525,
+        "escape_rate": 0.12,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.7,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.14285714285714285,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 20,
+        "auto_published_share": 0.47619047619047616,
+        "bad_published_rate": 0.15,
+        "escape_rate": 0.12,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.6,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 6,
+        "error_rate": 0.14285714285714285,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 20,
+        "auto_published_share": 0.47619047619047616,
+        "bad_published_rate": 0.15,
+        "escape_rate": 0.12,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      }
+    ]
+  },
+  {
+    "file": "llm-google-gemini-3.1-pro-preview-20260920-142133.jsonl",
+    "run": "google/gemini-3.1-pro-preview",
+    "tier_a": [
+      {
+        "threshold": 0.95,
+        "n": 18,
+        "accepted": 17,
+        "coverage": 0.9444444444444444,
+        "errors": 7,
+        "error_rate": 0.4117647058823529,
+        "escalated": 0.05555555555555555,
+        "waved_through": 3,
+        "auto_published": 6,
+        "auto_published_share": 0.3333333333333333,
+        "bad_published_rate": 0.5,
+        "escape_rate": 0.25,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.9,
+        "n": 18,
+        "accepted": 17,
+        "coverage": 0.9444444444444444,
+        "errors": 7,
+        "error_rate": 0.4117647058823529,
+        "escalated": 0.05555555555555555,
+        "waved_through": 3,
+        "auto_published": 6,
+        "auto_published_share": 0.3333333333333333,
+        "bad_published_rate": 0.5,
+        "escape_rate": 0.25,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.85,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 8,
+        "error_rate": 0.4444444444444444,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 6,
+        "auto_published_share": 0.3333333333333333,
+        "bad_published_rate": 0.5,
+        "escape_rate": 0.25,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.8,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 8,
+        "error_rate": 0.4444444444444444,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 6,
+        "auto_published_share": 0.3333333333333333,
+        "bad_published_rate": 0.5,
+        "escape_rate": 0.25,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.7,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 8,
+        "error_rate": 0.4444444444444444,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 6,
+        "auto_published_share": 0.3333333333333333,
+        "bad_published_rate": 0.5,
+        "escape_rate": 0.25,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.6,
+        "n": 18,
+        "accepted": 18,
+        "coverage": 1.0,
+        "errors": 8,
+        "error_rate": 0.4444444444444444,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 6,
+        "auto_published_share": 0.3333333333333333,
+        "bad_published_rate": 0.5,
+        "escape_rate": 0.25,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      }
+    ],
+    "all": [
+      {
+        "threshold": 0.95,
+        "n": 42,
+        "accepted": 41,
+        "coverage": 0.9761904761904762,
+        "errors": 7,
+        "error_rate": 0.17073170731707318,
+        "escalated": 0.023809523809523808,
+        "waved_through": 3,
+        "auto_published": 17,
+        "auto_published_share": 0.40476190476190477,
+        "bad_published_rate": 0.17647058823529413,
+        "escape_rate": 0.12,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.9,
+        "n": 42,
+        "accepted": 41,
+        "coverage": 0.9761904761904762,
+        "errors": 7,
+        "error_rate": 0.17073170731707318,
+        "escalated": 0.023809523809523808,
+        "waved_through": 3,
+        "auto_published": 17,
+        "auto_published_share": 0.40476190476190477,
+        "bad_published_rate": 0.17647058823529413,
+        "escape_rate": 0.12,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.85,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 8,
+        "error_rate": 0.19047619047619047,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 17,
+        "auto_published_share": 0.40476190476190477,
+        "bad_published_rate": 0.17647058823529413,
+        "escape_rate": 0.12,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.8,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 8,
+        "error_rate": 0.19047619047619047,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 17,
+        "auto_published_share": 0.40476190476190477,
+        "bad_published_rate": 0.17647058823529413,
+        "escape_rate": 0.12,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.7,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 8,
+        "error_rate": 0.19047619047619047,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 17,
+        "auto_published_share": 0.40476190476190477,
+        "bad_published_rate": 0.17647058823529413,
+        "escape_rate": 0.12,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      },
+      {
+        "threshold": 0.6,
+        "n": 42,
+        "accepted": 42,
+        "coverage": 1.0,
+        "errors": 8,
+        "error_rate": 0.19047619047619047,
+        "escalated": 0.0,
+        "waved_through": 3,
+        "auto_published": 17,
+        "auto_published_share": 0.40476190476190477,
+        "bad_published_rate": 0.17647058823529413,
+        "escape_rate": 0.12,
+        "waved_ids": [
+          "sb-03",
+          "rz-03",
+          "rz-04"
+        ]
+      }
+    ]
+  },
+  {
+    "cascade": [
+      "jev-20260920-114958.jsonl",
+      "llm-openai-gpt-5.4-20260920-142048.jsonl"
+    ],
+    "table": [
+      {
+        "threshold": 0.95,
+        "n": 42,
+        "escalated": 18,
+        "escalated_share": 0.42857142857142855,
+        "accuracy": 0.8571428571428571,
+        "accuracy_tier_a": 0.6666666666666666,
+        "bad_published": 2,
+        "cost_per_claim": 0.0005772190204081632
+      },
+      {
+        "threshold": 0.9,
+        "n": 42,
+        "escalated": 16,
+        "escalated_share": 0.38095238095238093,
+        "accuracy": 0.8809523809523809,
+        "accuracy_tier_a": 0.7222222222222222,
+        "bad_published": 2,
+        "cost_per_claim": 0.000515824462585034
+      },
+      {
+        "threshold": 0.85,
+        "n": 42,
+        "escalated": 15,
+        "escalated_share": 0.35714285714285715,
+        "accuracy": 0.8809523809523809,
+        "accuracy_tier_a": 0.7222222222222222,
+        "bad_published": 2,
+        "cost_per_claim": 0.00048512718367346936
+      },
+      {
+        "threshold": 0.8,
+        "n": 42,
+        "escalated": 13,
+        "escalated_share": 0.30952380952380953,
+        "accuracy": 0.8809523809523809,
+        "accuracy_tier_a": 0.7222222222222222,
+        "bad_published": 2,
+        "cost_per_claim": 0.0004237326258503401
+      },
+      {
+        "threshold": 0.7,
+        "n": 42,
+        "escalated": 10,
+        "escalated_share": 0.23809523809523808,
+        "accuracy": 0.8571428571428571,
+        "accuracy_tier_a": 0.7222222222222222,
+        "bad_published": 3,
+        "cost_per_claim": 0.0003316407891156462
+      },
+      {
+        "threshold": 0.6,
+        "n": 42,
+        "escalated": 10,
+        "escalated_share": 0.23809523809523808,
+        "accuracy": 0.8571428571428571,
+        "accuracy_tier_a": 0.7222222222222222,
+        "bad_published": 3,
+        "cost_per_claim": 0.0003316407891156462
+      }
+    ]
+  }
+]
