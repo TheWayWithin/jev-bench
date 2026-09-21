@@ -33,20 +33,31 @@ identical answers: the closest pair agreed on 40 of 42 and the rest on 36 to 38.
 against the JSONL files in `results/`. Note the structural difference the tie hides: two of Jev's
 six errors are in the easy set, while every error the three frontier models made is in the hard 18.
 
-**On calibration.** GPT-5.4 and Gemini put all 42 answers in their top confidence bucket. Sonnet 5
-put 39 of 42 there. All three were right about 85% of the time, so their stated confidence cannot
-tell you which answers to check. Jev used four buckets: its top bucket (0.8 and above, 29 items) was
-right 93.1% of the time and everything below was right 60 to 80%.
+**On calibration.** GPT-5.4 and Gemini put all 42 answers in their top confidence bucket (0.8 and
+above). Sonnet 5 put 39 of 42 there. All three were right about 85% of the time, which makes them
+badly calibrated: the number they state runs well ahead of the accuracy they deliver. That is not
+the same as the number carrying no information at all, which an earlier version of this section
+claimed — see risk and coverage below, corrected the same day. Jev used four buckets: its top
+bucket (0.8 and above, 29 items) was right 93.1% of the time and everything below was right 60 to
+80%.
 
-**On risk and coverage** (added 21 September, from the same runs, no new model calls). Auto-accept
-every verdict at or above a confidence threshold and escalate the rest. On all 42 claims Jev's
-threshold actually does something: at 0.95 it keeps 57.1% of claims and is wrong on 4.2% of them, at 0.80
-it keeps 69.0% and is wrong on 6.9%. Changing GPT-5.4's threshold does nothing at all: 100% coverage and 14.3%
-error at every setting from 0.60 to 0.90, and Gemini's behaves the same way. Sonnet 5's does move.
+**On risk and coverage** (added 21 September, from the same runs, no new model calls; corrected
+21 September, hours later — the first version tested six round thresholds, 0.60 to 0.95, and
+GPT-5.4's 42 answers all sit between 0.94 and 0.99, so five of those six thresholds sat off its
+range and told us nothing). Auto-accept every verdict at or above a confidence threshold and
+escalate the rest. Swept over each model's own distinct values instead of a fixed grid: Jev runs
+from 28.6% coverage at 0.0% error up to 100% at 14.3%. GPT-5.4 runs from 64.3% coverage at 3.7%
+error up to 100% at 14.3%, and beats Jev at every coverage level the two share. Gemini has three
+distinct values and one useful cut: 76.2% coverage at 9.4% error, rising to 100% at 19.0%. Sonnet
+5's moves too. None of the four was flat; the six-point grid just missed GPT-5.4's and Gemini's
+actual range. Full derivation: [the follow-up
+piece](https://jamiewatters.work/journey/confidence-threshold-fact-checking).
 
-**On the hard 18, no model's threshold reaches an error rate you would accept.** Jev's best is
-14.3% error at 38.9% coverage; nothing in the grid gets under 10%. Run `risk_coverage.py` for the
-full grid, the gate view, and the cascade.
+**On the hard 18, no model's threshold reaches an error rate you would accept.** Jev's best inside
+the original six-point grid is 14.3% error at 38.9% coverage; nothing in that grid gets under 10%.
+Swept over each model's own values instead, two of the four touch 0% error, but only by accepting
+one to three of the 18 claims, not a coverage level worth having. Run `risk_coverage.py --sweep-own`
+for the full grid, the gate view, and the cascade.
 
 ## What is in here
 
@@ -156,6 +167,11 @@ Named here rather than left for you to find.
    primaries reduces that; it does not remove it.
 8. **Gemini 3.1 Pro is a preview build**, and all frontier latency is measured end to end through
    OpenRouter, including its routing hop.
+9. **`score.py`'s reliability table uses five buckets of 0.2 each**, a standard convention for
+   expected calibration error and left unchanged here. It is the wrong tool for judging whether a
+   model's confidence discriminates its own right answers from wrong ones within a bucket, which
+   is what hid GPT-5.4's real range on 21 September: its whole 0.94-to-0.99 spread sits inside one
+   0.8-to-1.0 bucket. Use `risk_coverage.py --sweep-own` for that question, not the bucket table.
 
 ## Contributing
 

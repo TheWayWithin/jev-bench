@@ -94,7 +94,7 @@ def pct(x, width=6):
     return f"{'n/a':>{width}}" if x is None else f"{x * 100:{width - 1}.1f}%"
 
 
-def print_curve(name, rows, tier_name):
+def print_curve(name, rows, tier_name, own_values=False):
     print(f"\n{name}  —  {tier_name} (n={len(rows)})")
     conf = [r for r in rows if r.get("confidence") is not None]
     if not conf:
@@ -103,9 +103,14 @@ def print_curve(name, rows, tier_name):
     lo = min(r["confidence"] for r in conf)
     hi = max(r["confidence"] for r in conf)
     print(f"  stated confidence spans {lo:.2f} to {hi:.2f}")
+    thresholds = sorted({r["confidence"] for r in conf}, reverse=True) if own_values \
+        else THRESHOLDS
+    if own_values:
+        print(f"  swept over this run's own {len(thresholds)} distinct confidence "
+              f"value(s), not the fixed six-point grid")
     print(f"  {'thresh':>7}{'coverage':>11}{'accepted':>10}{'errors':>8}"
           f"{'err rate':>10}{'escalated':>11}{'waved':>7}")
-    table = curve(rows)
+    table = curve(rows, thresholds)
     for row in table:
         print(f"  {row['threshold']:>7.2f}{pct(row['coverage'], 11)}"
               f"{row['accepted']:>10}{row['errors']:>8}"
@@ -136,59 +141,75 @@ def knee(rows):
 def cascade(cheap, dear, thresholds=THRESHOLDS):
     """Take the cheap model's verdict when it is confident, hand the rest to the dear
     one. The point of a calibrated confidence is that this beats either alone on the
-    trade between accuracy and price, so compute it rather than assert it."""
+    trade between accuracy and price, so compute it rather than assert it.
+
+    Cost is summed per claim from what that specific claim actually cost under the
+    chosen model, not a flat per-claim average applied to the escalated share. The two
+    disagree whenever the claims that get escalated are not a random, average-priced
+    slice of the dear model's claims — which they are not: Jev is least confident on
+    the longest, hardest claims, and those cost more to re-check than the dear model's
+    average claim. Applying the average understates the real cascade price."""
     dear_by_id = {r["id"]: r for r in dear}
     pairs = [(c, dear_by_id[c["id"]]) for c in cheap if c["id"] in dear_by_id]
-    cheap_cost = mean_cost(cheap)
-    dear_cost = mean_cost(dear)
     out = []
     for t in thresholds:
         chosen = []
         escalated = 0
+        total_cost = 0.0
+        cost_known = True
         for c, d in pairs:
+            # The cheap model is always called first, to get the confidence that
+            # decides whether to escalate at all, so its cost is incurred either way.
+            cheap_rc = row_cost(c)
             if c.get("confidence") is not None and c["confidence"] >= t:
                 chosen.append((c["predicted"], c["label"], c["tier"]))
+                rc = cheap_rc
             else:
                 escalated += 1
                 chosen.append((d.get("predicted"), d["label"], d["tier"]))
+                dear_rc = row_cost(d)
+                rc = None if (cheap_rc is None or dear_rc is None) else cheap_rc + dear_rc
+            if rc is None:
+                cost_known = False
+            else:
+                total_cost += rc
         n = len(chosen)
         right = sum(1 for p, lab, _ in chosen if p == lab)
         a = [(p, lab) for p, lab, tier in chosen if tier == "A"]
         right_a = sum(1 for p, lab in a if p == lab)
         bad_pub = sum(1 for p, lab, _ in chosen
                       if p == ACCEPT_CLASS and lab != ACCEPT_CLASS)
-        blended = None
-        if cheap_cost is not None and dear_cost is not None:
-            blended = cheap_cost + (escalated / n) * dear_cost if n else None
         out.append({
             "threshold": t, "n": n, "escalated": escalated,
             "escalated_share": escalated / n if n else None,
             "accuracy": right / n if n else None,
             "accuracy_tier_a": right_a / len(a) if a else None,
             "bad_published": bad_pub,
-            "cost_per_claim": blended,
+            "cost_per_claim": (total_cost / n) if (n and cost_known) else None,
         })
     return out
 
 
-def mean_cost(rows):
-    """What this run actually cost per claim: the charge if the provider reported one,
-    otherwise Jev's published input rate applied to the tokens it returned."""
-    charged = [r["charged_usd"] for r in rows if r.get("charged_usd") is not None]
-    if charged and len(charged) == len(rows):
-        return sum(charged) / len(charged)
-    book = {}
+def _price_book():
     path = HERE / "prices.json"
-    if path.exists():
-        book = json.loads(path.read_text(encoding="utf-8"))
-    key = f"{rows[0].get('system')}:{rows[0].get('model')}"
-    p = book.get(key) or book.get(rows[0].get("system"))
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def row_cost(r, book=None):
+    """What this one claim actually cost: the provider's own charge if it reported
+    one, otherwise the published rate applied to this row's own tokens."""
+    if r.get("charged_usd") is not None:
+        return r["charged_usd"]
+    book = _price_book() if book is None else book
+    key = f"{r.get('system')}:{r.get('model')}"
+    p = book.get(key) or book.get(r.get("system"))
     if not p:
         return None
-    tin = sum(r.get("input_tokens", 0) for r in rows)
-    tout = sum(r.get("output_tokens", 0) for r in rows)
-    return ((tin / 1e6) * p["input_per_mtok"]
-            + (tout / 1e6) * p["output_per_mtok"]) / len(rows)
+    tin = r.get("input_tokens", 0)
+    tout = r.get("output_tokens", 0)
+    return (tin / 1e6) * p["input_per_mtok"] + (tout / 1e6) * p["output_per_mtok"]
 
 
 def print_cascade(cheap_name, dear_name, cheap, dear):
@@ -236,6 +257,16 @@ def main():
     ap.add_argument("--cascade", nargs=2, metavar=("CHEAP", "DEAR"),
                     help="two result files: take CHEAP's verdict when it clears the "
                          "threshold, DEAR's otherwise, and price the result")
+    ap.add_argument("--sweep-own", action="store_true",
+                    help="sweep each file's own distinct confidence values instead of "
+                         "the fixed six-point grid. Use this before ever claiming a "
+                         "model's confidence is flat or uniform: a chosen grid can sit "
+                         "entirely off a model's real range and look flat by accident.")
+    ap.add_argument("--accuracy-split", action="store_true",
+                    help="print raw accuracy (no threshold) on Tier A, on the "
+                         "constructed controls, and on all claims, per file. A win on "
+                         "all claims can be entirely a win on the controls, which is "
+                         "the easy half by construction.")
     args = ap.parse_args()
 
     paths = []
@@ -260,15 +291,24 @@ def main():
         graded = [r for r in rows if not r.get("error")]
         name = label_of(path, rows)
         tier_a = [r for r in graded if r.get("tier") == "A"]
+        if args.accuracy_split:
+            controls = [r for r in graded if r.get("tier") != "A"]
+            acc = lambda g: sum(1 for r in g if r["predicted"] == r["label"]) / len(g) if g else None
+            print(f"\n{name}  accuracy split (no threshold, raw verdict vs label)")
+            print(f"  Tier A (n={len(tier_a)}): {pct(acc(tier_a)).strip()}   "
+                  f"controls (n={len(controls)}): {pct(acc(controls)).strip()}   "
+                  f"all (n={len(graded)}): {pct(acc(graded)).strip()}")
+            continue
         print("\n" + "-" * 74)
-        print_curve(name, tier_a, "Tier A, real adversarial claims")
-        print_curve(name, graded, "all claims")
-        k = knee(tier_a)
-        if k:
-            print(f"  Tier A: highest-coverage threshold still at or under 10% error is "
-                  f"{k['threshold']:.2f}, keeping {pct(k['coverage']).strip()} of claims")
-        else:
-            print("  Tier A: no threshold in the set holds error at or under 10%")
+        print_curve(name, tier_a, "Tier A, real adversarial claims", args.sweep_own)
+        print_curve(name, graded, "all claims", args.sweep_own)
+        if not args.sweep_own:
+            k = knee(tier_a)
+            if k:
+                print(f"  Tier A: highest-coverage threshold still at or under 10% error is "
+                      f"{k['threshold']:.2f}, keeping {pct(k['coverage']).strip()} of claims")
+            else:
+                print("  Tier A: no threshold in the set holds error at or under 10%")
         dump.append({"file": path.name, "run": name,
                      "tier_a": curve(tier_a), "all": curve(graded)})
 
