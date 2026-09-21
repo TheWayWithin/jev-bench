@@ -4,8 +4,9 @@
 makes a claim and the passage it cites, decide whether the passage supports the sentence as written.
 
 Run on 20 September 2026 against **Jev** (TypeSafe's System One model, which returns a typed answer
-and a probability instead of text) and three frontier models. Everything here is the real thing: the
-claims, the code, the raw per-claim output, and the scored results.
+and a probability instead of text) and three frontier models, and again on 21 September with the
+frontier models allowed to reason first. Everything here is the real thing: the claims, the code,
+the raw per-claim output, and the scored results.
 
 Write-up: **[Jev is not an LLM](https://jamiewatters.work/journey/jev-is-not-an-llm)**
 
@@ -61,6 +62,28 @@ Swept over each model's own values instead, two of the four touch 0% error, but 
 one to three of the 18 claims, not a coverage level worth having. Run `risk_coverage.py --sweep-own`
 for the full grid, the gate view, and the cascade.
 
+## And when the frontier models are allowed to think first
+
+Added 21 September. Every reviewer of the first write-up raised the same objection: those three
+models were forced straight into a JSON verdict with no room to reason, so the hard-set gap was a
+result about schema-constrained models rather than about the models. So it was re-run with a
+free-text scratchpad in front of the same structured verdict.
+
+| on the hard 18 | schema only | reasoning allowed | cost per claim | seconds |
+|---|---|---|---|---|
+| GPT-5.4 | 66.7% | 61.1% | $0.001289 → $0.005450 | 1.01 → 3.77 |
+| Claude Sonnet 5 | 66.7% | 44.4% | $0.002228 → $0.006439 | 2.76 → 6.23 |
+| Gemini 3.1 Pro | 55.6% | 55.6% | $0.004824 → $0.011545 | 3.78 → 8.71 |
+
+**The gap did not close.** None of the three improved, Gemini answered all 18 identically, and Jev's
+lead over the best of them goes from 11.1 points to 16.7 — at 2.4 to 4.2 times the cost per claim.
+
+**What this does not say.** No per-model drop is significant on 18 items: exact McNemar gives
+p = 1.000, 0.219 and 1.000. "Reasoning did not help" is supportable. "Reasoning made them worse" is
+not. Run `python3 mcnemar.py` to check that yourself. The full side-by-side and eleven limits,
+including that for two of the three models the verdict call only transcribes the scratchpad rather
+than re-deciding it, are in `results/2026-09-22-test2-verdict.md`.
+
 ## What is in here
 
 ```
@@ -68,8 +91,9 @@ dataset/claims.jsonl   the 42 labelled claims, one JSON object per line
 run.py                 runs one or both systems, writes results/<system>-<model>-<timestamp>.jsonl
 score.py               accuracy, per class, reliability table, cost, latency, and the decision rule
 risk_coverage.py       coverage and error rate at each confidence threshold, plus the cascade
+mcnemar.py             exact McNemar on the hard 18: is a gap between two runs bigger than luck
 prices.json            published prices, each with the page it was read from
-results/               every run from 20 September, plus the scored output and the verdict
+results/               every run, 20 and 21 September, plus the scored output and the verdicts
 bench.sh               wrapper so you do not have to remember the venv path
 ```
 
@@ -132,6 +156,9 @@ python3 -m venv .venv
 cp .env.example .env     # then paste your keys in
 bash bench.sh --system jev --tier A      # 18 claims, the hard half
 bash bench.sh --system both              # all 42, both systems
+
+# the reasoning-allowed arm: a free-text scratchpad, then the same JSON verdict
+python3 run.py --system llm --arm reasoning --llm-model openai/gpt-5.4
 .venv/bin/python score.py results/jev-<ts>.jsonl results/llm-<model>-<ts>.jsonl
 
 # how much checking you could stop doing: coverage and error rate per threshold
@@ -146,16 +173,22 @@ You need a `TYPESAFE_API_KEY` from [console.typesafe.ai](https://console.typesaf
 `--llm-model`, using any OpenRouter slug: `openai/gpt-5.4`, `anthropic/claude-sonnet-5`,
 `google/gemini-3.1-pro-preview`.
 
-A full four-model run is 42 claims each and costs about 35 cents.
+A full four-model run is 42 claims each and costs about 35 cents. The reasoning-allowed arm across
+the three frontier models is 42 claims each again, two calls per claim, and cost $0.98: sum
+`charged_usd` over the three 21 September files and you get $0.9842.
 
 ## Known weaknesses
 
 Named here rather than left for you to find.
 
-1. **The frontier models answered into a JSON schema with no room to reason first.** That is not how
-   anyone sensible uses them on this task, and Jev pays no equivalent cost because it was never
-   going to reason out loud. The hard-set gap is a gap against schema-constrained models until a
-   rerun says otherwise. **This is the next experiment.**
+1. **~~The frontier models answered into a JSON schema with no room to reason first.~~ Answered
+   21 September, and the answer is no: the gap is not an artefact of the schema.** Given a
+   scratchpad first, none of the three improved on the hard 18 and two scored lower, at 2.4 to 4.2
+   times the cost per claim. See the table above and
+   `results/2026-09-22-test2-verdict.md`. What replaces it as the live weakness is **limit 3 of
+   that run**: for GPT-5.4 and Sonnet 5 the verdict call emits 21 to 25 tokens, so it transcribes
+   the scratchpad rather than re-deciding on it. This arm measures "think, then transcribe". A
+   single relaxed-schema call, or a verdict step made to re-argue, would measure something else.
 2. **The two confidence numbers may not be the same kind of object.** Jev's is a probability the
    model is built to return. The frontier figure is a number requested in a JSON field, which is
    self-report. That is the right comparison for a pipeline, because self-report is what you would
@@ -187,8 +220,9 @@ Two things are genuinely useful.
 the label, and one line on why. Independent claims from somebody else's pipeline would fix weakness
 7 outright, and that is the weakness I cannot fix myself.
 
-**A rerun of anything here.** Different models, a pinned version, repeats, or the reasoning-allowed
-baseline in weakness 1. Open an issue with the results file attached.
+**A rerun of anything here.** Different models, a pinned version, or repeats — repeats most of all,
+since nothing in this repo has an error bar and the 21 September arm showed how little of an
+18-item gap is significant. Open an issue with the results file attached.
 
 ## Licence
 
