@@ -47,7 +47,8 @@ GPT-5.4's 42 answers all sit between 0.94 and 0.99, so five of those six thresho
 range and told us nothing). Auto-accept every verdict at or above a confidence threshold and
 escalate the rest. Swept over each model's own distinct values instead of a fixed grid: Jev runs
 from 28.6% coverage at 0.0% error up to 100% at 14.3%. GPT-5.4 runs from 64.3% coverage at 3.7%
-error up to 100% at 14.3%, and beats Jev at every coverage level the two share. Gemini has three
+error up to 100% at 14.3%, and beats Jev at every coverage level the two share but the top, where
+both accept everything and land on the same 14.3% error. Gemini has three
 distinct values and one useful cut: 76.2% coverage at 9.4% error, rising to 100% at 19.0%. Sonnet
 5's moves too. None of the four was flat; the six-point grid just missed GPT-5.4's and Gemini's
 actual range. Full derivation: [the follow-up
@@ -71,7 +72,11 @@ results/               every run from 20 September, plus the scored output and t
 bench.sh               wrapper so you do not have to remember the venv path
 ```
 
-`results/2026-09-20-verdict.md` is the short version: numbers, the rule, and the honest limits.
+`results/2026-09-20-verdict.md` is the rule and the honest limits, written up from an earlier,
+separate two-model run against `anthropic/claude-sonnet-4.5` rather than the four-model comparison
+in the table above — its headline numbers (76.2% baseline accuracy) do not match that table's, on
+purpose, because it is a different run. It was superseded by the four-model comparison this README
+is built around; kept for the record, and cross-checked against its own data in this correction.
 
 ## The labelled set
 
