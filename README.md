@@ -34,8 +34,9 @@ against the JSONL files in `results/`. Note the structural difference the tie hi
 six errors are in the easy set, while every error the three frontier models made is in the hard 18.
 
 **On calibration.** GPT-5.4 and Gemini put all 42 answers in their top confidence bucket (0.8 and
-above). Sonnet 5 put 39 of 42 there. All three were right about 85% of the time, which makes them
-badly calibrated: the number they state runs well ahead of the accuracy they deliver. That is not
+above). Sonnet 5 put 39 of 42 there. GPT-5.4 and Sonnet 5 were right 85.7% of the time and Gemini
+81.0%, all well short of the 0.8-plus confidence they stated, which makes them badly calibrated:
+the number they state runs well ahead of the accuracy they deliver. That is not
 the same as the number carrying no information at all, which an earlier version of this section
 claimed — see risk and coverage below, corrected the same day. Jev used four buckets: its top
 bucket (0.8 and above, 29 items) was right 93.1% of the time and everything below was right 60 to
