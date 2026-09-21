@@ -208,6 +208,152 @@ def run_llm(rows, model):
     return out
 
 
+# ------------------------------------------------- LLM baseline, allowed to reason first
+
+# Test 2 of the series. The 20 September baseline sent the frontier models straight into a
+# JSON schema with nowhere to think, which is not how anyone sensible uses them, so the
+# hard-set result was a result about schema-constrained models rather than about the models.
+# This arm gives them a free-text scratchpad first and then asks for the same structured
+# verdict, with the scratchpad in the conversation. Two calls, so the reasoning step's cost
+# and latency stay separately measurable rather than being folded into one number.
+#
+# The scratchpad prompt carries exactly the information BASELINE_PROMPT carries — the claim,
+# the passage, the same three label definitions, the same instruction to judge only against
+# the passage — so the only difference between the two arms is the room to think. It says
+# nothing about which label is likely, nothing about the kinds of error this dataset is built
+# from, and nothing about any other system's answers.
+REASONING_PROMPT = """You are checking a citation.
+
+CLAIM (a sentence from a published article):
+{claim}
+
+SOURCE PASSAGE (the text it cites):
+{section}
+
+The question you will be asked is how the source passage relates to the claim. The three
+possible answers are:
+
+supported: {supported}
+unsupported: {unsupported}
+not_addressed: {not_addressed}
+
+Before answering, think it through in plain prose. Work out what the claim asserts, what the
+passage actually states, and where the two do and do not line up. Quote the words from the
+passage that decide it.
+
+Judge only against the passage given. Do not use anything you may recall about the paper, and do
+not credit the claim for being plausible.
+
+Do not give your answer yet. This step is the reasoning only. Keep it under 200 words."""
+
+
+VERDICT_FOLLOWUP = """Now give your answer, choosing one of the three defined above.
+
+Reply with JSON only, no other text, in exactly this form:
+{{"verdict": "<one of supported, unsupported, not_addressed>", "confidence": <a number from 0 to 1, your probability that your verdict is correct>}}"""
+
+
+def _charge(usage):
+    """OpenRouter's own reported charge for one call, in USD, or None if it withheld it."""
+    return getattr(usage, "cost", None)
+
+
+def run_llm_reasoning(rows, model):
+    """Same baseline, same schema, but with a free-text reasoning turn in front of it.
+
+    `seconds`, `input_tokens`, `output_tokens` and `charged_usd` are the totals across both
+    calls, because that is what the arm costs a user and it keeps score.py and
+    risk_coverage.py working against these files unmodified. The per-step figures are kept
+    alongside under `reasoning_*` and `verdict_*` so the split is re-derivable from the raw
+    JSONL by somebody who was not here.
+    """
+    from openai import OpenAI
+
+    key = os.environ.get("OPENROUTER_API_KEY")
+    if not key:
+        sys.exit("OPENROUTER_API_KEY is not set. Put it in .env")
+
+    client = OpenAI(api_key=key, base_url="https://openrouter.ai/api/v1")
+    out = []
+    for row in rows:
+        think = REASONING_PROMPT.format(
+            claim=row["claim"], section=row["section"], **LABELS
+        )
+        messages = [{"role": "user", "content": think}]
+
+        started = time.perf_counter()
+        try:
+            r1 = client.chat.completions.create(
+                model=model,
+                max_tokens=1500,
+                messages=messages,
+                extra_body={"usage": {"include": True}},
+            )
+        except Exception as exc:
+            out.append({**meta(row), "system": "llm", "arm": "reasoning",
+                        "model": model, "error": f"reasoning step: {exc!r}"})
+            continue
+        secs_r = time.perf_counter() - started
+        reasoning = (r1.choices[0].message.content or "").strip()
+
+        messages.append({"role": "assistant", "content": reasoning})
+        messages.append({"role": "user", "content": VERDICT_FOLLOWUP.format()})
+
+        started = time.perf_counter()
+        try:
+            r2 = client.chat.completions.create(
+                model=model,
+                max_tokens=1500,
+                messages=messages,
+                response_format=VERDICT_SCHEMA,
+                extra_body={"usage": {"include": True}},
+            )
+        except Exception as exc:
+            out.append({**meta(row), "system": "llm", "arm": "reasoning",
+                        "model": model, "reasoning": reasoning,
+                        "error": f"verdict step: {exc!r}"})
+            continue
+        secs_v = time.perf_counter() - started
+
+        text = (r2.choices[0].message.content or "").strip()
+        verdict, conf = parse_json_verdict(text)
+        u1, u2 = r1.usage, r2.usage
+        c1, c2 = _charge(u1), _charge(u2)
+        r_in = getattr(u1, "prompt_tokens", 0) or 0
+        r_out = getattr(u1, "completion_tokens", 0) or 0
+        v_in = getattr(u2, "prompt_tokens", 0) or 0
+        v_out = getattr(u2, "completion_tokens", 0) or 0
+
+        out.append({
+            **meta(row),
+            "system": "llm",
+            "model": model,
+            "arm": "reasoning",
+            "predicted": verdict,
+            "confidence": conf,
+            "reasoning": reasoning,
+            "raw": text,
+            # totals across both calls: what the arm actually costs and takes
+            "seconds": round(secs_r + secs_v, 3),
+            "input_tokens": r_in + v_in,
+            "output_tokens": r_out + v_out,
+            "charged_usd": None if (c1 is None or c2 is None) else c1 + c2,
+            # the split, so the reasoning step is attributable on its own
+            "reasoning_seconds": round(secs_r, 3),
+            "reasoning_input_tokens": r_in,
+            "reasoning_output_tokens": r_out,
+            "reasoning_charged_usd": c1,
+            "verdict_seconds": round(secs_v, 3),
+            "verdict_input_tokens": v_in,
+            "verdict_output_tokens": v_out,
+            "verdict_charged_usd": c2,
+        })
+        shown = "None" if conf is None else f"{conf:.2f}"
+        print(f"  llm+r {row['id']:<14} {str(verdict):<14} p={shown}  "
+              f"{secs_r:.2f}s+{secs_v:.2f}s  {r_out}w")
+    return out
+
+
 def parse_json_verdict(text):
     """Pull the verdict out even when the model wraps it in a fence or a sentence."""
     start, end = text.find("{"), text.rfind("}")
@@ -252,6 +398,9 @@ def main():
     ap.add_argument("--jev-model", default=os.environ.get("TYPESAFE_MODEL", "jev-latest"))
     ap.add_argument("--llm-model", default="anthropic/claude-sonnet-4.5",
                     help="OpenRouter model slug, e.g. openai/gpt-5.2 or google/gemini-2.5-pro")
+    ap.add_argument("--arm", choices=["schema", "reasoning"], default="schema",
+                    help="schema: straight into the JSON verdict, the 20 September baseline. "
+                         "reasoning: a free-text scratchpad first, then the same verdict.")
     args = ap.parse_args()
 
     load_env()
@@ -264,7 +413,8 @@ def main():
     if args.system in ("jev", "both"):
         write(run_jev(rows, args.jev_model), "jev", tag)
     if args.system in ("llm", "both"):
-        write(run_llm(rows, args.llm_model), "llm", tag)
+        runner = run_llm_reasoning if args.arm == "reasoning" else run_llm
+        write(runner(rows, args.llm_model), "llm", tag)
     print(f"\nnow: python3 score.py results/jev-{tag}.jsonl results/llm-{tag}.jsonl")
 
 
