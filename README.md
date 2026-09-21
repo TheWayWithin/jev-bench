@@ -40,9 +40,9 @@ right 93.1% of the time and everything below was right 60 to 80%.
 
 **On risk and coverage** (added 21 September, from the same runs, no new model calls). Auto-accept
 every verdict at or above a confidence threshold and escalate the rest. On all 42 claims Jev's
-threshold is a working dial: at 0.95 it keeps 57.1% of claims and is wrong on 4.2% of them, at 0.80
-it keeps 69.0% and is wrong on 6.9%. GPT-5.4's dial does nothing at all — 100% coverage and 14.3%
-error at every threshold from 0.60 to 0.90 — and Gemini's is the same shape. Sonnet 5's does move.
+threshold actually does something: at 0.95 it keeps 57.1% of claims and is wrong on 4.2% of them, at 0.80
+it keeps 69.0% and is wrong on 6.9%. Changing GPT-5.4's threshold does nothing at all: 100% coverage and 14.3%
+error at every setting from 0.60 to 0.90, and Gemini's behaves the same way. Sonnet 5's does move.
 
 **On the hard 18, no model's threshold reaches an error rate you would accept.** Jev's best is
 14.3% error at 38.9% coverage; nothing in the grid gets under 10%. Run `risk_coverage.py` for the
