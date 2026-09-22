@@ -1,0 +1,1065 @@
+========================================================================
+jev-jev-latest-t4-r1-20260922-182959.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     15               2               0       0
+unsupported                    4              15               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  78.9%  recall  88.2%   (tp 15, fp 4, fn 2)
+  unsupported      precision  83.3%  recall  78.9%   (tp 15, fp 3, fn 4)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           5       0.29      60.0%
+  0.4-0.6           3       0.53      66.7%
+  0.6-0.8           4       0.69      50.0%
+  0.8-1.0          30       0.97      93.3%
+  expected calibration error: 0.089  (0 is perfect, lower is better)
+
+Latency per claim: 0.22s
+Cost per claim:    $0.000025
+========================================================================
+jev-jev-latest-t4-r2-20260922-183028.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    4              15               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  80.0%  recall  94.1%   (tp 16, fp 4, fn 1)
+  unsupported      precision  83.3%  recall  78.9%   (tp 15, fp 3, fn 4)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.0-0.2           1       0.17       0.0%
+  0.2-0.4           3       0.31     100.0%
+  0.4-0.6           4       0.50      50.0%
+  0.6-0.8           5       0.71      60.0%
+  0.8-1.0          29       0.97      93.1%
+  expected calibration error: 0.095  (0 is perfect, lower is better)
+
+Latency per claim: 0.22s
+Cost per claim:    $0.000025
+========================================================================
+jev-jev-latest-t4-r3-20260922-183058.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     15               2               0       0
+unsupported                    4              15               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  78.9%  recall  88.2%   (tp 15, fp 4, fn 2)
+  unsupported      precision  83.3%  recall  78.9%   (tp 15, fp 3, fn 4)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           5       0.27      60.0%
+  0.4-0.6           3       0.50      66.7%
+  0.6-0.8           4       0.67      75.0%
+  0.8-1.0          30       0.97      90.0%
+  expected calibration error: 0.106  (0 is perfect, lower is better)
+
+Latency per claim: 0.22s
+Cost per claim:    $0.000025
+========================================================================
+jev-jev-latest-t4-r4-20260922-183127.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  77.8%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    4              15               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  80.0%  recall  94.1%   (tp 16, fp 4, fn 1)
+  unsupported      precision  88.2%  recall  78.9%   (tp 15, fp 2, fn 4)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           6       0.30      66.7%
+  0.4-0.6           4       0.47      75.0%
+  0.6-0.8           2       0.74      50.0%
+  0.8-1.0          30       0.97      93.3%
+  expected calibration error: 0.114  (0 is perfect, lower is better)
+
+Latency per claim: 0.21s
+Cost per claim:    $0.000025
+========================================================================
+jev-jev-latest-t4-r5-20260922-183154.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    4              15               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  80.0%  recall  94.1%   (tp 16, fp 4, fn 1)
+  unsupported      precision  83.3%  recall  78.9%   (tp 15, fp 3, fn 4)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.0-0.2           1       0.19       0.0%
+  0.2-0.4           2       0.32      50.0%
+  0.4-0.6           5       0.48      80.0%
+  0.6-0.8           5       0.67      60.0%
+  0.8-1.0          29       0.97      93.1%
+  expected calibration error: 0.089  (0 is perfect, lower is better)
+
+Latency per claim: 0.23s
+Cost per claim:    $0.000025
+========================================================================
+llm-anthropic-claude-sonnet-5-t4-r1-20260922-182959.jsonl   system=llm  model=anthropic/claude-sonnet-5
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     17               0               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               3               3       0
+
+Per class
+  supported        precision  85.0%  recall 100.0%   (tp 17, fp 3, fn 0)
+  unsupported      precision  84.2%  recall  84.2%   (tp 16, fp 3, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  50.0%   (tp 3, fp 0, fn 3)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.6-0.8           2       0.72      50.0%
+  0.8-1.0          40       0.94      87.5%
+  expected calibration error: 0.069  (0 is perfect, lower is better)
+
+Latency per claim: 2.87s
+Cost per claim:    $0.002319
+========================================================================
+llm-anthropic-claude-sonnet-5-t4-r2-20260922-183201.jsonl   system=llm  model=anthropic/claude-sonnet-5
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     17               0               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               3               3       0
+
+Per class
+  supported        precision  85.0%  recall 100.0%   (tp 17, fp 3, fn 0)
+  unsupported      precision  84.2%  recall  84.2%   (tp 16, fp 3, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  50.0%   (tp 3, fp 0, fn 3)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.6-0.8           3       0.74     100.0%
+  0.8-1.0          39       0.94      84.6%
+  expected calibration error: 0.104  (0 is perfect, lower is better)
+
+Latency per claim: 2.70s
+Cost per claim:    $0.002243
+========================================================================
+llm-anthropic-claude-sonnet-5-t4-r3-20260922-183355.jsonl   system=llm  model=anthropic/claude-sonnet-5
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     17               0               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               3               3       0
+
+Per class
+  supported        precision  85.0%  recall 100.0%   (tp 17, fp 3, fn 0)
+  unsupported      precision  84.2%  recall  84.2%   (tp 16, fp 3, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  50.0%   (tp 3, fp 0, fn 3)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.6-0.8           3       0.75     100.0%
+  0.8-1.0          39       0.94      84.6%
+  expected calibration error: 0.101  (0 is perfect, lower is better)
+
+Latency per claim: 2.65s
+Cost per claim:    $0.002115
+========================================================================
+llm-anthropic-claude-sonnet-5-t4-r4-20260922-183546.jsonl   system=llm  model=anthropic/claude-sonnet-5
+========================================================================
+
+Accuracy, all graded (42):  88.1%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     17               0               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  85.0%  recall 100.0%   (tp 17, fp 3, fn 0)
+  unsupported      precision  88.9%  recall  84.2%   (tp 16, fp 2, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.6-0.8           3       0.71     100.0%
+  0.8-1.0          39       0.94      87.2%
+  expected calibration error: 0.084  (0 is perfect, lower is better)
+
+Latency per claim: 2.73s
+Cost per claim:    $0.002293
+========================================================================
+llm-anthropic-claude-sonnet-5-t4-r5-20260922-183741.jsonl   system=llm  model=anthropic/claude-sonnet-5
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  61.1%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               3               3       0
+
+Per class
+  supported        precision  84.2%  recall  94.1%   (tp 16, fp 3, fn 1)
+  unsupported      precision  80.0%  recall  84.2%   (tp 16, fp 4, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  50.0%   (tp 3, fp 0, fn 3)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.6-0.8           4       0.68      75.0%
+  0.8-1.0          38       0.94      84.2%
+  expected calibration error: 0.100  (0 is perfect, lower is better)
+
+Latency per claim: 2.71s
+Cost per claim:    $0.002322
+========================================================================
+llm-google-gemini-3.1-pro-preview-t4-r1-20260922-182959.jsonl   system=llm  model=google/gemini-3.1-pro-preview
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  84.2%  recall  94.1%   (tp 16, fp 3, fn 1)
+  unsupported      precision  84.2%  recall  84.2%   (tp 16, fp 3, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.98      85.7%
+  expected calibration error: 0.125  (0 is perfect, lower is better)
+
+Latency per claim: 4.05s
+Cost per claim:    $0.004719
+========================================================================
+llm-google-gemini-3.1-pro-preview-t4-r2-20260922-183250.jsonl   system=llm  model=google/gemini-3.1-pro-preview
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  61.1%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     15               2               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  83.3%  recall  88.2%   (tp 15, fp 3, fn 2)
+  unsupported      precision  80.0%  recall  84.2%   (tp 16, fp 4, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.99      83.3%
+  expected calibration error: 0.153  (0 is perfect, lower is better)
+
+Latency per claim: 4.22s
+Cost per claim:    $0.004950
+========================================================================
+llm-google-gemini-3.1-pro-preview-t4-r3-20260922-183548.jsonl   system=llm  model=google/gemini-3.1-pro-preview
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     15               1               1       0
+unsupported                    3              16               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  83.3%  recall  88.2%   (tp 15, fp 3, fn 2)
+  unsupported      precision  88.9%  recall  84.2%   (tp 16, fp 2, fn 3)  <- the gate's job
+  not_addressed    precision  83.3%  recall  83.3%   (tp 5, fp 1, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.99      85.7%
+  expected calibration error: 0.130  (0 is perfect, lower is better)
+
+Latency per claim: 4.36s
+Cost per claim:    $0.005128
+========================================================================
+llm-google-gemini-3.1-pro-preview-t4-r4-20260922-183851.jsonl   system=llm  model=google/gemini-3.1-pro-preview
+========================================================================
+
+Accuracy, all graded (42):  81.0%
+  tier A (real, adversarial, n=18):  55.6%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     14               3               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  82.4%  recall  82.4%   (tp 14, fp 3, fn 3)
+  unsupported      precision  76.2%  recall  84.2%   (tp 16, fp 5, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.98      81.0%
+  expected calibration error: 0.174  (0 is perfect, lower is better)
+
+Latency per claim: 4.35s
+Cost per claim:    $0.004873
+========================================================================
+llm-google-gemini-3.1-pro-preview-t4-r5-20260922-184154.jsonl   system=llm  model=google/gemini-3.1-pro-preview
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     15               2               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  83.3%  recall  88.2%   (tp 15, fp 3, fn 2)
+  unsupported      precision  84.2%  recall  84.2%   (tp 16, fp 3, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.98      85.7%
+  expected calibration error: 0.125  (0 is perfect, lower is better)
+
+Latency per claim: 4.09s
+Cost per claim:    $0.005029
+========================================================================
+llm-openai-gpt-5.4-t4-r1-20260922-182959.jsonl   system=llm  model=openai/gpt-5.4
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     14               3               0       0
+unsupported                    2              17               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  87.5%  recall  82.4%   (tp 14, fp 2, fn 3)
+  unsupported      precision  81.0%  recall  89.5%   (tp 17, fp 4, fn 2)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.98      85.7%
+  expected calibration error: 0.122  (0 is perfect, lower is better)
+
+Latency per claim: 1.27s
+Cost per claim:    $0.001289
+========================================================================
+llm-openai-gpt-5.4-t4-r2-20260922-183053.jsonl   system=llm  model=openai/gpt-5.4
+========================================================================
+
+Accuracy, all graded (42):  88.1%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     14               3               0       0
+unsupported                    1              18               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  93.3%  recall  82.4%   (tp 14, fp 1, fn 3)
+  unsupported      precision  81.8%  recall  94.7%   (tp 18, fp 4, fn 1)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.98      88.1%
+  expected calibration error: 0.099  (0 is perfect, lower is better)
+
+Latency per claim: 1.13s
+Cost per claim:    $0.001289
+========================================================================
+llm-openai-gpt-5.4-t4-r3-20260922-183141.jsonl   system=llm  model=openai/gpt-5.4
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     14               3               0       0
+unsupported                    2              17               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  87.5%  recall  82.4%   (tp 14, fp 2, fn 3)
+  unsupported      precision  81.0%  recall  89.5%   (tp 17, fp 4, fn 2)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.98      85.7%
+  expected calibration error: 0.122  (0 is perfect, lower is better)
+
+Latency per claim: 1.22s
+Cost per claim:    $0.001289
+========================================================================
+llm-openai-gpt-5.4-t4-r4-20260922-183232.jsonl   system=llm  model=openai/gpt-5.4
+========================================================================
+
+Accuracy, all graded (42):  88.1%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     14               3               0       0
+unsupported                    1              18               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  93.3%  recall  82.4%   (tp 14, fp 1, fn 3)
+  unsupported      precision  81.8%  recall  94.7%   (tp 18, fp 4, fn 1)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.98      88.1%
+  expected calibration error: 0.101  (0 is perfect, lower is better)
+
+Latency per claim: 1.17s
+Cost per claim:    $0.001289
+========================================================================
+llm-openai-gpt-5.4-t4-r5-20260922-183322.jsonl   system=llm  model=openai/gpt-5.4
+========================================================================
+
+Accuracy, all graded (42):  88.1%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     14               3               0       0
+unsupported                    1              18               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  93.3%  recall  82.4%   (tp 14, fp 1, fn 3)
+  unsupported      precision  81.8%  recall  94.7%   (tp 18, fp 4, fn 1)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.98      88.1%
+  expected calibration error: 0.101  (0 is perfect, lower is better)
+
+Latency per claim: 1.17s
+Cost per claim:    $0.001289
+========================================================================
+jev-jev-1.13.0-t4pin-r1-20260922-182959.jsonl   system=jev  model=jev-1.13.0
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  77.8%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    4              15               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  80.0%  recall  94.1%   (tp 16, fp 4, fn 1)
+  unsupported      precision  88.2%  recall  78.9%   (tp 15, fp 2, fn 4)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           4       0.32      75.0%
+  0.4-0.6           6       0.52      66.7%
+  0.6-0.8           4       0.78      75.0%
+  0.8-1.0          28       0.98      92.9%
+  expected calibration error: 0.097  (0 is perfect, lower is better)
+
+Latency per claim: 0.21s
+Cost per claim:    $0.000025
+========================================================================
+jev-jev-1.13.0-t4pin-r2-20260922-183009.jsonl   system=jev  model=jev-1.13.0
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  77.8%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    4              15               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  80.0%  recall  94.1%   (tp 16, fp 4, fn 1)
+  unsupported      precision  88.2%  recall  78.9%   (tp 15, fp 2, fn 4)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           4       0.28      75.0%
+  0.4-0.6           5       0.47      80.0%
+  0.6-0.8           4       0.73      50.0%
+  0.8-1.0          29       0.97      93.1%
+  expected calibration error: 0.136  (0 is perfect, lower is better)
+
+Latency per claim: 0.20s
+Cost per claim:    $0.000025
+========================================================================
+jev-jev-1.13.0-t4pin-r3-20260922-183018.jsonl   system=jev  model=jev-1.13.0
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    4              15               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  80.0%  recall  94.1%   (tp 16, fp 4, fn 1)
+  unsupported      precision  83.3%  recall  78.9%   (tp 15, fp 3, fn 4)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.0-0.2           1       0.17       0.0%
+  0.2-0.4           3       0.32      66.7%
+  0.4-0.6           4       0.48      75.0%
+  0.6-0.8           6       0.71      66.7%
+  0.8-1.0          28       0.97      92.9%
+  expected calibration error: 0.091  (0 is perfect, lower is better)
+
+Latency per claim: 0.21s
+Cost per claim:    $0.000025
+========================================================================
+jev-jev-1.13.0-t4pin-r4-20260922-183027.jsonl   system=jev  model=jev-1.13.0
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     15               2               0       0
+unsupported                    4              15               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  78.9%  recall  88.2%   (tp 15, fp 4, fn 2)
+  unsupported      precision  83.3%  recall  78.9%   (tp 15, fp 3, fn 4)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           4       0.28      75.0%
+  0.4-0.6           6       0.50      50.0%
+  0.6-0.8           3       0.71      66.7%
+  0.8-1.0          29       0.97      93.1%
+  expected calibration error: 0.077  (0 is perfect, lower is better)
+
+Latency per claim: 0.21s
+Cost per claim:    $0.000025
+========================================================================
+jev-jev-1.13.0-t4pin-r5-20260922-183036.jsonl   system=jev  model=jev-1.13.0
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  77.8%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    4              15               0       0
+not_addressed                  0               1               5       0
+
+Per class
+  supported        precision  80.0%  recall  94.1%   (tp 16, fp 4, fn 1)
+  unsupported      precision  88.2%  recall  78.9%   (tp 15, fp 2, fn 4)  <- the gate's job
+  not_addressed    precision 100.0%  recall  83.3%   (tp 5, fp 0, fn 1)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           4       0.30     100.0%
+  0.4-0.6           5       0.52      60.0%
+  0.6-0.8           4       0.71      50.0%
+  0.8-1.0          29       0.97      93.1%
+  expected calibration error: 0.124  (0 is perfect, lower is better)
+
+Latency per claim: 0.20s
+Cost per claim:    $0.000025
+========================================================================
+jev-jev-latest-t3b-r1-20260922-183009.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  81.0%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  87.5%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     14               3               0       0
+unsupported                    4              14               1       0
+not_addressed                  0               0               6       0
+
+Per class
+  supported        precision  77.8%  recall  82.4%   (tp 14, fp 4, fn 3)
+  unsupported      precision  82.4%  recall  73.7%   (tp 14, fp 3, fn 5)  <- the gate's job
+  not_addressed    precision  85.7%  recall 100.0%   (tp 6, fp 1, fn 0)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           6       0.35      66.7%
+  0.4-0.6           8       0.48      37.5%
+  0.6-0.8           3       0.69     100.0%
+  0.8-1.0          25       0.96      96.0%
+  expected calibration error: 0.090  (0 is perfect, lower is better)
+
+Latency per claim: 0.22s
+Cost per claim:    $0.000029
+========================================================================
+jev-jev-latest-t3b-r2-20260922-183038.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     15               2               0       0
+unsupported                    4              14               1       0
+not_addressed                  0               0               6       0
+
+Per class
+  supported        precision  78.9%  recall  88.2%   (tp 15, fp 4, fn 2)
+  unsupported      precision  87.5%  recall  73.7%   (tp 14, fp 2, fn 5)  <- the gate's job
+  not_addressed    precision  85.7%  recall 100.0%   (tp 6, fp 1, fn 0)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           7       0.33      57.1%
+  0.4-0.6           6       0.49      66.7%
+  0.6-0.8           4       0.73      75.0%
+  0.8-1.0          25       0.96      96.0%
+  expected calibration error: 0.068  (0 is perfect, lower is better)
+
+Latency per claim: 0.25s
+Cost per claim:    $0.000029
+========================================================================
+jev-jev-latest-t3b-r3-20260922-183107.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     15               2               0       0
+unsupported                    4              14               1       0
+not_addressed                  0               0               6       0
+
+Per class
+  supported        precision  78.9%  recall  88.2%   (tp 15, fp 4, fn 2)
+  unsupported      precision  87.5%  recall  73.7%   (tp 14, fp 2, fn 5)  <- the gate's job
+  not_addressed    precision  85.7%  recall 100.0%   (tp 6, fp 1, fn 0)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           5       0.33     100.0%
+  0.4-0.6           9       0.49      33.3%
+  0.6-0.8           2       0.66     100.0%
+  0.8-1.0          26       0.96      96.2%
+  expected calibration error: 0.132  (0 is perfect, lower is better)
+
+Latency per claim: 0.25s
+Cost per claim:    $0.000029
+========================================================================
+jev-jev-latest-t3b-r4-20260922-183136.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  81.0%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  87.5%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     14               3               0       0
+unsupported                    4              14               1       0
+not_addressed                  0               0               6       0
+
+Per class
+  supported        precision  77.8%  recall  82.4%   (tp 14, fp 4, fn 3)
+  unsupported      precision  82.4%  recall  73.7%   (tp 14, fp 3, fn 5)  <- the gate's job
+  not_addressed    precision  85.7%  recall 100.0%   (tp 6, fp 1, fn 0)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           5       0.32      60.0%
+  0.4-0.6           9       0.50      44.4%
+  0.6-0.8           2       0.69     100.0%
+  0.8-1.0          26       0.96      96.2%
+  expected calibration error: 0.065  (0 is perfect, lower is better)
+
+Latency per claim: 0.22s
+Cost per claim:    $0.000029
+========================================================================
+jev-jev-latest-t3b-r5-20260922-183204.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     15               2               0       0
+unsupported                    4              14               1       0
+not_addressed                  0               0               6       0
+
+Per class
+  supported        precision  78.9%  recall  88.2%   (tp 15, fp 4, fn 2)
+  unsupported      precision  87.5%  recall  73.7%   (tp 14, fp 2, fn 5)  <- the gate's job
+  not_addressed    precision  85.7%  recall 100.0%   (tp 6, fp 1, fn 0)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           6       0.34      83.3%
+  0.4-0.6           7       0.50      42.9%
+  0.6-0.8           3       0.67      66.7%
+  0.8-1.0          26       0.95      96.2%
+  expected calibration error: 0.088  (0 is perfect, lower is better)
+
+Latency per claim: 0.26s
+Cost per claim:    $0.000029
+========================================================================
+llm-anthropic-claude-sonnet-5-t3b-r1-20260922-183935.jsonl   system=llm  model=anthropic/claude-sonnet-5
+========================================================================
+
+Accuracy, all graded (42):  85.7%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    2              16               1       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  88.9%  recall  94.1%   (tp 16, fp 2, fn 1)
+  unsupported      precision  84.2%  recall  84.2%   (tp 16, fp 3, fn 3)  <- the gate's job
+  not_addressed    precision  80.0%  recall  66.7%   (tp 4, fp 1, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.6-0.8           4       0.71      50.0%
+  0.8-1.0          38       0.92      89.5%
+  expected calibration error: 0.046  (0 is perfect, lower is better)
+
+Latency per claim: 2.98s
+Cost per claim:    $0.002664
+========================================================================
+llm-google-gemini-3.1-pro-preview-t3b-r1-20260922-184446.jsonl   system=llm  model=google/gemini-3.1-pro-preview
+========================================================================
+
+Accuracy, all graded (42):  83.3%
+  tier A (real, adversarial, n=18):  61.1%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     14               2               1       0
+unsupported                    2              17               0       0
+not_addressed                  1               1               4       0
+
+Per class
+  supported        precision  82.4%  recall  82.4%   (tp 14, fp 3, fn 3)
+  unsupported      precision  85.0%  recall  89.5%   (tp 17, fp 3, fn 2)  <- the gate's job
+  not_addressed    precision  80.0%  recall  66.7%   (tp 4, fp 1, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.98      83.3%
+  expected calibration error: 0.142  (0 is perfect, lower is better)
+
+Latency per claim: 4.90s
+Cost per claim:    $0.006429
+========================================================================
+llm-openai-gpt-5.4-t3b-r1-20260922-183411.jsonl   system=llm  model=openai/gpt-5.4
+========================================================================
+
+Accuracy, all graded (42):  88.1%
+  tier A (real, adversarial, n=18):  72.2%
+  tier B (constructed controls, n=24): 100.0%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     16               1               0       0
+unsupported                    2              17               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  88.9%  recall  94.1%   (tp 16, fp 2, fn 1)
+  unsupported      precision  85.0%  recall  89.5%   (tp 17, fp 3, fn 2)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.8-1.0          42       0.98      88.1%
+  expected calibration error: 0.100  (0 is perfect, lower is better)
+
+Latency per claim: 1.15s
+Cost per claim:    $0.001545
+========================================================================
+jev-jev-latest-t3c-r1-20260922-183019.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  76.2%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24):  83.3%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     12               5               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  80.0%  recall  70.6%   (tp 12, fp 3, fn 5)
+  unsupported      precision  69.6%  recall  84.2%   (tp 16, fp 7, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.4-0.6           5       0.55      40.0%
+  0.6-0.8          10       0.68      50.0%
+  0.8-1.0          27       0.91      92.6%
+  expected calibration error: 0.071  (0 is perfect, lower is better)
+
+Latency per claim: 0.21s
+Cost per claim:    $0.000026
+========================================================================
+jev-jev-latest-t3c-r2-20260922-183048.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  78.6%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24):  87.5%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     13               4               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  81.2%  recall  76.5%   (tp 13, fp 3, fn 4)
+  unsupported      precision  72.7%  recall  84.2%   (tp 16, fp 6, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.2-0.4           1       0.40       0.0%
+  0.4-0.6           4       0.52      75.0%
+  0.6-0.8          10       0.67      50.0%
+  0.8-1.0          27       0.91      92.6%
+  expected calibration error: 0.084  (0 is perfect, lower is better)
+
+Latency per claim: 0.21s
+Cost per claim:    $0.000026
+========================================================================
+jev-jev-latest-t3c-r3-20260922-183117.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  81.0%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24):  91.7%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     14               3               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  82.4%  recall  82.4%   (tp 14, fp 3, fn 3)
+  unsupported      precision  76.2%  recall  84.2%   (tp 16, fp 5, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.4-0.6           5       0.49      80.0%
+  0.6-0.8          10       0.68      50.0%
+  0.8-1.0          27       0.91      92.6%
+  expected calibration error: 0.090  (0 is perfect, lower is better)
+
+Latency per claim: 0.22s
+Cost per claim:    $0.000026
+========================================================================
+jev-jev-latest-t3c-r4-20260922-183145.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  76.2%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24):  83.3%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     12               5               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  80.0%  recall  70.6%   (tp 12, fp 3, fn 5)
+  unsupported      precision  69.6%  recall  84.2%   (tp 16, fp 7, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.4-0.6           4       0.54      50.0%
+  0.6-0.8          11       0.67      45.5%
+  0.8-1.0          27       0.91      92.6%
+  expected calibration error: 0.073  (0 is perfect, lower is better)
+
+Latency per claim: 0.21s
+Cost per claim:    $0.000026
+========================================================================
+jev-jev-latest-t3c-r5-20260922-183215.jsonl   system=jev  model=jev-latest
+========================================================================
+
+Accuracy, all graded (42):  76.2%
+  tier A (real, adversarial, n=18):  66.7%
+  tier B (constructed controls, n=24):  83.3%
+
+Confusion (rows = true label, columns = predicted)
+                       supported     unsupported   not_addressed    none
+supported                     12               5               0       0
+unsupported                    3              16               0       0
+not_addressed                  0               2               4       0
+
+Per class
+  supported        precision  80.0%  recall  70.6%   (tp 12, fp 3, fn 5)
+  unsupported      precision  69.6%  recall  84.2%   (tp 16, fp 7, fn 3)  <- the gate's job
+  not_addressed    precision 100.0%  recall  66.7%   (tp 4, fp 0, fn 2)
+
+Calibration: does stated confidence track being right
+  bucket            n   mean conf    actual
+  0.4-0.6           5       0.53      40.0%
+  0.6-0.8          10       0.68      50.0%
+  0.8-1.0          27       0.91      92.6%
+  expected calibration error: 0.071  (0 is perfect, lower is better)
+
+Latency per claim: 0.25s
+Cost per claim:    $0.000026
+
+========================================================================
+THE RULE, as written before the first run
+========================================================================
+  [FAIL] recall on unsupported >= 0.80   (Jev 78.9%)
+  [FAIL] and at least the LLM's         (LLM 84.2%)
+  [PASS] precision on unsupported >= 0.60 (Jev 83.3%)
+  [PASS] cheaper per claim              ($0.000025 vs $0.002319)
+  [PASS] faster per claim               (0.22s vs 2.87s)
+
+  Calibration clause is a judgement on the reliability table above, not a threshold:
+  are high-confidence items right materially more often than low-confidence ones?

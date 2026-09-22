@@ -193,14 +193,29 @@ Named here rather than left for you to find.
    model is built to return. The frontier figure is a number requested in a JSON field, which is
    self-report. That is the right comparison for a pipeline, because self-report is what you would
    actually receive, and it is not a like-for-like calibration test.
-3. **The runs called `jev-latest`, a moving alias, rather than pinning `jev-1.13.0`.** Aliases move
-   silently. Pin the version.
-4. **`unsupported` is a compound label.** TypeSafe's own guidance is that Jev answers the question
-   you wrote rather than the one you meant, so handing a literal model a two-things-in-one category
-   may cost it accuracy.
-5. **One Choice question**, where the product sells multiple questions fanned out over the same
-   state in one pass, billed once on input. The recommended shape was never tested.
-6. **One run per model, no repeats.** No error bars. An eleven-point gap on 18 items is two claims.
+3. **~~The runs called `jev-latest`, a moving alias, rather than pinning `jev-1.13.0`.~~ Answered
+   22 September: it made no difference.** Every `jev-latest` call now reports `jev-1.13.0` as the
+   model that answered, and five runs on each name are right or wrong by majority on exactly the same claims, all 42. The
+   20 September run did not record the served version, so that one cannot be proved; nothing in its
+   answers suggests the alias has moved. Pin anyway in production. See
+   `results/2026-09-23-tests-3-4-verdict.md`, Test 3(a).
+4. **~~`unsupported` is a compound label.~~ Answered 22 September: splitting it did not help.**
+   Offered `contradicted` and `altered` separately, scored back as `unsupported`, Jev dropped 1.4
+   points on all 42 and none of the three frontier models moved outside its own run-to-run spread.
+   It did show that every system calls `sb-06` altered, which says more about that label than
+   about the models. Test 3(b) in the same verdict.
+5. **~~One Choice question~~ Answered 22 September: the recommended fan-out cost the same and
+   scored lower.** Three Noul questions in one call, combined by a rule fixed in advance, cost 1.04
+   times the single Choice and scored 77.6% against 83.8% on all 42 (p = 0.219, not significant).
+   One decomposition and one rule, so this says the recommended shape is not automatically better
+   for this job, not that it cannot work. Test 3(c).
+6. **~~One run per model, no repeats.~~ Answered 22 September, and the answer cuts against the first
+   write-up.** Five runs each: Jev's lead on the hard 18 over the best frontier model is 3.3 points
+   on means, not 11.1, and is not significant against any of the three. The 20 September Jev run
+   was its best result, which it matched in one of five runs today. The easy-set pattern held on
+   every run. Jev is also not deterministic: across identical calls the label changed on 2 of 42
+   claims, always below 0.47 confidence. Run `python3 tests34.py analyse` to re-derive it with no
+   keys. The Test 2 reasoning-allowed arms are still one run each.
 7. **The labels are not independent of the author.** The sentences, the sources they cite and the
    audits that judge them all come from one person's publishing pipeline. Hand-checking against the
    primaries reduces that; it does not remove it.

@@ -1,0 +1,165 @@
+# Tests 3 and 4, analysis
+
+Files:
+  Jev jev-latest: jev-jev-latest-t4-r1-20260922-182959.jsonl, jev-jev-latest-t4-r2-20260922-183028.jsonl, jev-jev-latest-t4-r3-20260922-183058.jsonl, jev-jev-latest-t4-r4-20260922-183127.jsonl, jev-jev-latest-t4-r5-20260922-183154.jsonl
+  Jev jev-1.13.0: jev-jev-1.13.0-t4pin-r1-20260922-182959.jsonl, jev-jev-1.13.0-t4pin-r2-20260922-183009.jsonl, jev-jev-1.13.0-t4pin-r3-20260922-183018.jsonl, jev-jev-1.13.0-t4pin-r4-20260922-183027.jsonl, jev-jev-1.13.0-t4pin-r5-20260922-183036.jsonl
+  GPT-5.4: llm-openai-gpt-5.4-t4-r1-20260922-182959.jsonl, llm-openai-gpt-5.4-t4-r2-20260922-183053.jsonl, llm-openai-gpt-5.4-t4-r3-20260922-183141.jsonl, llm-openai-gpt-5.4-t4-r4-20260922-183232.jsonl, llm-openai-gpt-5.4-t4-r5-20260922-183322.jsonl
+  Sonnet 5: llm-anthropic-claude-sonnet-5-t4-r1-20260922-182959.jsonl, llm-anthropic-claude-sonnet-5-t4-r2-20260922-183201.jsonl, llm-anthropic-claude-sonnet-5-t4-r3-20260922-183355.jsonl, llm-anthropic-claude-sonnet-5-t4-r4-20260922-183546.jsonl, llm-anthropic-claude-sonnet-5-t4-r5-20260922-183741.jsonl
+  Gemini 3.1 Pro: llm-google-gemini-3.1-pro-preview-t4-r1-20260922-182959.jsonl, llm-google-gemini-3.1-pro-preview-t4-r2-20260922-183250.jsonl, llm-google-gemini-3.1-pro-preview-t4-r3-20260922-183548.jsonl, llm-google-gemini-3.1-pro-preview-t4-r4-20260922-183851.jsonl, llm-google-gemini-3.1-pro-preview-t4-r5-20260922-184154.jsonl
+  Jev split: jev-jev-latest-t3b-r1-20260922-183009.jsonl, jev-jev-latest-t3b-r2-20260922-183038.jsonl, jev-jev-latest-t3b-r3-20260922-183107.jsonl, jev-jev-latest-t3b-r4-20260922-183136.jsonl, jev-jev-latest-t3b-r5-20260922-183204.jsonl
+  Jev fan-out: jev-jev-latest-t3c-r1-20260922-183019.jsonl, jev-jev-latest-t3c-r2-20260922-183048.jsonl, jev-jev-latest-t3c-r3-20260922-183117.jsonl, jev-jev-latest-t3c-r4-20260922-183145.jsonl, jev-jev-latest-t3c-r5-20260922-183215.jsonl
+  GPT-5.4 split: llm-openai-gpt-5.4-t3b-r1-20260922-183411.jsonl
+  Sonnet 5 split: llm-anthropic-claude-sonnet-5-t3b-r1-20260922-183935.jsonl
+  Gemini 3.1 Pro split: llm-google-gemini-3.1-pro-preview-t3b-r1-20260922-184446.jsonl
+
+Failed calls: Jev jev-latest 0, Jev jev-1.13.0 0, GPT-5.4 0, Sonnet 5 0, Gemini 3.1 Pro 0, Jev split 0, Jev fan-out 0, GPT-5.4 split 0, Sonnet 5 split 0, Gemini 3.1 Pro split 0
+  served model, Jev jev-latest: jev-1.13.0
+  served model, Jev jev-1.13.0: jev-1.13.0
+  served model, Jev split: jev-1.13.0
+  served model, Jev fan-out: jev-1.13.0
+
+## Test 4: five runs each, schema-only
+
+| system | all 42 mean (min to max) | easy 24 | hard 18 | 20 Sep single run, hard 18 |
+|---|---|---|---|---|
+| Jev jev-latest | 83.8% (83.3% to 85.7%) | 91.7% (91.7% to 91.7%) | 73.3% (72.2% to 77.8%) | 77.8% |
+| Jev jev-1.13.0 | 84.8% (83.3% to 85.7%) | 91.7% (91.7% to 91.7%) | 75.6% (72.2% to 77.8%) | n/a |
+| GPT-5.4 | 87.1% (85.7% to 88.1%) | 100.0% (100.0% to 100.0%) | 70.0% (66.7% to 72.2%) | 66.7% |
+| Sonnet 5 | 85.7% (83.3% to 88.1%) | 100.0% (100.0% to 100.0%) | 66.7% (61.1% to 72.2%) | 66.7% |
+| Gemini 3.1 Pro | 84.3% (81.0% to 85.7%) | 100.0% (100.0% to 100.0%) | 63.3% (55.6% to 66.7%) | 55.6% |
+
+Per-run hard-18 accuracy:
+  Jev jev-latest   72.2%  72.2%  72.2%  77.8%  72.2%
+  Jev jev-1.13.0   77.8%  77.8%  72.2%  72.2%  77.8%
+  GPT-5.4          66.7%  72.2%  66.7%  72.2%  72.2%
+  Sonnet 5         66.7%  66.7%  66.7%  72.2%  61.1%
+  Gemini 3.1 Pro   66.7%  61.1%  66.7%  55.6%  66.7%
+
+Per claim: how many of five runs got it right
+
+| claim | tier | label | Jev jev-latest | Jev jev-1.13.0 | GPT-5.4 | Sonnet 5 | Gemini 3.1 Pro |
+|---|---|---|---|---|---|---|---|
+| sb-01 | A | unsupported | 5 | 5 | 5 | 5 | 5 |
+| sb-02 | A | unsupported | 5 | 5 | 5 | 5 | 5 |
+| sb-03 | A | unsupported | 0 | 0 | 0 | 0 | 0 |
+| sb-04 | A | supported | 5 | 5 | 5 | 5 | 5 |
+| sb-05 | A | unsupported | 5 | 5 | 5 | 5 | 5 |
+| sb-06 | A | supported | 3 | 4 | 0 | 4 | 0 |
+| sb-07 | A | not_addressed | 3 | 4 | 5 | 1 | 5 |
+| rb-01 | A | supported | 5 | 5 | 5 | 5 | 5 |
+| rb-02 | A | unsupported | 5 | 5 | 5 | 5 | 5 |
+| rb-03 | A | unsupported | 5 | 5 | 5 | 5 | 5 |
+| rb-04 | A | not_addressed | 0 | 0 | 0 | 0 | 0 |
+| rz-01 | A | supported | 5 | 5 | 5 | 5 | 5 |
+| rz-02 | A | unsupported | 5 | 5 | 5 | 5 | 5 |
+| rz-03 | A | unsupported | 0 | 0 | 3 | 0 | 0 |
+| rz-04 | A | unsupported | 0 | 0 | 5 | 0 | 0 |
+| rz-05 | A | supported | 5 | 5 | 0 | 5 | 1 |
+| rz-06 | A | supported | 5 | 5 | 0 | 5 | 4 |
+| rz-07 | A | not_addressed | 5 | 5 | 5 | 0 | 2 |
+| ctl-01 | B | supported | 5 | 5 | 5 | 5 | 5 |
+| ctl-02 | B | unsupported | 5 | 5 | 5 | 5 | 5 |
+| ctl-03 | B | supported | 0 | 0 | 5 | 5 | 5 |
+| ctl-04 | B | unsupported | 5 | 5 | 5 | 5 | 5 |
+| ctl-05 | B | not_addressed | 5 | 5 | 5 | 5 | 5 |
+| ctl-06 | B | unsupported | 5 | 5 | 5 | 5 | 5 |
+| ctl-07 | B | supported | 5 | 5 | 5 | 5 | 5 |
+| ctl-08 | B | supported | 5 | 5 | 5 | 5 | 5 |
+| ctl-09 | B | unsupported | 5 | 5 | 5 | 5 | 5 |
+| ctl-10 | B | supported | 5 | 5 | 5 | 5 | 5 |
+| ctl-11 | B | unsupported | 5 | 5 | 5 | 5 | 5 |
+| ctl-12 | B | unsupported | 5 | 5 | 5 | 5 | 5 |
+| ctl-13 | B | supported | 5 | 5 | 5 | 5 | 5 |
+| ctl-14 | B | supported | 5 | 5 | 5 | 5 | 5 |
+| ctl-15 | B | not_addressed | 5 | 5 | 5 | 5 | 5 |
+| ctl-16 | B | supported | 5 | 5 | 5 | 5 | 5 |
+| ctl-17 | B | unsupported | 0 | 0 | 5 | 5 | 5 |
+| ctl-18 | B | supported | 5 | 5 | 5 | 5 | 5 |
+| ctl-19 | B | unsupported | 5 | 5 | 5 | 5 | 5 |
+| ctl-20 | B | supported | 5 | 5 | 5 | 5 | 5 |
+| ctl-21 | B | unsupported | 5 | 5 | 5 | 5 | 5 |
+| ctl-22 | B | supported | 5 | 5 | 5 | 5 | 5 |
+| ctl-23 | B | unsupported | 5 | 5 | 5 | 5 | 5 |
+| ctl-24 | B | not_addressed | 5 | 5 | 5 | 5 | 5 |
+
+Claims not unanimous across the five runs:
+  Jev jev-latest: 2  sb-06, sb-07
+  Jev jev-1.13.0: 2  sb-06, sb-07
+  GPT-5.4: 1  rz-03
+  Sonnet 5: 2  sb-06, sb-07
+  Gemini 3.1 Pro: 3  rz-05, rz-06, rz-07
+
+### Jev determinism, identical input five times
+
+  Jev jev-latest: label differs on 2 of 42, confidence on 28, distribution on 28; largest confidence gap 0.29  [ctl-01, ctl-03, ctl-05, ctl-06, ctl-07, ctl-08, ctl-10, ctl-13, ctl-15, ctl-17, ctl-19, ctl-20, ctl-21, ctl-24, rb-01, rb-02, rb-04, rz-01, rz-02, rz-03, rz-04, rz-05, rz-06, rz-07, sb-01, sb-02, sb-03, sb-04, sb-05, sb-06, sb-07]
+  Jev jev-1.13.0: label differs on 2 of 42, confidence on 29, distribution on 25; largest confidence gap 0.22  [ctl-01, ctl-02, ctl-03, ctl-05, ctl-06, ctl-07, ctl-08, ctl-10, ctl-15, ctl-17, ctl-19, ctl-20, ctl-24, rb-01, rb-02, rb-04, rz-01, rz-03, rz-04, rz-05, rz-06, rz-07, sb-01, sb-02, sb-03, sb-04, sb-05, sb-06, sb-07]
+  Jev split: label differs on 1 of 42, confidence on 32, distribution on 29; largest confidence gap 0.16  [ctl-01, ctl-02, ctl-03, ctl-06, ctl-07, ctl-08, ctl-09, ctl-10, ctl-11, ctl-13, ctl-14, ctl-15, ctl-17, ctl-18, ctl-19, ctl-20, ctl-21, rb-01, rb-02, rb-04, rz-02, rz-03, rz-04, rz-05, rz-06, rz-07, sb-01, sb-02, sb-03, sb-04, sb-05, sb-06, sb-07]
+  Jev fan-out: label differs on 2 of 42, confidence on 39, distribution on 40; largest confidence gap 0.18  [ctl-01, ctl-02, ctl-03, ctl-04, ctl-05, ctl-06, ctl-07, ctl-08, ctl-09, ctl-10, ctl-11, ctl-12, ctl-13, ctl-15, ctl-16, ctl-17, ctl-18, ctl-19, ctl-20, ctl-21, ctl-22, ctl-24, rb-01, rb-02, rb-03, rb-04, rz-01, rz-02, rz-03, rz-04, rz-05, rz-06, rz-07, sb-01, sb-02, sb-03, sb-04, sb-05, sb-06, sb-07]
+
+### The headline: Jev's lead on the hard 18 across the spread
+
+  Jev mean 73.3% (min 72.2%, max 77.8%)
+  GPT-5.4: mean 70.0% (min 66.7%, max 72.2%); Jev lead on means +3.3 points
+  Sonnet 5: mean 66.7% (min 61.1%, max 72.2%); Jev lead on means +6.7 points
+  Gemini 3.1 Pro: mean 63.3% (min 55.6%, max 66.7%); Jev lead on means +10.0 points
+  Pre-registered reading: SHRINKS: Jev's mean still leads, but the run ranges overlap
+
+  Exact McNemar, majority-of-five correctness, hard 18, Jev vs each:
+    Jev vs GPT-5.4: Jev-only-right 3, GPT-5.4-only-right 2, p = 1.000; run-by-run p from 1.000 to 1.000
+    Jev vs Sonnet 5: Jev-only-right 2, Sonnet 5-only-right 0, p = 0.500; run-by-run p from 0.500 to 1.000
+    Jev vs Gemini 3.1 Pro: Jev-only-right 3, Gemini 3.1 Pro-only-right 0, p = 0.250; run-by-run p from 0.125 to 1.000
+
+## Test 3: one change per arm, against its own baseline
+
+(a) Pin the version, jev-1.13.0 against jev-latest
+  Jev jev-1.13.0: all 42 84.8% (83.3% to 85.7%), hard 18 75.6% (72.2% to 77.8%); baseline all 42 83.8% (83.3% to 85.7%)
+    McNemar all 42: baseline-only-right 0, arm-only-right 0, p = 1.000. Hard 18: 0 and 0, p = 1.000
+    Pre-registered reading: no detectable effect: inside the baseline's own spread
+    Identical distributions run for run, latest vs pinned: False
+    20 Sep jev-latest vs today's jev-latest run 1, labels that differ: 1 ['sb-06']
+
+(b) Split the compound label
+  Jev split: all 42 82.4% (81.0% to 83.3%), hard 18 72.2% (72.2% to 72.2%); baseline all 42 83.8% (83.3% to 85.7%)
+    McNemar all 42: baseline-only-right 3, arm-only-right 2, p = 1.000. Hard 18: 2 and 1, p = 1.000
+    Pre-registered reading: moved beyond run-to-run noise, not significant
+  GPT-5.4 split (one run): all 42 88.1% (88.1% to 88.1%), hard 18 72.2% (72.2% to 72.2%); baseline all 42 87.1% (85.7% to 88.1%)
+    McNemar all 42: baseline-only-right 2, arm-only-right 2, p = 1.000. Hard 18: 2 and 2, p = 1.000
+    Pre-registered reading: no detectable effect: inside the baseline's own spread
+  Sonnet 5 split (one run): all 42 85.7% (85.7% to 85.7%), hard 18 66.7% (66.7% to 66.7%); baseline all 42 85.7% (83.3% to 88.1%)
+    McNemar all 42: baseline-only-right 2, arm-only-right 2, p = 1.000. Hard 18: 2 and 2, p = 1.000
+    Pre-registered reading: no detectable effect: inside the baseline's own spread
+  Gemini 3.1 Pro split (one run): all 42 83.3% (83.3% to 83.3%), hard 18 61.1% (61.1% to 61.1%); baseline all 42 84.3% (81.0% to 85.7%)
+    McNemar all 42: baseline-only-right 2, arm-only-right 2, p = 1.000. Hard 18: 2 and 2, p = 1.000
+    Pre-registered reading: no detectable effect: inside the baseline's own spread
+
+  The four boundary rows Test 2 named. Times right of five, schema-only; then the split arm's raw answer:
+    rz-05 (label supported): Jev 5/5 -> supported; GPT-5.4 0/5 -> supported; Sonnet 5 5/5 -> supported; Gemini 3.1 Pro 1/5 -> not_addressed
+    rz-06 (label supported): Jev 5/5 -> supported; GPT-5.4 0/5 -> supported; Sonnet 5 5/5 -> supported; Gemini 3.1 Pro 4/5 -> altered
+    sb-04 (label supported): Jev 5/5 -> supported; GPT-5.4 5/5 -> supported; Sonnet 5 5/5 -> supported; Gemini 3.1 Pro 5/5 -> supported
+    sb-06 (label supported): Jev 3/5 -> altered; GPT-5.4 0/5 -> altered; Sonnet 5 4/5 -> altered; Gemini 3.1 Pro 0/5 -> altered
+
+  Split arm, how the four-way answers fell against the true label:
+    Jev split: not_addressed->not_addressed 30, supported->altered 12, supported->supported 73, unsupported->altered 15, unsupported->contradicted 55, unsupported->not_addressed 5, unsupported->supported 20
+    GPT-5.4 split: not_addressed->altered 1, not_addressed->contradicted 1, not_addressed->not_addressed 4, supported->altered 1, supported->supported 16, unsupported->altered 7, unsupported->contradicted 10, unsupported->supported 2
+    Sonnet 5 split: not_addressed->contradicted 2, not_addressed->not_addressed 4, supported->altered 1, supported->supported 16, unsupported->altered 6, unsupported->contradicted 10, unsupported->not_addressed 1, unsupported->supported 2
+    Gemini 3.1 Pro split: not_addressed->altered 1, not_addressed->not_addressed 4, not_addressed->supported 1, supported->altered 2, supported->not_addressed 1, supported->supported 14, unsupported->altered 5, unsupported->contradicted 12, unsupported->supported 2
+
+(c) Multi-question fan-out
+  Jev fan-out: all 42 77.6% (76.2% to 81.0%), hard 18 66.7% (66.7% to 66.7%); baseline all 42 83.8% (83.3% to 85.7%)
+    McNemar all 42: baseline-only-right 5, arm-only-right 1, p = 0.219. Hard 18: 3 and 1, p = 0.625
+    Pre-registered reading: moved beyond run-to-run noise, not significant
+    cost per claim: single Choice $0.000025, fan-out $0.000026 (1.04x); input tokens 587 vs 610; seconds 0.22 vs 0.22
+
+## Spend
+
+  Jev jev-latest         $0.0052
+  Jev jev-1.13.0         $0.0052
+  GPT-5.4                $0.2707
+  Sonnet 5               $0.4743
+  Gemini 3.1 Pro         $1.0373
+  Jev split              $0.0060
+  Jev fan-out            $0.0054
+  GPT-5.4 split          $0.0649
+  Sonnet 5 split         $0.1119
+  Gemini 3.1 Pro split   $0.2700
+  total                  $2.2510  (cap $10.00)
