@@ -71,13 +71,16 @@ def load_env():
 
 # ---------------------------------------------------------------- Jev
 
-def run_jev(rows, model):
+def run_jev(rows, model, labels=None, arm="schema"):
+    """One Choice per claim. `labels` defaults to the baseline's three; the split arm passes
+    SPLIT_LABELS and the answer is mapped back to the three-way label for scoring."""
     from typesafe_sdk import TypeSafeClient, Choice
 
     if not os.environ.get("TYPESAFE_API_KEY"):
         sys.exit("TYPESAFE_API_KEY is not set. Put it in tools/jev-bench/.env")
 
-    questions = {"relation": Choice(instructions=INSTRUCTIONS, criteria=dict(LABELS))}
+    labels = labels or LABELS
+    questions = {"relation": Choice(instructions=INSTRUCTIONS, criteria=dict(labels))}
     out = []
     with TypeSafeClient() as client:
         for row in rows:
@@ -89,23 +92,146 @@ def run_jev(rows, model):
                     model=model,
                 )
             except Exception as exc:  # a failed call is data, not a crash
-                out.append({**meta(row), "system": "jev", "error": repr(exc)})
+                out.append({**meta(row), "system": "jev", "arm": arm, "error": repr(exc)})
                 continue
             secs = time.perf_counter() - started
             ans = resp.answers["relation"]
             usage = getattr(resp, "usage", None)
-            out.append({
+            rec = {
                 **meta(row),
                 "system": "jev",
                 "model": model,
-                "predicted": ans.choice,
+                # the versioned ID that actually answered, which an alias hides
+                "served_model": getattr(resp, "model", None),
+                "arm": arm,
+                "predicted": SPLIT_TO_THREE.get(ans.choice, ans.choice),
                 "confidence": float(ans.confidence),
                 "probabilities": dict(getattr(ans, "probabilities", {}) or {}),
                 "seconds": round(secs, 3),
                 "input_tokens": getattr(usage, "input_tokens", 0) or 0,
                 "output_tokens": getattr(usage, "output_tokens", 0) or 0,
-            })
+            }
+            if labels is not LABELS:
+                rec["predicted_raw"] = ans.choice
+            out.append(rec)
             print(f"  jev  {row['id']:<14} {ans.choice:<14} p={ans.confidence:.2f}  {secs:.2f}s")
+    return out
+
+
+# ------------------------------------------------- Test 3 (b): the compound label, split
+
+# `unsupported` merges two different events. The split arm offers them as two options and
+# maps both back to `unsupported` for scoring, so the dataset labels are untouched and the
+# score is comparable with every earlier run. The two definitions are written from the `why`
+# records of the dataset's `unsupported` rows; the last sentence of `altered` is written from
+# the `why` records of the `supported` rows that are fair compressions (rz-05, rz-06, sb-04).
+SPLIT_LABELS = {
+    "supported": LABELS["supported"],
+    "contradicted": (
+        "The source passage addresses what the claim asserts and says something incompatible "
+        "with it: the opposite, a different figure, the reverse direction of an effect, or "
+        "that the thing the claim says was done or found was not."
+    ),
+    "altered": (
+        "The claim is recognisably drawn from the source passage and roughly right in "
+        "substance, but changed so that the sentence as written is not what the source says: "
+        "a true figure attached to the wrong quantity, model, version or author; a hedge "
+        "hardened into a certainty; a quotation assembled from separate places; or a scope "
+        "wider than the passage covers. A shortening or paraphrase that leaves out detail but "
+        "states nothing the passage does not is not altered: that is supported."
+    ),
+    "not_addressed": LABELS["not_addressed"],
+}
+
+SPLIT_TO_THREE = {"contradicted": "unsupported", "altered": "unsupported"}
+
+
+# ------------------------------------------------- Test 3 (c): multi-question fan-out
+
+# Three narrow Nouls over the same state in one call, the shape TypeSafe recommends and bills
+# once on input. The rule that turns them into one of the three labels is combine_fanout(),
+# fixed in the pre-registration before any fan-out run and not to be changed after.
+FANOUT_QUESTIONS = {
+    "addresses": (
+        "A sentence from a published article makes a claim and cites a source. Does the source "
+        "passage in `section` speak to what the claim in `claim` asserts, either way? Answer "
+        "yes if the passage contains information that bears on whether the claim is true, even "
+        "if it contradicts the claim. Judge only against the passage given."
+    ),
+    "contradicts": (
+        "A sentence from a published article makes a claim and cites a source. Does the source "
+        "passage in `section` say something incompatible with the claim in `claim`: the "
+        "opposite, a different figure, the reverse direction of an effect, or that the thing "
+        "the claim says was done or found was not? Judge only against the passage given."
+    ),
+    "faithful": (
+        "A sentence from a published article makes a claim and cites a source. Is everything "
+        "the claim in `claim` states either stated in the source passage in `section` or "
+        "directly implied by it, with the same figures, attribution, version, scope and "
+        "strength of wording? Leaving out detail is fine; adding or changing something is not. "
+        "Judge only against the passage given, and do not credit the claim for being plausible."
+    ),
+}
+
+FANOUT_THRESHOLD = 0.5
+
+
+def combine_fanout(addresses, contradicts, faithful, t=FANOUT_THRESHOLD):
+    """The pre-registered rule. Returns (label, joint probability of that label).
+
+    not_addressed  if the passage does not speak to the claim
+    supported      if it does, the claim is faithful to it, and nothing contradicts it
+    unsupported    otherwise
+
+    The joint probability treats the three answers as independent. It is reported, never used
+    to pick the label.
+    """
+    if addresses < t:
+        return "not_addressed", 1 - addresses
+    if faithful >= t and contradicts < t:
+        return "supported", addresses * faithful * (1 - contradicts)
+    return "unsupported", addresses * (1 - faithful * (1 - contradicts))
+
+
+def run_jev_fanout(rows, model):
+    from typesafe_sdk import TypeSafeClient, Noul
+
+    if not os.environ.get("TYPESAFE_API_KEY"):
+        sys.exit("TYPESAFE_API_KEY is not set. Put it in .env")
+
+    questions = {k: Noul(instructions=v) for k, v in FANOUT_QUESTIONS.items()}
+    out = []
+    with TypeSafeClient() as client:
+        for row in rows:
+            started = time.perf_counter()
+            try:
+                resp = client.system_one(
+                    state={"claim": row["claim"], "section": row["section"]},
+                    questions=questions,
+                    model=model,
+                )
+            except Exception as exc:
+                out.append({**meta(row), "system": "jev", "arm": "fanout", "error": repr(exc)})
+                continue
+            secs = time.perf_counter() - started
+            nouls = {k: float(resp.answers[k].noul) for k in FANOUT_QUESTIONS}
+            label, joint = combine_fanout(**nouls)
+            usage = getattr(resp, "usage", None)
+            out.append({
+                **meta(row),
+                "system": "jev",
+                "model": model,
+                "served_model": getattr(resp, "model", None),
+                "arm": "fanout",
+                "predicted": label,
+                "confidence": round(joint, 4),
+                "nouls": nouls,
+                "seconds": round(secs, 3),
+                "input_tokens": getattr(usage, "input_tokens", 0) or 0,
+                "output_tokens": getattr(usage, "output_tokens", 0) or 0,
+            })
+            shown = " ".join(f"{k[:4]}={v:.2f}" for k, v in nouls.items())
+            print(f"  jev+f {row['id']:<14} {label:<14} {shown}  {secs:.2f}s")
     return out
 
 
@@ -354,7 +480,86 @@ def run_llm_reasoning(rows, model):
     return out
 
 
-def parse_json_verdict(text):
+# ------------------------------------------------- Test 3 (b), the same split for the LLMs
+
+# BASELINE_PROMPT with the four split definitions in place of the three. Nothing else changes:
+# same framing, same instruction to judge only against the passage, same JSON shape.
+SPLIT_PROMPT = """You are checking a citation.
+
+CLAIM (a sentence from a published article):
+{claim}
+
+SOURCE PASSAGE (the text it cites):
+{section}
+
+Decide how the source passage relates to the claim. The four possible answers are:
+
+supported: {supported}
+contradicted: {contradicted}
+altered: {altered}
+not_addressed: {not_addressed}
+
+Judge only against the passage given. Do not use anything you may recall about the paper, and do
+not credit the claim for being plausible.
+
+Reply with JSON only, no other text, in exactly this form:
+{{"verdict": "<one of supported, contradicted, altered, not_addressed>", "confidence": <a number from 0 to 1, your probability that your verdict is correct>}}"""
+
+SPLIT_SCHEMA = json.loads(json.dumps(VERDICT_SCHEMA))
+SPLIT_SCHEMA["json_schema"]["name"] = "citation_verdict_split"
+SPLIT_SCHEMA["json_schema"]["schema"]["properties"]["verdict"]["enum"] = list(SPLIT_LABELS)
+
+
+def run_llm_split(rows, model):
+    """run_llm() with the split labels. `predicted_raw` keeps the four-way answer; `predicted`
+    is mapped back to the three-way label so score.py and mcnemar.py read it unchanged."""
+    from openai import OpenAI
+
+    key = os.environ.get("OPENROUTER_API_KEY")
+    if not key:
+        sys.exit("OPENROUTER_API_KEY is not set. Put it in .env")
+
+    client = OpenAI(api_key=key, base_url="https://openrouter.ai/api/v1")
+    out = []
+    for row in rows:
+        prompt = SPLIT_PROMPT.format(claim=row["claim"], section=row["section"], **SPLIT_LABELS)
+        started = time.perf_counter()
+        try:
+            resp = client.chat.completions.create(
+                model=model,
+                max_tokens=1500,
+                messages=[{"role": "user", "content": prompt}],
+                response_format=SPLIT_SCHEMA,
+                extra_body={"usage": {"include": True}},
+            )
+        except Exception as exc:
+            out.append({**meta(row), "system": "llm", "arm": "split", "model": model,
+                        "error": repr(exc)})
+            continue
+        secs = time.perf_counter() - started
+        text = (resp.choices[0].message.content or "").strip()
+        raw, conf = parse_json_verdict(text, allowed=SPLIT_LABELS)
+        usage = resp.usage
+        out.append({
+            **meta(row),
+            "system": "llm",
+            "model": model,
+            "arm": "split",
+            "predicted": SPLIT_TO_THREE.get(raw, raw),
+            "predicted_raw": raw,
+            "confidence": conf,
+            "raw": text,
+            "seconds": round(secs, 3),
+            "input_tokens": getattr(usage, "prompt_tokens", 0) or 0,
+            "output_tokens": getattr(usage, "completion_tokens", 0) or 0,
+            "charged_usd": getattr(usage, "cost", None),
+        })
+        shown = "None" if conf is None else f"{conf:.2f}"
+        print(f"  llm+s {row['id']:<14} {str(raw):<14} p={shown}  {secs:.2f}s")
+    return out
+
+
+def parse_json_verdict(text, allowed=None):
     """Pull the verdict out even when the model wraps it in a fence or a sentence."""
     start, end = text.find("{"), text.rfind("}")
     if start == -1 or end == -1:
@@ -364,7 +569,7 @@ def parse_json_verdict(text):
     except json.JSONDecodeError:
         return None, None
     verdict = obj.get("verdict")
-    if verdict not in LABELS:
+    if verdict not in (allowed or LABELS):
         verdict = None
     conf = obj.get("confidence")
     try:
@@ -398,9 +603,15 @@ def main():
     ap.add_argument("--jev-model", default=os.environ.get("TYPESAFE_MODEL", "jev-latest"))
     ap.add_argument("--llm-model", default="anthropic/claude-sonnet-4.5",
                     help="OpenRouter model slug, e.g. openai/gpt-5.2 or google/gemini-2.5-pro")
-    ap.add_argument("--arm", choices=["schema", "reasoning"], default="schema",
+    ap.add_argument("--arm", choices=["schema", "reasoning", "split", "fanout"], default="schema",
                     help="schema: straight into the JSON verdict, the 20 September baseline. "
-                         "reasoning: a free-text scratchpad first, then the same verdict.")
+                         "reasoning: a free-text scratchpad first, then the same verdict. "
+                         "split: `unsupported` offered as contradicted and altered, scored as "
+                         "unsupported (Test 3b). fanout: three Nouls in one call, combined by a "
+                         "fixed rule, Jev only (Test 3c).")
+    ap.add_argument("--label", default=None,
+                    help="prefix for the timestamp in the output filename, e.g. t4-r1, so "
+                         "repeat runs can be told apart by name")
     args = ap.parse_args()
 
     load_env()
@@ -410,10 +621,20 @@ def main():
     print(f"{len(rows)} claims" + (f", tier {args.tier}" if args.tier else ", both tiers"))
 
     tag = time.strftime("%Y%m%d-%H%M%S")
+    if args.label:
+        tag = f"{args.label}-{tag}"
     if args.system in ("jev", "both"):
-        write(run_jev(rows, args.jev_model), "jev", tag)
+        if args.arm == "fanout":
+            out = run_jev_fanout(rows, args.jev_model)
+        elif args.arm == "split":
+            out = run_jev(rows, args.jev_model, labels=SPLIT_LABELS, arm="split")
+        else:
+            out = run_jev(rows, args.jev_model)
+        write(out, "jev", tag)
     if args.system in ("llm", "both"):
-        runner = run_llm_reasoning if args.arm == "reasoning" else run_llm
+        runner = {"reasoning": run_llm_reasoning, "split": run_llm_split}.get(args.arm, run_llm)
+        if args.arm == "fanout":
+            sys.exit("the fan-out arm is Jev only")
         write(runner(rows, args.llm_model), "llm", tag)
     print(f"\nnow: python3 score.py results/jev-{tag}.jsonl results/llm-{tag}.jsonl")
 
