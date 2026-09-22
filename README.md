@@ -18,7 +18,7 @@ Write-up: **[Jev is not an LLM](https://jamiewatters.work/journey/jev-is-not-an-
 
 | | all 42 | the easy 24 | the hard 18 | cost per claim | seconds |
 |---|---|---|---|---|---|
-| **Jev** `jev-1.13.0` | 85.7% | 91.7% | **77.8%** | **$0.000025** | **0.23** |
+| **Jev** `jev-latest` | 85.7% | 91.7% | **77.8%** | **$0.000025** | **0.23** |
 | GPT-5.4 | 85.7% | 100% | 66.7% | $0.001289 | 1.01 |
 | Claude Sonnet 5 | 85.7% | 100% | 66.7% | $0.002228 | 2.76 |
 | Gemini 3.1 Pro | 81.0% | 100% | 55.6% | $0.004824 | 3.78 |
