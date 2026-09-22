@@ -67,6 +67,22 @@ def cmd_harsher_summary(args):
     print(f"harsher: {harsher} harsher_wrong: {harsher_wrong} softer: {softer} softer_right: {softer_right}")
 
 
+def cmd_lead_widened(args):
+    jev = load_tier_a("results/jev-20260920-114958.jsonl")
+    gpt_schema = load_tier_a("results/llm-openai-gpt-5.4-20260920-142048.jsonl")
+    gpt_reasoning = load_tier_a("results/llm-openai-gpt-5.4-20260921-163434.jsonl")
+
+    def acc(rows):
+        return sum(1 for r in rows.values() if r["predicted"] == r["label"])
+
+    jev_n = acc(jev)
+    lead_schema = (jev_n - acc(gpt_schema)) / 18 * 100
+    lead_reasoning = (jev_n - acc(gpt_reasoning)) / 18 * 100
+    direction = "widened" if lead_reasoning > lead_schema else "narrowed"
+    print(f"schema-only lead: {lead_schema:.1f} points  "
+          f"reasoning-allowed lead: {lead_reasoning:.1f} points  {direction}")
+
+
 def cmd_changed_summary(args):
     pairs = [
         ("results/llm-openai-gpt-5.4-20260920-142048.jsonl",
@@ -220,6 +236,9 @@ def main():
     p.add_argument("schema")
     p.add_argument("reasoning")
     p.set_defaults(func=cmd_identical)
+
+    p = sub.add_parser("lead-widened")
+    p.set_defaults(func=cmd_lead_widened)
 
     p = sub.add_parser("changed-summary")
     p.set_defaults(func=cmd_changed_summary)
