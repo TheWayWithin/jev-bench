@@ -99,8 +99,13 @@ correction for three comparisons). GPT-5.4 is p = 0.250, Gemini p = 0.125.
 ## Why the answers moved, where they moved
 
 Nine verdicts changed on the hard set: seven from right to wrong, two from wrong to right. Five of
-the nine moved toward a harsher reading and four of those five were wrong; two moved toward a
-softer one; two moved between `unsupported` and `not_addressed`.
+the nine moved toward a harsher reading (to `unsupported`) and all five of those were wrong; two
+moved toward a softer one; two moved between `unsupported` and `not_addressed`.
+
+_Corrected 2026-09-21: this line originally said "four of those five were wrong." Rechecked against
+the raw JSONL for the article this file feeds: all five harsher moves (`rz-07`, and Sonnet 5's
+`rz-05`, `rz-06`, `sb-04`, `sb-06`) flip to a wrong verdict. Caught by an adversarial review of the
+downstream article, not by this file's own drafting._
 
 The harsher moves are where the damage is. Four of Sonnet 5's five new errors are one shape: a claim whose
 true label is `supported`, talked down to `unsupported` after the model found a wording or
@@ -146,11 +151,16 @@ label.
    being unsure and right.
 10. **Latency is end to end through OpenRouter and this arm makes two round trips**, so its routing
     hop is counted twice. Jev runs through a different vendor's endpoint entirely. Not a
-    like-for-like latency comparison, and the two arms ran 24 hours apart with no serving provider
-    pinned in either.
-11. **The pre-registered decision rule still fails**, and fails harder here: Jev's recall on
-    `unsupported` is 78.9% against the 80% bar, and the reasoning-allowed GPT-5.4 reaches 84.2%.
-    The rule's second clause, "at least as good as the frontier models'", is now failed outright.
+    like-for-like latency comparison, and the two arms ran about 26 hours apart with no serving
+    provider pinned in either. (Corrected 2026-09-21 from "24 hours"; the run filenames give 26.2 to
+    26.3 hours for all three models.)
+11. **The pre-registered decision rule still fails, though by less than it did schema-only.** Jev's
+    recall on `unsupported` is 78.9% against the 80% bar. GPT-5.4's was 89.5% schema-only and drops
+    to 84.2% reasoning-allowed, so the gap over Jev narrows from 10.6 points to 5.3 even as GPT-5.4's
+    hard-18 accuracy lead over Jev reverses. The rule's second clause, "at least as good as the
+    frontier models'", is still failed, just not by more. (Corrected 2026-09-21: this line originally
+    said the rule "fails harder here," which reversed the direction of the schema-only-to-reasoning
+    shift on this specific recall figure.)
     Jev wins the hard set and loses the gate rule. Both are in the same run.
 
 ## What this changes
