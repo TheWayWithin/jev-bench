@@ -3,18 +3,28 @@
 **Does the source actually say it?** A 42-claim benchmark for one narrow job: given a sentence that
 makes a claim and the passage it cites, decide whether the passage supports the sentence as written.
 
+## Current result
+
+Five runs per model, 22 September 2026. On the hard 18, **Jev ties GPT-5.4**: 73.3% mean against
+70.0%, a 3.3-point lead that is 0.6 of one claim and not significant (exact McNemar p = 1.000). It
+gets there at about a fiftieth of GPT-5.4's cost per claim. On the easy 24 the frontier models score
+100% in every run and Jev 91.7%. Full numbers, the three question-design arms and the honest limits
+are in `results/2026-09-23-tests-3-4-verdict.md`.
+
 Run on 20 September 2026 against **Jev** (TypeSafe's System One model, which returns a typed answer
-and a probability instead of text) and three frontier models, and again on 21 September with the
-frontier models allowed to reason first. Everything here is the real thing: the claims, the code,
+and a probability instead of text) and three frontier models, again on 21 September with the
+frontier models allowed to reason first, and five times each on 22 September. Everything here is the real thing: the claims, the code,
 the raw per-claim output, and the scored results.
 
-Write-up: **[Jev is not an LLM](https://jamiewatters.work/journey/jev-is-not-an-llm)**
+Write-up: **[Jev ties GPT-5.4](https://jamiewatters.work/journey/jev-ties-gpt-5-4)**. Earlier:
+[Jev is not an LLM](https://jamiewatters.work/journey/jev-is-not-an-llm) and
+[the confidence-threshold follow-up](https://jamiewatters.work/journey/confidence-threshold-fact-checking).
 
 ☕ **[Buy me a coffee](https://buymeacoffee.com/jamiewatters)** if this saved you an afternoon.
 
 ---
 
-## The result
+## First run, 20 September (single run, superseded)
 
 | | all 42 | the easy 24 | the hard 18 | cost per claim | seconds |
 |---|---|---|---|---|---|
@@ -39,12 +49,12 @@ above). Sonnet 5 put 39 of 42 there. GPT-5.4 and Sonnet 5 were right 85.7% of th
 81.0%, all well short of the 0.8-plus confidence they stated, which makes them badly calibrated:
 the number they state runs well ahead of the accuracy they deliver. That is not
 the same as the number carrying no information at all, which an earlier version of this section
-claimed — see risk and coverage below, corrected the same day. Jev used four buckets: its top
+claimed. See risk and coverage below, corrected the same day. Jev used four buckets: its top
 bucket (0.8 and above, 29 items) was right 93.1% of the time and everything below was right 60 to
 80%.
 
 **On risk and coverage** (added 21 September, from the same runs, no new model calls; corrected
-21 September, hours later — the first version tested six round thresholds, 0.60 to 0.95, and
+21 September, hours later: the first version tested six round thresholds, 0.60 to 0.95, and
 GPT-5.4's 42 answers all sit between 0.94 and 0.99, so five of those six thresholds sat off its
 range and told us nothing). Auto-accept every verdict at or above a confidence threshold and
 escalate the rest. Swept over each model's own distinct values instead of a fixed grid: Jev runs
@@ -76,7 +86,14 @@ free-text scratchpad in front of the same structured verdict.
 | Gemini 3.1 Pro | 55.6% | 55.6% | $0.004824 → $0.011545 | 3.78 → 8.71 |
 
 **The gap did not close.** None of the three improved, Gemini answered all 18 identically, and Jev's
-lead over the best of them goes from 11.1 points to 16.7 — at 2.4 to 4.2 times the cost per claim.
+lead over the best of them goes from 11.1 points to 16.7. The reasoning arm cost 2.4 to 4.2 times as
+much per claim.
+
+**Read those two leads with the five-run result in mind.** Both are measured from Jev's single
+20 September run, 77.8% on the hard 18. Five repeats on 22 September put that at the top of Jev's
+range: four of the five scored 72.2%. Against 72.2%, the lead over the best reasoning-allowed model
+is 11.1 points, not 16.7. The reasoning-allowed arms themselves were run once each and have not been
+repeated.
 
 **What this does not say.** No per-model drop is significant on 18 items: exact McNemar gives
 p = 1.000, 0.219 and 1.000. "Reasoning did not help" is supportable. "Reasoning made them worse" is
@@ -92,16 +109,18 @@ run.py                 runs one or both systems, writes results/<system>-<model>
 score.py               accuracy, per class, reliability table, cost, latency, and the decision rule
 risk_coverage.py       coverage and error rate at each confidence threshold, plus the cascade
 mcnemar.py             exact McNemar on the hard 18: is a gap between two runs bigger than luck
+tests34.py             Tests 3 and 4: the run plan, the spend check, and every number in the verdict
+test2_checks.py        the per-row and per-model checks behind the Test 2 write-up
 prices.json            published prices, each with the page it was read from
-results/               every run, 20 and 21 September, plus the scored output and the verdicts
+results/               every run, 20, 21 and 22 September, plus the scored output and the verdicts
 bench.sh               wrapper so you do not have to remember the venv path
 ```
 
 `results/2026-09-20-verdict.md` is the rule and the honest limits, written up from an earlier,
 separate two-model run against `anthropic/claude-sonnet-4.5` rather than the four-model comparison
-in the table above — its headline numbers (76.2% baseline accuracy) do not match that table's, on
-purpose, because it is a different run. It was superseded by the four-model comparison this README
-is built around; kept for the record, and cross-checked against its own data in this correction.
+in the table above. Its headline numbers (76.2% baseline accuracy) do not match that table's, on
+purpose, because it is a different run. It was superseded by the four-model first run, which was in
+turn superseded by the five-run result at the top of this README; kept for the record, and cross-checked against its own data in this correction.
 
 ## The labelled set
 
@@ -122,11 +141,11 @@ Headline numbers come from Tier A. Tier B is reported alongside and never merged
 
 ### Labels
 
-- `supported` — the passage states the claim, or directly implies it.
-- `unsupported` — the passage addresses this and does not support the claim as written. Covers flat
+- `supported`: the passage states the claim, or directly implies it.
+- `unsupported`: the passage addresses this and does not support the claim as written. Covers flat
   contradiction and, more often, a claim that is right in substance but wrong in version, figure,
   attribution, scope or wording.
-- `not_addressed` — the passage does not speak to the claim either way.
+- `not_addressed`: the passage does not speak to the claim either way.
 
 `unsupported` deliberately merges contradiction with correct-but-altered, because for a publishing
 gate those are the same event: do not publish this sentence. That is a design choice with a cost,
@@ -235,9 +254,9 @@ Two things are genuinely useful.
 the label, and one line on why. Independent claims from somebody else's pipeline would fix weakness
 7 outright, and that is the weakness I cannot fix myself.
 
-**A rerun of anything here.** Different models, a pinned version, or repeats — repeats most of all,
-since nothing in this repo has an error bar and the 21 September arm showed how little of an
-18-item gap is significant. Open an issue with the results file attached.
+**A rerun of anything here.** Different models, or repeats on different days: repeats most of all.
+The 22 September repeats cut an 11.1-point gap to 3.3, but they ran in one 19-minute window, and the
+21 September reasoning-allowed arm has still been run only once per model. Open an issue with the results file attached.
 
 ## Licence
 
