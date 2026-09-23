@@ -6,10 +6,15 @@ input? Test 3: how much of Jev's result is the question design rather than the m
 
 **The answer to Test 4: the lead shrinks.** Over five runs each, Jev's lead on the hard 18 over the
 best frontier model falls from 11.1 points to 3.3: 73.3% against GPT-5.4's 70.0%, on means. Jev
-still has the highest mean of the four, but its worst run ties the best runs of all three frontier
-models, and no gap against any of them is significant. The 20 September single run caught Jev at
-the top of its own range: 77.8% on the hard 18, which it matched in one of today's five runs. The
-other four scored 72.2%.
+still has the highest mean of the four, but its worst run, 72.2%, is the same as the best run of
+GPT-5.4 and of Sonnet 5, and no gap against any of them is significant. Gemini 3.1 Pro never got
+above 66.7%. The 20 September single run caught Jev at the top of its own range: 77.8% on the hard
+18, which it matched in one of today's five runs. The other four scored 72.2%.
+
+_Corrected 2026-09-23: this paragraph originally said Jev's worst run matched the best run of every
+frontier model. Gemini 3.1 Pro's best hard-18 run is 66.7% (run by run: 66.7, 61.1, 66.7, 55.6,
+66.7); only GPT-5.4 and Sonnet 5 reach 72.2%. The same error is corrected under "The headline"
+below. Caught by outside review of the downstream article._
 
 **Jev is not deterministic.** Across five identical calls per claim, the confidence changed on 28
 of 42 claims and the label on 2. Every label that flipped had a confidence below 0.47 on every
@@ -56,8 +61,9 @@ Hard-18 accuracy, run by run:
 | Gemini 3.1 Pro | 66.7 | 61.1 | 66.7 | 55.6 | 66.7 |
 
 **The headline, by the pre-registered rule: shrinks.** Jev's mean on the hard 18 is above every
-frontier model's mean, but the run ranges overlap: Jev's worst run, 72.2%, equals the best run of
-all three. Lead on means: +3.3 points over GPT-5.4, +6.7 over Sonnet 5, +10.0 over Gemini 3.1 Pro.
+frontier model's mean, but its run range overlaps GPT-5.4's and Sonnet 5's: Jev's worst run, 72.2%, equals the best run of
+GPT-5.4 and of Sonnet 5. Gemini 3.1 Pro never got above 66.7%. (Corrected 2026-09-23 from "equals
+the best run of all three"; see the correction under the answer to Test 4.) Lead on means: +3.3 points over GPT-5.4, +6.7 over Sonnet 5, +10.0 over Gemini 3.1 Pro.
 One claim is 5.6 points, so the lead over the best of them is 0.6 of one claim.
 
 **The part that did not move.** The structural finding of the first article holds on every run:

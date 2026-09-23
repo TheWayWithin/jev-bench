@@ -5,18 +5,26 @@ makes a claim and the passage it cites, decide whether the passage supports the 
 
 ## Current result
 
-Five runs per model, 22 September 2026. On the hard 18, **Jev ties GPT-5.4**: 73.3% mean against
-70.0%, a 3.3-point lead that is 0.6 of one claim and not significant (exact McNemar p = 1.000). It
-gets there at about a fiftieth of GPT-5.4's cost per claim. On the easy 24 the frontier models score
+Five runs per model, 22 September 2026. On the hard 18, **this test cannot tell Jev and GPT-5.4
+apart**: 73.3% mean against 70.0%, a 3.3-point lead that is 0.6 of one claim and not significant
+(exact McNemar p = 1.000). The pre-registered reading is "shrinks": Jev's mean still leads, but its
+run range overlaps GPT-5.4's and Sonnet 5's. Jev's worst run, 72.2%, is the same as the best run of
+GPT-5.4 and of Sonnet 5; Gemini 3.1 Pro never got above 66.7%. Jev costs about a fiftieth of
+GPT-5.4 per claim. On the easy 24 the frontier models score
 100% in every run and Jev 91.7%. Full numbers, the three question-design arms and the honest limits
 are in `results/2026-09-23-tests-3-4-verdict.md`.
+
+_Corrected 23 September: this section and the write-up's title first called the result a draw with
+GPT-5.4. The pre-registered reading is "shrinks", and a 3.3-point gap on 18 claims is too small for
+this test to separate the two._
 
 Run on 20 September 2026 against **Jev** (TypeSafe's System One model, which returns a typed answer
 and a probability instead of text) and three frontier models, again on 21 September with the
 frontier models allowed to reason first, and five times each on 22 September. Everything here is the real thing: the claims, the code,
 the raw per-claim output, and the scored results.
 
-Write-up: **[Jev ties GPT-5.4](https://jamiewatters.work/journey/jev-ties-gpt-5-4)**. Earlier:
+Write-up: **[I said Jev beat GPT-5.4. Five reruns can't tell them apart, at a fiftieth of the
+cost](https://jamiewatters.work/journey/jev-ties-gpt-5-4)**. Earlier:
 [Jev is not an LLM](https://jamiewatters.work/journey/jev-is-not-an-llm) and
 [the confidence-threshold follow-up](https://jamiewatters.work/journey/confidence-threshold-fact-checking).
 
