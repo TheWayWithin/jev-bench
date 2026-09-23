@@ -23,7 +23,9 @@ and a probability instead of text) and three frontier models, again on 21 Septem
 frontier models allowed to reason first, and five times each on 22 September. Everything here is the real thing: the claims, the code,
 the raw per-claim output, and the scored results.
 
-Write-up: **[I said Jev beat GPT-5.4. Five reruns can't tell them apart, at a fiftieth of the
+Write-up: **[Test an AI model before you rely on it: six mistakes I made testing
+Jev](https://jamiewatters.work/journey/how-to-test-an-ai-model)**, and before it
+**[I said Jev beat GPT-5.4. Five reruns can't tell them apart, at a fiftieth of the
 cost](https://jamiewatters.work/journey/jev-ties-gpt-5-4)**. Earlier:
 [Jev is not an LLM](https://jamiewatters.work/journey/jev-is-not-an-llm) and
 [the confidence-threshold follow-up](https://jamiewatters.work/journey/confidence-threshold-fact-checking).
