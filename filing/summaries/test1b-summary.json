@@ -1,0 +1,1846 @@
+{
+  "test": "1b",
+  "preregistration": "test1b-preregistration.md",
+  "threshold": 0.8,
+  "confident_error_bar": 0.05,
+  "escalation_bar": 0.5,
+  "neighbours": {
+    "file": "data/test1b-neighbours.jsonl",
+    "sha256": "e7f58386268f4ceef3ee32bacb1cf5e9d080d38af5a6e8336f177f2304963aaf",
+    "pool_file": "data/test1b-pool.jsonl",
+    "pool_notes": 605,
+    "pool_sha256": "e67cb9ba34d8ab1c2b40cb826f03ffbf851a7635446377dbbbdd1bb89229b5c3",
+    "k": 10,
+    "near_duplicate_jaccard": 0.5,
+    "test_notes_with_near_duplicate_neighbour": 4,
+    "near_duplicate_ids": [
+      "r-029",
+      "r-042",
+      "r-047",
+      "r-048"
+    ],
+    "neighbour_homes_matching_label": 509,
+    "neighbour_slots": 830
+  },
+  "arms": {
+    "A": {
+      "system": "A",
+      "runs": 5,
+      "per_run": [
+        {
+          "run": "r1",
+          "items": 83,
+          "agreement": 0.6506024096385542,
+          "unusable": 0,
+          "escalated_share": 0.42168674698795183,
+          "high_conf_answers": 48,
+          "high_conf_errors": 8,
+          "served_models": [
+            "jev-1.13.0"
+          ]
+        },
+        {
+          "run": "r2",
+          "items": 83,
+          "agreement": 0.6506024096385542,
+          "unusable": 0,
+          "escalated_share": 0.42168674698795183,
+          "high_conf_answers": 48,
+          "high_conf_errors": 8,
+          "served_models": [
+            "jev-1.13.0"
+          ]
+        },
+        {
+          "run": "r3",
+          "items": 83,
+          "agreement": 0.6626506024096386,
+          "unusable": 0,
+          "escalated_share": 0.4457831325301205,
+          "high_conf_answers": 46,
+          "high_conf_errors": 8,
+          "served_models": [
+            "jev-1.13.0"
+          ]
+        },
+        {
+          "run": "r4",
+          "items": 83,
+          "agreement": 0.6506024096385542,
+          "unusable": 0,
+          "escalated_share": 0.42168674698795183,
+          "high_conf_answers": 48,
+          "high_conf_errors": 8,
+          "served_models": [
+            "jev-1.13.0"
+          ]
+        },
+        {
+          "run": "r5",
+          "items": 83,
+          "agreement": 0.6506024096385542,
+          "unusable": 0,
+          "escalated_share": 0.4457831325301205,
+          "high_conf_answers": 46,
+          "high_conf_errors": 7,
+          "served_models": [
+            "jev-1.13.0"
+          ]
+        }
+      ],
+      "agreement_mean": 0.653012048192771,
+      "agreement_min": 0.6506024096385542,
+      "agreement_max": 0.6626506024096386,
+      "majority_agreement": 0.6506024096385542,
+      "majority_right": [
+        "r-001",
+        "r-002",
+        "r-004",
+        "r-005",
+        "r-006",
+        "r-007",
+        "r-008",
+        "r-009",
+        "r-010",
+        "r-011",
+        "r-012",
+        "r-014",
+        "r-015",
+        "r-016",
+        "r-017",
+        "r-018",
+        "r-019",
+        "r-025",
+        "r-027",
+        "r-028",
+        "r-029",
+        "r-031",
+        "r-032",
+        "r-033",
+        "r-035",
+        "r-036",
+        "r-037",
+        "r-039",
+        "r-040",
+        "r-044",
+        "r-047",
+        "r-049",
+        "r-050",
+        "r-052",
+        "r-053",
+        "r-054",
+        "r-055",
+        "r-056",
+        "r-057",
+        "r-058",
+        "r-059",
+        "r-061",
+        "r-064",
+        "r-065",
+        "r-066",
+        "r-067",
+        "r-068",
+        "r-069",
+        "r-070",
+        "r-073",
+        "r-075",
+        "r-078",
+        "r-081",
+        "r-083"
+      ],
+      "escalated_share_pooled": 0.43132530120481927,
+      "high_conf_answers_pooled": 236,
+      "high_conf_errors_pooled": 39,
+      "high_conf_error_rate": 0.1652542372881356,
+      "high_conf_error_ids": [
+        "r-003",
+        "r-020",
+        "r-042",
+        "r-046",
+        "r-051",
+        "r-062",
+        "r-076",
+        "r-079",
+        "r-080"
+      ],
+      "cost_per_item_usd": 4.472797590361446e-05,
+      "cost_calls_priced": 415,
+      "calls": 415,
+      "items_answer_changed": 2,
+      "confusion": {
+        "mission-control": {
+          "mission-control": 65,
+          "efformism": 5,
+          "knowledge": 5
+        },
+        "income-bridge": {
+          "income-bridge": 40,
+          "content": 10,
+          "mission-control": 25
+        },
+        "books": {
+          "books": 15,
+          "delete": 5
+        },
+        "efformism": {
+          "efformism": 16,
+          "mission-control": 4
+        },
+        "content": {
+          "content": 40,
+          "mission-control": 25,
+          "knowledge": 10
+        },
+        "knowledge": {
+          "knowledge": 60,
+          "mission-control": 10,
+          "content": 5
+        },
+        "reference": {
+          "reference": 35,
+          "mission-control": 29,
+          "knowledge": 6,
+          "income-bridge": 5
+        }
+      },
+      "confidence_values": [
+        [
+          0.19,
+          1
+        ],
+        [
+          0.23,
+          1
+        ],
+        [
+          0.25,
+          5
+        ],
+        [
+          0.26,
+          4
+        ],
+        [
+          0.27,
+          3
+        ],
+        [
+          0.28,
+          1
+        ],
+        [
+          0.29,
+          1
+        ],
+        [
+          0.3,
+          3
+        ],
+        [
+          0.31,
+          1
+        ],
+        [
+          0.32,
+          1
+        ],
+        [
+          0.33,
+          1
+        ],
+        [
+          0.35,
+          2
+        ],
+        [
+          0.36,
+          1
+        ],
+        [
+          0.37,
+          1
+        ],
+        [
+          0.38,
+          4
+        ],
+        [
+          0.39,
+          4
+        ],
+        [
+          0.4,
+          2
+        ],
+        [
+          0.41,
+          1
+        ],
+        [
+          0.42,
+          4
+        ],
+        [
+          0.43,
+          4
+        ],
+        [
+          0.44,
+          3
+        ],
+        [
+          0.45,
+          7
+        ],
+        [
+          0.46,
+          5
+        ],
+        [
+          0.47,
+          7
+        ],
+        [
+          0.48,
+          7
+        ],
+        [
+          0.49,
+          8
+        ],
+        [
+          0.5,
+          2
+        ],
+        [
+          0.51,
+          2
+        ],
+        [
+          0.52,
+          4
+        ],
+        [
+          0.53,
+          4
+        ],
+        [
+          0.54,
+          3
+        ],
+        [
+          0.55,
+          4
+        ],
+        [
+          0.56,
+          2
+        ],
+        [
+          0.57,
+          1
+        ],
+        [
+          0.58,
+          2
+        ],
+        [
+          0.59,
+          1
+        ],
+        [
+          0.6,
+          2
+        ],
+        [
+          0.62,
+          2
+        ],
+        [
+          0.63,
+          1
+        ],
+        [
+          0.64,
+          4
+        ],
+        [
+          0.65,
+          3
+        ],
+        [
+          0.66,
+          2
+        ],
+        [
+          0.67,
+          4
+        ],
+        [
+          0.68,
+          4
+        ],
+        [
+          0.69,
+          4
+        ],
+        [
+          0.7,
+          2
+        ],
+        [
+          0.71,
+          3
+        ],
+        [
+          0.72,
+          1
+        ],
+        [
+          0.73,
+          4
+        ],
+        [
+          0.74,
+          8
+        ],
+        [
+          0.75,
+          2
+        ],
+        [
+          0.76,
+          4
+        ],
+        [
+          0.77,
+          5
+        ],
+        [
+          0.78,
+          9
+        ],
+        [
+          0.79,
+          8
+        ],
+        [
+          0.8,
+          6
+        ],
+        [
+          0.81,
+          3
+        ],
+        [
+          0.82,
+          12
+        ],
+        [
+          0.83,
+          6
+        ],
+        [
+          0.84,
+          3
+        ],
+        [
+          0.85,
+          8
+        ],
+        [
+          0.86,
+          1
+        ],
+        [
+          0.87,
+          1
+        ],
+        [
+          0.88,
+          10
+        ],
+        [
+          0.89,
+          8
+        ],
+        [
+          0.9,
+          5
+        ],
+        [
+          0.91,
+          7
+        ],
+        [
+          0.92,
+          6
+        ],
+        [
+          0.93,
+          6
+        ],
+        [
+          0.94,
+          8
+        ],
+        [
+          0.95,
+          8
+        ],
+        [
+          0.96,
+          15
+        ],
+        [
+          0.97,
+          5
+        ],
+        [
+          0.98,
+          30
+        ],
+        [
+          0.99,
+          32
+        ],
+        [
+          1.0,
+          56
+        ]
+      ],
+      "arm": "A",
+      "description": "Jev, no examples",
+      "run_files": [
+        "routing-jev-r1-20260923-210708.jsonl",
+        "routing-jev-r2-20260923-210809.jsonl",
+        "routing-jev-r3-20260923-210910.jsonl",
+        "routing-jev-r4-20260923-211005.jsonl",
+        "routing-jev-r5-20260923-211104.jsonl"
+      ],
+      "cost_total_usd": 0.01856211,
+      "answers_at_confidence_1": 56,
+      "wrong_at_confidence_1": 10
+    },
+    "B": {
+      "system": "B",
+      "runs": 5,
+      "per_run": [
+        {
+          "run": "r1",
+          "items": 83,
+          "agreement": 0.8313253012048193,
+          "unusable": 0,
+          "escalated_share": 0.32530120481927716,
+          "high_conf_answers": 56,
+          "high_conf_errors": 3,
+          "served_models": [
+            "jev-1.13.0"
+          ]
+        },
+        {
+          "run": "r2",
+          "items": 83,
+          "agreement": 0.8313253012048193,
+          "unusable": 0,
+          "escalated_share": 0.3373493975903614,
+          "high_conf_answers": 55,
+          "high_conf_errors": 3,
+          "served_models": [
+            "jev-1.13.0"
+          ]
+        },
+        {
+          "run": "r3",
+          "items": 83,
+          "agreement": 0.8313253012048193,
+          "unusable": 0,
+          "escalated_share": 0.3373493975903614,
+          "high_conf_answers": 55,
+          "high_conf_errors": 3,
+          "served_models": [
+            "jev-1.13.0"
+          ]
+        },
+        {
+          "run": "r4",
+          "items": 83,
+          "agreement": 0.8313253012048193,
+          "unusable": 0,
+          "escalated_share": 0.3493975903614458,
+          "high_conf_answers": 54,
+          "high_conf_errors": 3,
+          "served_models": [
+            "jev-1.13.0"
+          ]
+        },
+        {
+          "run": "r5",
+          "items": 83,
+          "agreement": 0.8313253012048193,
+          "unusable": 0,
+          "escalated_share": 0.3373493975903614,
+          "high_conf_answers": 55,
+          "high_conf_errors": 3,
+          "served_models": [
+            "jev-1.13.0"
+          ]
+        }
+      ],
+      "agreement_mean": 0.8313253012048193,
+      "agreement_min": 0.8313253012048193,
+      "agreement_max": 0.8313253012048193,
+      "majority_agreement": 0.8313253012048193,
+      "majority_right": [
+        "r-001",
+        "r-002",
+        "r-004",
+        "r-005",
+        "r-006",
+        "r-007",
+        "r-008",
+        "r-009",
+        "r-010",
+        "r-011",
+        "r-012",
+        "r-013",
+        "r-014",
+        "r-015",
+        "r-016",
+        "r-017",
+        "r-019",
+        "r-021",
+        "r-023",
+        "r-024",
+        "r-025",
+        "r-026",
+        "r-027",
+        "r-028",
+        "r-029",
+        "r-030",
+        "r-032",
+        "r-035",
+        "r-036",
+        "r-037",
+        "r-038",
+        "r-039",
+        "r-040",
+        "r-041",
+        "r-042",
+        "r-043",
+        "r-044",
+        "r-045",
+        "r-047",
+        "r-048",
+        "r-049",
+        "r-050",
+        "r-051",
+        "r-052",
+        "r-053",
+        "r-054",
+        "r-055",
+        "r-056",
+        "r-057",
+        "r-058",
+        "r-059",
+        "r-060",
+        "r-061",
+        "r-064",
+        "r-065",
+        "r-066",
+        "r-067",
+        "r-068",
+        "r-069",
+        "r-070",
+        "r-072",
+        "r-073",
+        "r-074",
+        "r-075",
+        "r-076",
+        "r-078",
+        "r-079",
+        "r-081",
+        "r-083"
+      ],
+      "escalated_share_pooled": 0.3373493975903614,
+      "high_conf_answers_pooled": 275,
+      "high_conf_errors_pooled": 15,
+      "high_conf_error_rate": 0.05454545454545454,
+      "high_conf_error_ids": [
+        "r-003",
+        "r-046",
+        "r-080"
+      ],
+      "cost_per_item_usd": 0.00011915653012048193,
+      "cost_calls_priced": 415,
+      "calls": 415,
+      "items_answer_changed": 0,
+      "confusion": {
+        "mission-control": {
+          "mission-control": 70,
+          "efformism": 5
+        },
+        "income-bridge": {
+          "income-bridge": 60,
+          "reference": 10,
+          "content": 5
+        },
+        "books": {
+          "mission-control": 15,
+          "books": 5
+        },
+        "efformism": {
+          "efformism": 20
+        },
+        "content": {
+          "content": 70,
+          "mission-control": 5
+        },
+        "knowledge": {
+          "knowledge": 65,
+          "mission-control": 5,
+          "content": 5
+        },
+        "reference": {
+          "reference": 55,
+          "mission-control": 15,
+          "knowledge": 5
+        }
+      },
+      "confidence_values": [
+        [
+          0.28,
+          2
+        ],
+        [
+          0.3,
+          2
+        ],
+        [
+          0.31,
+          1
+        ],
+        [
+          0.33,
+          2
+        ],
+        [
+          0.34,
+          4
+        ],
+        [
+          0.35,
+          2
+        ],
+        [
+          0.36,
+          2
+        ],
+        [
+          0.38,
+          1
+        ],
+        [
+          0.39,
+          3
+        ],
+        [
+          0.42,
+          3
+        ],
+        [
+          0.43,
+          1
+        ],
+        [
+          0.44,
+          2
+        ],
+        [
+          0.45,
+          1
+        ],
+        [
+          0.46,
+          2
+        ],
+        [
+          0.47,
+          5
+        ],
+        [
+          0.48,
+          1
+        ],
+        [
+          0.49,
+          2
+        ],
+        [
+          0.5,
+          7
+        ],
+        [
+          0.51,
+          3
+        ],
+        [
+          0.52,
+          3
+        ],
+        [
+          0.53,
+          4
+        ],
+        [
+          0.54,
+          2
+        ],
+        [
+          0.55,
+          1
+        ],
+        [
+          0.56,
+          1
+        ],
+        [
+          0.57,
+          1
+        ],
+        [
+          0.58,
+          5
+        ],
+        [
+          0.59,
+          1
+        ],
+        [
+          0.6,
+          4
+        ],
+        [
+          0.61,
+          6
+        ],
+        [
+          0.63,
+          3
+        ],
+        [
+          0.64,
+          1
+        ],
+        [
+          0.65,
+          1
+        ],
+        [
+          0.66,
+          4
+        ],
+        [
+          0.67,
+          1
+        ],
+        [
+          0.68,
+          2
+        ],
+        [
+          0.69,
+          1
+        ],
+        [
+          0.7,
+          4
+        ],
+        [
+          0.71,
+          3
+        ],
+        [
+          0.72,
+          2
+        ],
+        [
+          0.73,
+          6
+        ],
+        [
+          0.74,
+          6
+        ],
+        [
+          0.75,
+          4
+        ],
+        [
+          0.76,
+          5
+        ],
+        [
+          0.77,
+          5
+        ],
+        [
+          0.78,
+          11
+        ],
+        [
+          0.79,
+          7
+        ],
+        [
+          0.8,
+          3
+        ],
+        [
+          0.81,
+          3
+        ],
+        [
+          0.82,
+          3
+        ],
+        [
+          0.83,
+          4
+        ],
+        [
+          0.84,
+          2
+        ],
+        [
+          0.85,
+          6
+        ],
+        [
+          0.86,
+          5
+        ],
+        [
+          0.87,
+          14
+        ],
+        [
+          0.88,
+          12
+        ],
+        [
+          0.89,
+          12
+        ],
+        [
+          0.9,
+          12
+        ],
+        [
+          0.91,
+          11
+        ],
+        [
+          0.92,
+          7
+        ],
+        [
+          0.93,
+          1
+        ],
+        [
+          0.94,
+          7
+        ],
+        [
+          0.95,
+          21
+        ],
+        [
+          0.96,
+          16
+        ],
+        [
+          0.97,
+          28
+        ],
+        [
+          0.98,
+          41
+        ],
+        [
+          0.99,
+          47
+        ],
+        [
+          1.0,
+          20
+        ]
+      ],
+      "arm": "B",
+      "description": "Jev with the 10 examples",
+      "run_files": [
+        "test1b-B-r1-20260924-154801.jsonl",
+        "test1b-B-r2-20260924-154842.jsonl",
+        "test1b-B-r3-20260924-154847.jsonl",
+        "test1b-B-r4-20260924-154850.jsonl",
+        "test1b-B-r5-20260924-154854.jsonl"
+      ],
+      "cost_total_usd": 0.04944996,
+      "answers_at_confidence_1": 20,
+      "wrong_at_confidence_1": 5
+    },
+    "C": {
+      "system": "C",
+      "runs": 1,
+      "per_run": [
+        {
+          "run": "r1",
+          "items": 83,
+          "agreement": 0.7469879518072289,
+          "unusable": 0,
+          "escalated_share": 1.0,
+          "high_conf_answers": 0,
+          "high_conf_errors": 0,
+          "served_models": [
+            "bm25-k10-majority (no model)"
+          ]
+        }
+      ],
+      "agreement_mean": 0.7469879518072289,
+      "agreement_min": 0.7469879518072289,
+      "agreement_max": 0.7469879518072289,
+      "majority_agreement": 0.7469879518072289,
+      "majority_right": [
+        "r-001",
+        "r-002",
+        "r-004",
+        "r-005",
+        "r-006",
+        "r-007",
+        "r-008",
+        "r-009",
+        "r-010",
+        "r-014",
+        "r-015",
+        "r-016",
+        "r-017",
+        "r-018",
+        "r-019",
+        "r-021",
+        "r-022",
+        "r-023",
+        "r-024",
+        "r-025",
+        "r-026",
+        "r-027",
+        "r-028",
+        "r-029",
+        "r-030",
+        "r-036",
+        "r-039",
+        "r-041",
+        "r-042",
+        "r-043",
+        "r-044",
+        "r-047",
+        "r-048",
+        "r-050",
+        "r-051",
+        "r-052",
+        "r-053",
+        "r-054",
+        "r-055",
+        "r-056",
+        "r-057",
+        "r-058",
+        "r-059",
+        "r-060",
+        "r-061",
+        "r-062",
+        "r-063",
+        "r-064",
+        "r-065",
+        "r-066",
+        "r-067",
+        "r-068",
+        "r-069",
+        "r-074",
+        "r-075",
+        "r-076",
+        "r-077",
+        "r-078",
+        "r-079",
+        "r-080",
+        "r-081",
+        "r-082"
+      ],
+      "escalated_share_pooled": null,
+      "high_conf_answers_pooled": null,
+      "high_conf_errors_pooled": null,
+      "high_conf_error_rate": null,
+      "high_conf_error_ids": [],
+      "cost_per_item_usd": 0.0,
+      "cost_calls_priced": 83,
+      "calls": 83,
+      "items_answer_changed": 0,
+      "confusion": {
+        "mission-control": {
+          "mission-control": 11,
+          "efformism": 1,
+          "knowledge": 2,
+          "reference": 1
+        },
+        "income-bridge": {
+          "income-bridge": 14,
+          "knowledge": 1
+        },
+        "books": {
+          "mission-control": 3,
+          "content": 1
+        },
+        "efformism": {
+          "mission-control": 3,
+          "efformism": 1
+        },
+        "content": {
+          "content": 11,
+          "knowledge": 2,
+          "mission-control": 2
+        },
+        "knowledge": {
+          "knowledge": 15
+        },
+        "reference": {
+          "reference": 10,
+          "mission-control": 5
+        }
+      },
+      "confidence_values": [],
+      "arm": "C",
+      "description": "Retrieval only (BM25 k=10 majority)",
+      "run_files": [
+        "test1b-C-r1-20260924-154756.jsonl"
+      ],
+      "cost_total_usd": 0.0,
+      "answers_at_confidence_1": null,
+      "wrong_at_confidence_1": null,
+      "ties_broken_by_score": 5
+    },
+    "D": {
+      "system": "D",
+      "runs": 5,
+      "per_run": [
+        {
+          "run": "r1",
+          "items": 83,
+          "agreement": 0.8795180722891566,
+          "unusable": 0,
+          "escalated_share": 0.2650602409638554,
+          "high_conf_answers": 61,
+          "high_conf_errors": 4,
+          "served_models": [
+            "anthropic/claude-sonnet-5"
+          ]
+        },
+        {
+          "run": "r2",
+          "items": 83,
+          "agreement": 0.891566265060241,
+          "unusable": 0,
+          "escalated_share": 0.27710843373493976,
+          "high_conf_answers": 60,
+          "high_conf_errors": 3,
+          "served_models": [
+            "anthropic/claude-sonnet-5"
+          ]
+        },
+        {
+          "run": "r3",
+          "items": 83,
+          "agreement": 0.8795180722891566,
+          "unusable": 0,
+          "escalated_share": 0.27710843373493976,
+          "high_conf_answers": 60,
+          "high_conf_errors": 3,
+          "served_models": [
+            "anthropic/claude-sonnet-5"
+          ]
+        },
+        {
+          "run": "r4",
+          "items": 83,
+          "agreement": 0.8554216867469879,
+          "unusable": 0,
+          "escalated_share": 0.3012048192771084,
+          "high_conf_answers": 58,
+          "high_conf_errors": 3,
+          "served_models": [
+            "anthropic/claude-sonnet-5"
+          ]
+        },
+        {
+          "run": "r5",
+          "items": 83,
+          "agreement": 0.891566265060241,
+          "unusable": 0,
+          "escalated_share": 0.3012048192771084,
+          "high_conf_answers": 58,
+          "high_conf_errors": 3,
+          "served_models": [
+            "anthropic/claude-sonnet-5"
+          ]
+        }
+      ],
+      "agreement_mean": 0.8795180722891566,
+      "agreement_min": 0.8554216867469879,
+      "agreement_max": 0.891566265060241,
+      "majority_agreement": 0.891566265060241,
+      "majority_right": [
+        "r-001",
+        "r-002",
+        "r-004",
+        "r-005",
+        "r-006",
+        "r-007",
+        "r-008",
+        "r-009",
+        "r-010",
+        "r-011",
+        "r-012",
+        "r-013",
+        "r-014",
+        "r-015",
+        "r-016",
+        "r-017",
+        "r-019",
+        "r-020",
+        "r-021",
+        "r-022",
+        "r-023",
+        "r-024",
+        "r-025",
+        "r-026",
+        "r-027",
+        "r-028",
+        "r-029",
+        "r-030",
+        "r-032",
+        "r-033",
+        "r-035",
+        "r-036",
+        "r-037",
+        "r-038",
+        "r-039",
+        "r-040",
+        "r-041",
+        "r-042",
+        "r-043",
+        "r-044",
+        "r-045",
+        "r-047",
+        "r-048",
+        "r-049",
+        "r-050",
+        "r-051",
+        "r-052",
+        "r-053",
+        "r-054",
+        "r-055",
+        "r-056",
+        "r-057",
+        "r-058",
+        "r-059",
+        "r-060",
+        "r-061",
+        "r-062",
+        "r-063",
+        "r-064",
+        "r-065",
+        "r-066",
+        "r-067",
+        "r-068",
+        "r-069",
+        "r-070",
+        "r-072",
+        "r-073",
+        "r-074",
+        "r-075",
+        "r-076",
+        "r-078",
+        "r-079",
+        "r-081",
+        "r-083"
+      ],
+      "escalated_share_pooled": 0.28433734939759037,
+      "high_conf_answers_pooled": 297,
+      "high_conf_errors_pooled": 16,
+      "high_conf_error_rate": 0.05387205387205387,
+      "high_conf_error_ids": [
+        "r-003",
+        "r-034",
+        "r-046",
+        "r-080"
+      ],
+      "cost_per_item_usd": 0.009059397590361446,
+      "cost_calls_priced": 415,
+      "calls": 415,
+      "items_answer_changed": 6,
+      "confusion": {
+        "mission-control": {
+          "mission-control": 70,
+          "efformism": 5
+        },
+        "income-bridge": {
+          "income-bridge": 69,
+          "mission-control": 3,
+          "reference": 3
+        },
+        "books": {
+          "mission-control": 7,
+          "books": 8,
+          "delete": 5
+        },
+        "efformism": {
+          "efformism": 20
+        },
+        "content": {
+          "content": 70,
+          "mission-control": 5
+        },
+        "knowledge": {
+          "mission-control": 2,
+          "knowledge": 73
+        },
+        "reference": {
+          "reference": 55,
+          "mission-control": 14,
+          "knowledge": 5,
+          "income-bridge": 1
+        }
+      },
+      "confidence_values": [
+        [
+          0.45,
+          1
+        ],
+        [
+          0.55,
+          11
+        ],
+        [
+          0.6,
+          6
+        ],
+        [
+          0.62,
+          17
+        ],
+        [
+          0.68,
+          1
+        ],
+        [
+          0.7,
+          11
+        ],
+        [
+          0.72,
+          23
+        ],
+        [
+          0.75,
+          44
+        ],
+        [
+          0.78,
+          4
+        ],
+        [
+          0.8,
+          5
+        ],
+        [
+          0.82,
+          20
+        ],
+        [
+          0.83,
+          5
+        ],
+        [
+          0.85,
+          47
+        ],
+        [
+          0.87,
+          3
+        ],
+        [
+          0.88,
+          8
+        ],
+        [
+          0.9,
+          76
+        ],
+        [
+          0.92,
+          4
+        ],
+        [
+          0.93,
+          8
+        ],
+        [
+          0.94,
+          15
+        ],
+        [
+          0.95,
+          69
+        ],
+        [
+          0.96,
+          1
+        ],
+        [
+          0.97,
+          36
+        ]
+      ],
+      "arm": "D",
+      "description": "Sonnet 5 with the 10 examples",
+      "run_files": [
+        "test1b-D-r1-20260924-154849.jsonl",
+        "test1b-D-r2-20260924-154951.jsonl",
+        "test1b-D-r3-20260924-155042.jsonl",
+        "test1b-D-r4-20260924-155135.jsonl",
+        "test1b-D-r5-20260924-155228.jsonl"
+      ],
+      "cost_total_usd": 3.75965,
+      "answers_at_confidence_1": 0,
+      "wrong_at_confidence_1": 0
+    },
+    "E": {
+      "system": "E",
+      "runs": 5,
+      "per_run": [
+        {
+          "run": "r1",
+          "items": 83,
+          "agreement": 0.7710843373493976,
+          "unusable": 0,
+          "escalated_share": 0.5542168674698795,
+          "high_conf_answers": 37,
+          "high_conf_errors": 4,
+          "served_models": [
+            "anthropic/claude-sonnet-5"
+          ]
+        },
+        {
+          "run": "r2",
+          "items": 83,
+          "agreement": 0.7590361445783133,
+          "unusable": 0,
+          "escalated_share": 0.5783132530120482,
+          "high_conf_answers": 35,
+          "high_conf_errors": 4,
+          "served_models": [
+            "anthropic/claude-sonnet-5"
+          ]
+        },
+        {
+          "run": "r3",
+          "items": 83,
+          "agreement": 0.7831325301204819,
+          "unusable": 0,
+          "escalated_share": 0.5662650602409638,
+          "high_conf_answers": 36,
+          "high_conf_errors": 5,
+          "served_models": [
+            "anthropic/claude-sonnet-5"
+          ]
+        },
+        {
+          "run": "r4",
+          "items": 83,
+          "agreement": 0.7469879518072289,
+          "unusable": 0,
+          "escalated_share": 0.5662650602409638,
+          "high_conf_answers": 36,
+          "high_conf_errors": 3,
+          "served_models": [
+            "anthropic/claude-sonnet-5"
+          ]
+        },
+        {
+          "run": "r5",
+          "items": 83,
+          "agreement": 0.7590361445783133,
+          "unusable": 0,
+          "escalated_share": 0.5060240963855422,
+          "high_conf_answers": 41,
+          "high_conf_errors": 5,
+          "served_models": [
+            "anthropic/claude-sonnet-5"
+          ]
+        }
+      ],
+      "agreement_mean": 0.763855421686747,
+      "agreement_min": 0.7469879518072289,
+      "agreement_max": 0.7831325301204819,
+      "majority_agreement": 0.7710843373493976,
+      "majority_right": [
+        "r-001",
+        "r-002",
+        "r-004",
+        "r-005",
+        "r-006",
+        "r-007",
+        "r-008",
+        "r-009",
+        "r-010",
+        "r-011",
+        "r-012",
+        "r-013",
+        "r-014",
+        "r-015",
+        "r-016",
+        "r-017",
+        "r-018",
+        "r-019",
+        "r-023",
+        "r-025",
+        "r-027",
+        "r-028",
+        "r-030",
+        "r-032",
+        "r-033",
+        "r-035",
+        "r-036",
+        "r-037",
+        "r-038",
+        "r-039",
+        "r-040",
+        "r-041",
+        "r-042",
+        "r-043",
+        "r-044",
+        "r-045",
+        "r-047",
+        "r-048",
+        "r-049",
+        "r-050",
+        "r-051",
+        "r-052",
+        "r-053",
+        "r-054",
+        "r-055",
+        "r-056",
+        "r-057",
+        "r-058",
+        "r-059",
+        "r-060",
+        "r-061",
+        "r-063",
+        "r-064",
+        "r-065",
+        "r-066",
+        "r-067",
+        "r-068",
+        "r-069",
+        "r-070",
+        "r-073",
+        "r-075",
+        "r-078",
+        "r-081",
+        "r-083"
+      ],
+      "escalated_share_pooled": 0.5542168674698795,
+      "high_conf_answers_pooled": 185,
+      "high_conf_errors_pooled": 21,
+      "high_conf_error_rate": 0.11351351351351352,
+      "high_conf_error_ids": [
+        "r-003",
+        "r-034",
+        "r-071",
+        "r-074",
+        "r-080"
+      ],
+      "cost_per_item_usd": 0.0037668674698795182,
+      "cost_calls_priced": 415,
+      "calls": 415,
+      "items_answer_changed": 6,
+      "confusion": {
+        "mission-control": {
+          "mission-control": 70,
+          "efformism": 5
+        },
+        "income-bridge": {
+          "income-bridge": 45,
+          "content": 5,
+          "mission-control": 20,
+          "delete": 5
+        },
+        "books": {
+          "mission-control": 4,
+          "books": 11,
+          "delete": 5
+        },
+        "efformism": {
+          "efformism": 20
+        },
+        "content": {
+          "content": 70,
+          "mission-control": 5
+        },
+        "knowledge": {
+          "knowledge": 65,
+          "mission-control": 8,
+          "content": 2
+        },
+        "reference": {
+          "reference": 36,
+          "delete": 5,
+          "mission-control": 33,
+          "knowledge": 1
+        }
+      },
+      "confidence_values": [
+        [
+          0.45,
+          1
+        ],
+        [
+          0.55,
+          23
+        ],
+        [
+          0.6,
+          48
+        ],
+        [
+          0.62,
+          14
+        ],
+        [
+          0.65,
+          7
+        ],
+        [
+          0.68,
+          4
+        ],
+        [
+          0.7,
+          30
+        ],
+        [
+          0.72,
+          30
+        ],
+        [
+          0.75,
+          67
+        ],
+        [
+          0.78,
+          6
+        ],
+        [
+          0.8,
+          12
+        ],
+        [
+          0.82,
+          5
+        ],
+        [
+          0.85,
+          68
+        ],
+        [
+          0.86,
+          1
+        ],
+        [
+          0.87,
+          5
+        ],
+        [
+          0.88,
+          3
+        ],
+        [
+          0.9,
+          53
+        ],
+        [
+          0.92,
+          1
+        ],
+        [
+          0.93,
+          5
+        ],
+        [
+          0.94,
+          4
+        ],
+        [
+          0.95,
+          13
+        ],
+        [
+          0.97,
+          2
+        ],
+        [
+          0.98,
+          13
+        ]
+      ],
+      "arm": "E",
+      "description": "Sonnet 5, no examples",
+      "run_files": [
+        "routing-llm-r1-20260923-210803.jsonl",
+        "routing-llm-r2-20260923-210905.jsonl",
+        "routing-llm-r3-20260923-210959.jsonl",
+        "routing-llm-r4-20260923-211058.jsonl",
+        "routing-llm-r5-20260923-211154.jsonl"
+      ],
+      "cost_total_usd": 1.56325,
+      "answers_at_confidence_1": 0,
+      "wrong_at_confidence_1": 0
+    }
+  },
+  "main_comparison": {
+    "pair": "B vs C",
+    "items": 83,
+    "B_right_C_wrong": 14,
+    "C_right_B_wrong": 7,
+    "mcnemar_exact_p": 0.18924713134765625,
+    "difference_points": 8.433734939759036,
+    "wald_95_low": -2.23457527762284,
+    "wald_95_high": 19.102045157140914,
+    "B_significantly_better": false,
+    "B_significantly_worse": false
+  },
+  "second_comparison": {
+    "pair": "B vs D",
+    "items": 83,
+    "B_right_D_wrong": 0,
+    "D_right_B_wrong": 5,
+    "mcnemar_exact_p": 0.0625,
+    "difference_points": -6.024096385542169,
+    "wald_95_low": -11.142932629416613,
+    "wald_95_high": -0.9052601416677235,
+    "B_significantly_better": false,
+    "B_significantly_worse": false
+  },
+  "reported_not_tested": [
+    {
+      "pair": "B vs A",
+      "items": 83,
+      "B_right_A_wrong": 18,
+      "A_right_B_wrong": 3,
+      "mcnemar_exact_p": 0.0014896392822265625,
+      "difference_points": 18.072289156626507,
+      "wald_95_low": 7.973371791669114,
+      "wald_95_high": 28.171206521583898,
+      "B_significantly_better": true,
+      "B_significantly_worse": false
+    },
+    {
+      "pair": "D vs E",
+      "items": 83,
+      "D_right_E_wrong": 11,
+      "E_right_D_wrong": 1,
+      "mcnemar_exact_p": 0.00634765625,
+      "difference_points": 12.048192771084338,
+      "wald_95_low": 4.289421703897517,
+      "wald_95_high": 19.80696383827116,
+      "D_significantly_better": true,
+      "D_significantly_worse": false
+    },
+    {
+      "pair": "C vs A",
+      "items": 83,
+      "C_right_A_wrong": 20,
+      "A_right_C_wrong": 12,
+      "mcnemar_exact_p": 0.21532714972272515,
+      "difference_points": 9.63855421686747,
+      "wald_95_low": -3.5578749623708052,
+      "wald_95_high": 22.834983396105745,
+      "C_significantly_better": false,
+      "C_significantly_worse": false
+    }
+  ],
+  "descriptive_without_near_duplicates": [
+    {
+      "pair": "B vs C",
+      "items": 79,
+      "B_right_C_wrong": 14,
+      "C_right_B_wrong": 7,
+      "mcnemar_exact_p": 0.18924713134765625,
+      "difference_points": 8.860759493670885,
+      "wald_95_low": -2.3395074191532625,
+      "wald_95_high": 20.061026406495035,
+      "B_significantly_better": false,
+      "B_significantly_worse": false
+    },
+    {
+      "pair": "B vs D",
+      "items": 79,
+      "B_right_D_wrong": 0,
+      "D_right_B_wrong": 5,
+      "mcnemar_exact_p": 0.0625,
+      "difference_points": -6.329113924050633,
+      "wald_95_low": -11.698396941747513,
+      "wald_95_high": -0.9598309063537536,
+      "B_significantly_better": false,
+      "B_significantly_worse": false
+    }
+  ],
+  "verdict_rule_held": [
+    "The retrieval did the work"
+  ],
+  "test1_bar": {
+    "B": "don't",
+    "D": "don't",
+    "D_without_cheaper_clause": "don't"
+  },
+  "near_duplicate_items_by_arm": {
+    "A": {
+      "r-029": true,
+      "r-042": false,
+      "r-047": true,
+      "r-048": false
+    },
+    "B": {
+      "r-029": true,
+      "r-042": true,
+      "r-047": true,
+      "r-048": true
+    },
+    "C": {
+      "r-029": true,
+      "r-042": true,
+      "r-047": true,
+      "r-048": true
+    },
+    "D": {
+      "r-029": true,
+      "r-042": true,
+      "r-047": true,
+      "r-048": true
+    },
+    "E": {
+      "r-029": false,
+      "r-042": true,
+      "r-047": true,
+      "r-048": true
+    }
+  }
+}

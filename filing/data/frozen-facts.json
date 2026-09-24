@@ -1,0 +1,57 @@
+{
+  "note": "sha256 of the private files as they were frozen. The files themselves hold note text and cannot be published; the hashes are published so the private originals can be shown unchanged later.",
+  "sha256": [
+    {
+      "file": "routing-key.jsonl",
+      "sha256": "80cb55fb18d63d9733502a08e92c2bb23046f7a9a0dc860931990ed4f585cd1c"
+    },
+    {
+      "file": "test1b-pool.jsonl",
+      "sha256": "e67cb9ba34d8ab1c2b40cb826f03ffbf851a7635446377dbbbdd1bb89229b5c3"
+    },
+    {
+      "file": "test1b-neighbours.jsonl",
+      "sha256": "e7f58386268f4ceef3ee32bacb1cf5e9d080d38af5a6e8336f177f2304963aaf"
+    },
+    {
+      "file": "test1c-heldout.jsonl",
+      "sha256": "2144e3d322817dee84fddfaa4c85af99642880483b7ff7a5209a7356d0697d76"
+    },
+    {
+      "file": "test1c-neighbours.jsonl",
+      "sha256": "f05b71a4abd2ad00ed8088514b372898454f825d211f93420546af1da10529fb"
+    },
+    {
+      "file": "test1c-questions.json",
+      "sha256": "0adb11df2bb72a18eca551a41779bd570920295f54d7b3813441fd0defcee397"
+    },
+    {
+      "file": "test1c-round1.json",
+      "sha256": "76442ab14cad93c3951a1630e0cae2147189debbec1259aaee9eb2f5bbe97fa4"
+    },
+    {
+      "file": "test1c-round2.json",
+      "sha256": "0adb11df2bb72a18eca551a41779bd570920295f54d7b3813441fd0defcee397"
+    },
+    {
+      "file": "test1c-round1-nouls.json",
+      "sha256": "826110ebe3866e0466c923acf06fe5b50436902f94777bdeaafc240de86e2e1f"
+    },
+    {
+      "file": "test1c-round2-nouls.json",
+      "sha256": "93418d9ef0104f2fec4f8c3f04d49fd84fad778756a2e758a5160a47e596f1b7"
+    }
+  ],
+  "pool_notes": 605,
+  "pool_per_home": {
+    "books": 4,
+    "content": 103,
+    "efformism": 4,
+    "income-bridge": 82,
+    "knowledge": 253,
+    "mission-control": 86,
+    "reference": 73
+  },
+  "routing_key_notes": 83,
+  "heldout_notes": 75
+}

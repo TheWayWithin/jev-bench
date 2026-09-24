@@ -1,0 +1,825 @@
+{
+  "task": "routing",
+  "note": "descriptive only; the verdict is analyse.py's",
+  "jev": {
+    "calls": 415,
+    "zero_error_top": null,
+    "curve": [
+      {
+        "at_or_above": 1.0,
+        "coverage": 0.13493975903614458,
+        "answers": 56,
+        "wrong": 10,
+        "error_rate": 0.17857142857142858
+      },
+      {
+        "at_or_above": 0.99,
+        "coverage": 0.21204819277108433,
+        "answers": 88,
+        "wrong": 10,
+        "error_rate": 0.11363636363636363
+      },
+      {
+        "at_or_above": 0.98,
+        "coverage": 0.28433734939759037,
+        "answers": 118,
+        "wrong": 10,
+        "error_rate": 0.0847457627118644
+      },
+      {
+        "at_or_above": 0.97,
+        "coverage": 0.2963855421686747,
+        "answers": 123,
+        "wrong": 10,
+        "error_rate": 0.08130081300813008
+      },
+      {
+        "at_or_above": 0.96,
+        "coverage": 0.3325301204819277,
+        "answers": 138,
+        "wrong": 10,
+        "error_rate": 0.07246376811594203
+      },
+      {
+        "at_or_above": 0.95,
+        "coverage": 0.35180722891566263,
+        "answers": 146,
+        "wrong": 13,
+        "error_rate": 0.08904109589041095
+      },
+      {
+        "at_or_above": 0.94,
+        "coverage": 0.3710843373493976,
+        "answers": 154,
+        "wrong": 15,
+        "error_rate": 0.09740259740259741
+      },
+      {
+        "at_or_above": 0.93,
+        "coverage": 0.3855421686746988,
+        "answers": 160,
+        "wrong": 16,
+        "error_rate": 0.1
+      },
+      {
+        "at_or_above": 0.92,
+        "coverage": 0.4,
+        "answers": 166,
+        "wrong": 19,
+        "error_rate": 0.1144578313253012
+      },
+      {
+        "at_or_above": 0.91,
+        "coverage": 0.41686746987951806,
+        "answers": 173,
+        "wrong": 21,
+        "error_rate": 0.12138728323699421
+      },
+      {
+        "at_or_above": 0.9,
+        "coverage": 0.42891566265060244,
+        "answers": 178,
+        "wrong": 24,
+        "error_rate": 0.1348314606741573
+      },
+      {
+        "at_or_above": 0.89,
+        "coverage": 0.44819277108433736,
+        "answers": 186,
+        "wrong": 24,
+        "error_rate": 0.12903225806451613
+      },
+      {
+        "at_or_above": 0.88,
+        "coverage": 0.472289156626506,
+        "answers": 196,
+        "wrong": 24,
+        "error_rate": 0.12244897959183673
+      },
+      {
+        "at_or_above": 0.87,
+        "coverage": 0.4746987951807229,
+        "answers": 197,
+        "wrong": 25,
+        "error_rate": 0.12690355329949238
+      },
+      {
+        "at_or_above": 0.86,
+        "coverage": 0.4771084337349398,
+        "answers": 198,
+        "wrong": 25,
+        "error_rate": 0.12626262626262627
+      },
+      {
+        "at_or_above": 0.85,
+        "coverage": 0.4963855421686747,
+        "answers": 206,
+        "wrong": 27,
+        "error_rate": 0.13106796116504854
+      },
+      {
+        "at_or_above": 0.84,
+        "coverage": 0.5036144578313253,
+        "answers": 209,
+        "wrong": 27,
+        "error_rate": 0.1291866028708134
+      },
+      {
+        "at_or_above": 0.83,
+        "coverage": 0.5180722891566265,
+        "answers": 215,
+        "wrong": 30,
+        "error_rate": 0.13953488372093023
+      },
+      {
+        "at_or_above": 0.82,
+        "coverage": 0.5469879518072289,
+        "answers": 227,
+        "wrong": 34,
+        "error_rate": 0.14977973568281938
+      },
+      {
+        "at_or_above": 0.81,
+        "coverage": 0.5542168674698795,
+        "answers": 230,
+        "wrong": 37,
+        "error_rate": 0.1608695652173913
+      },
+      {
+        "at_or_above": 0.8,
+        "coverage": 0.5686746987951807,
+        "answers": 236,
+        "wrong": 39,
+        "error_rate": 0.1652542372881356
+      },
+      {
+        "at_or_above": 0.79,
+        "coverage": 0.5879518072289157,
+        "answers": 244,
+        "wrong": 43,
+        "error_rate": 0.1762295081967213
+      },
+      {
+        "at_or_above": 0.78,
+        "coverage": 0.6096385542168675,
+        "answers": 253,
+        "wrong": 44,
+        "error_rate": 0.17391304347826086
+      },
+      {
+        "at_or_above": 0.77,
+        "coverage": 0.6216867469879518,
+        "answers": 258,
+        "wrong": 45,
+        "error_rate": 0.1744186046511628
+      },
+      {
+        "at_or_above": 0.76,
+        "coverage": 0.6313253012048192,
+        "answers": 262,
+        "wrong": 47,
+        "error_rate": 0.17938931297709923
+      },
+      {
+        "at_or_above": 0.75,
+        "coverage": 0.636144578313253,
+        "answers": 264,
+        "wrong": 48,
+        "error_rate": 0.18181818181818182
+      },
+      {
+        "at_or_above": 0.74,
+        "coverage": 0.655421686746988,
+        "answers": 272,
+        "wrong": 52,
+        "error_rate": 0.19117647058823528
+      },
+      {
+        "at_or_above": 0.73,
+        "coverage": 0.6650602409638554,
+        "answers": 276,
+        "wrong": 53,
+        "error_rate": 0.19202898550724637
+      },
+      {
+        "at_or_above": 0.72,
+        "coverage": 0.6674698795180722,
+        "answers": 277,
+        "wrong": 53,
+        "error_rate": 0.19133574007220217
+      },
+      {
+        "at_or_above": 0.71,
+        "coverage": 0.6746987951807228,
+        "answers": 280,
+        "wrong": 54,
+        "error_rate": 0.19285714285714287
+      },
+      {
+        "at_or_above": 0.7,
+        "coverage": 0.6795180722891566,
+        "answers": 282,
+        "wrong": 54,
+        "error_rate": 0.19148936170212766
+      },
+      {
+        "at_or_above": 0.69,
+        "coverage": 0.689156626506024,
+        "answers": 286,
+        "wrong": 57,
+        "error_rate": 0.1993006993006993
+      },
+      {
+        "at_or_above": 0.68,
+        "coverage": 0.6987951807228916,
+        "answers": 290,
+        "wrong": 58,
+        "error_rate": 0.2
+      },
+      {
+        "at_or_above": 0.67,
+        "coverage": 0.708433734939759,
+        "answers": 294,
+        "wrong": 59,
+        "error_rate": 0.20068027210884354
+      },
+      {
+        "at_or_above": 0.66,
+        "coverage": 0.7132530120481928,
+        "answers": 296,
+        "wrong": 61,
+        "error_rate": 0.20608108108108109
+      },
+      {
+        "at_or_above": 0.65,
+        "coverage": 0.7204819277108434,
+        "answers": 299,
+        "wrong": 63,
+        "error_rate": 0.21070234113712374
+      },
+      {
+        "at_or_above": 0.64,
+        "coverage": 0.7301204819277108,
+        "answers": 303,
+        "wrong": 64,
+        "error_rate": 0.21122112211221122
+      },
+      {
+        "at_or_above": 0.63,
+        "coverage": 0.7325301204819277,
+        "answers": 304,
+        "wrong": 64,
+        "error_rate": 0.21052631578947367
+      },
+      {
+        "at_or_above": 0.62,
+        "coverage": 0.7373493975903614,
+        "answers": 306,
+        "wrong": 66,
+        "error_rate": 0.21568627450980393
+      },
+      {
+        "at_or_above": 0.6,
+        "coverage": 0.7421686746987952,
+        "answers": 308,
+        "wrong": 66,
+        "error_rate": 0.21428571428571427
+      },
+      {
+        "at_or_above": 0.59,
+        "coverage": 0.744578313253012,
+        "answers": 309,
+        "wrong": 67,
+        "error_rate": 0.2168284789644013
+      },
+      {
+        "at_or_above": 0.58,
+        "coverage": 0.7493975903614458,
+        "answers": 311,
+        "wrong": 68,
+        "error_rate": 0.21864951768488747
+      },
+      {
+        "at_or_above": 0.57,
+        "coverage": 0.7518072289156627,
+        "answers": 312,
+        "wrong": 68,
+        "error_rate": 0.21794871794871795
+      },
+      {
+        "at_or_above": 0.56,
+        "coverage": 0.7566265060240964,
+        "answers": 314,
+        "wrong": 70,
+        "error_rate": 0.2229299363057325
+      },
+      {
+        "at_or_above": 0.55,
+        "coverage": 0.7662650602409639,
+        "answers": 318,
+        "wrong": 72,
+        "error_rate": 0.22641509433962265
+      },
+      {
+        "at_or_above": 0.54,
+        "coverage": 0.7734939759036145,
+        "answers": 321,
+        "wrong": 75,
+        "error_rate": 0.2336448598130841
+      },
+      {
+        "at_or_above": 0.53,
+        "coverage": 0.7831325301204819,
+        "answers": 325,
+        "wrong": 78,
+        "error_rate": 0.24
+      },
+      {
+        "at_or_above": 0.52,
+        "coverage": 0.7927710843373494,
+        "answers": 329,
+        "wrong": 80,
+        "error_rate": 0.24316109422492402
+      },
+      {
+        "at_or_above": 0.51,
+        "coverage": 0.7975903614457831,
+        "answers": 331,
+        "wrong": 82,
+        "error_rate": 0.24773413897280966
+      },
+      {
+        "at_or_above": 0.5,
+        "coverage": 0.8024096385542169,
+        "answers": 333,
+        "wrong": 84,
+        "error_rate": 0.25225225225225223
+      },
+      {
+        "at_or_above": 0.49,
+        "coverage": 0.8216867469879519,
+        "answers": 341,
+        "wrong": 91,
+        "error_rate": 0.2668621700879765
+      },
+      {
+        "at_or_above": 0.48,
+        "coverage": 0.8385542168674699,
+        "answers": 348,
+        "wrong": 96,
+        "error_rate": 0.27586206896551724
+      },
+      {
+        "at_or_above": 0.47,
+        "coverage": 0.8554216867469879,
+        "answers": 355,
+        "wrong": 101,
+        "error_rate": 0.28450704225352114
+      },
+      {
+        "at_or_above": 0.46,
+        "coverage": 0.8674698795180723,
+        "answers": 360,
+        "wrong": 105,
+        "error_rate": 0.2916666666666667
+      },
+      {
+        "at_or_above": 0.45,
+        "coverage": 0.8843373493975903,
+        "answers": 367,
+        "wrong": 110,
+        "error_rate": 0.2997275204359673
+      },
+      {
+        "at_or_above": 0.44,
+        "coverage": 0.891566265060241,
+        "answers": 370,
+        "wrong": 112,
+        "error_rate": 0.3027027027027027
+      },
+      {
+        "at_or_above": 0.43,
+        "coverage": 0.9012048192771084,
+        "answers": 374,
+        "wrong": 116,
+        "error_rate": 0.31016042780748665
+      },
+      {
+        "at_or_above": 0.42,
+        "coverage": 0.9108433734939759,
+        "answers": 378,
+        "wrong": 119,
+        "error_rate": 0.3148148148148148
+      },
+      {
+        "at_or_above": 0.41,
+        "coverage": 0.9132530120481928,
+        "answers": 379,
+        "wrong": 120,
+        "error_rate": 0.316622691292876
+      },
+      {
+        "at_or_above": 0.4,
+        "coverage": 0.9180722891566265,
+        "answers": 381,
+        "wrong": 121,
+        "error_rate": 0.31758530183727035
+      },
+      {
+        "at_or_above": 0.39,
+        "coverage": 0.927710843373494,
+        "answers": 385,
+        "wrong": 124,
+        "error_rate": 0.3220779220779221
+      },
+      {
+        "at_or_above": 0.38,
+        "coverage": 0.9373493975903614,
+        "answers": 389,
+        "wrong": 127,
+        "error_rate": 0.3264781491002571
+      },
+      {
+        "at_or_above": 0.37,
+        "coverage": 0.9397590361445783,
+        "answers": 390,
+        "wrong": 127,
+        "error_rate": 0.32564102564102565
+      },
+      {
+        "at_or_above": 0.36,
+        "coverage": 0.9421686746987952,
+        "answers": 391,
+        "wrong": 127,
+        "error_rate": 0.3248081841432225
+      },
+      {
+        "at_or_above": 0.35,
+        "coverage": 0.946987951807229,
+        "answers": 393,
+        "wrong": 128,
+        "error_rate": 0.3256997455470738
+      },
+      {
+        "at_or_above": 0.33,
+        "coverage": 0.9493975903614458,
+        "answers": 394,
+        "wrong": 129,
+        "error_rate": 0.32741116751269034
+      },
+      {
+        "at_or_above": 0.32,
+        "coverage": 0.9518072289156626,
+        "answers": 395,
+        "wrong": 129,
+        "error_rate": 0.3265822784810127
+      },
+      {
+        "at_or_above": 0.31,
+        "coverage": 0.9542168674698795,
+        "answers": 396,
+        "wrong": 130,
+        "error_rate": 0.3282828282828283
+      },
+      {
+        "at_or_above": 0.3,
+        "coverage": 0.9614457831325302,
+        "answers": 399,
+        "wrong": 133,
+        "error_rate": 0.3333333333333333
+      },
+      {
+        "at_or_above": 0.29,
+        "coverage": 0.963855421686747,
+        "answers": 400,
+        "wrong": 133,
+        "error_rate": 0.3325
+      },
+      {
+        "at_or_above": 0.28,
+        "coverage": 0.9662650602409638,
+        "answers": 401,
+        "wrong": 134,
+        "error_rate": 0.3341645885286783
+      },
+      {
+        "at_or_above": 0.27,
+        "coverage": 0.9734939759036144,
+        "answers": 404,
+        "wrong": 136,
+        "error_rate": 0.33663366336633666
+      },
+      {
+        "at_or_above": 0.26,
+        "coverage": 0.983132530120482,
+        "answers": 408,
+        "wrong": 140,
+        "error_rate": 0.3431372549019608
+      },
+      {
+        "at_or_above": 0.25,
+        "coverage": 0.9951807228915662,
+        "answers": 413,
+        "wrong": 142,
+        "error_rate": 0.34382566585956414
+      },
+      {
+        "at_or_above": 0.23,
+        "coverage": 0.9975903614457832,
+        "answers": 414,
+        "wrong": 143,
+        "error_rate": 0.34541062801932365
+      },
+      {
+        "at_or_above": 0.19,
+        "coverage": 1.0,
+        "answers": 415,
+        "wrong": 144,
+        "error_rate": 0.3469879518072289
+      }
+    ],
+    "confident_errors": [
+      {
+        "id": "r-003",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "mission-control",
+        "answer": "efformism",
+        "runs": 1
+      },
+      {
+        "id": "r-020",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "income-bridge",
+        "answer": "content",
+        "runs": 5
+      },
+      {
+        "id": "r-042",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "content",
+        "answer": "mission-control",
+        "runs": 5
+      },
+      {
+        "id": "r-046",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "content",
+        "answer": "mission-control",
+        "runs": 5
+      },
+      {
+        "id": "r-051",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "content",
+        "answer": "mission-control",
+        "runs": 5
+      },
+      {
+        "id": "r-062",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "knowledge",
+        "answer": "mission-control",
+        "runs": 5
+      },
+      {
+        "id": "r-076",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "reference",
+        "answer": "mission-control",
+        "runs": 3
+      },
+      {
+        "id": "r-079",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "reference",
+        "answer": "mission-control",
+        "runs": 5
+      },
+      {
+        "id": "r-080",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "reference",
+        "answer": "mission-control",
+        "runs": 5
+      }
+    ]
+  },
+  "llm": {
+    "calls": 415,
+    "zero_error_top": null,
+    "curve": [
+      {
+        "at_or_above": 0.98,
+        "coverage": 0.03132530120481928,
+        "answers": 13,
+        "wrong": 3,
+        "error_rate": 0.23076923076923078
+      },
+      {
+        "at_or_above": 0.97,
+        "coverage": 0.03614457831325301,
+        "answers": 15,
+        "wrong": 5,
+        "error_rate": 0.3333333333333333
+      },
+      {
+        "at_or_above": 0.95,
+        "coverage": 0.06746987951807229,
+        "answers": 28,
+        "wrong": 5,
+        "error_rate": 0.17857142857142858
+      },
+      {
+        "at_or_above": 0.94,
+        "coverage": 0.07710843373493977,
+        "answers": 32,
+        "wrong": 5,
+        "error_rate": 0.15625
+      },
+      {
+        "at_or_above": 0.93,
+        "coverage": 0.0891566265060241,
+        "answers": 37,
+        "wrong": 5,
+        "error_rate": 0.13513513513513514
+      },
+      {
+        "at_or_above": 0.92,
+        "coverage": 0.09156626506024096,
+        "answers": 38,
+        "wrong": 5,
+        "error_rate": 0.13157894736842105
+      },
+      {
+        "at_or_above": 0.9,
+        "coverage": 0.21927710843373494,
+        "answers": 91,
+        "wrong": 10,
+        "error_rate": 0.10989010989010989
+      },
+      {
+        "at_or_above": 0.88,
+        "coverage": 0.22650602409638554,
+        "answers": 94,
+        "wrong": 11,
+        "error_rate": 0.11702127659574468
+      },
+      {
+        "at_or_above": 0.87,
+        "coverage": 0.2385542168674699,
+        "answers": 99,
+        "wrong": 11,
+        "error_rate": 0.1111111111111111
+      },
+      {
+        "at_or_above": 0.86,
+        "coverage": 0.24096385542168675,
+        "answers": 100,
+        "wrong": 11,
+        "error_rate": 0.11
+      },
+      {
+        "at_or_above": 0.85,
+        "coverage": 0.40481927710843374,
+        "answers": 168,
+        "wrong": 17,
+        "error_rate": 0.10119047619047619
+      },
+      {
+        "at_or_above": 0.82,
+        "coverage": 0.41686746987951806,
+        "answers": 173,
+        "wrong": 17,
+        "error_rate": 0.09826589595375723
+      },
+      {
+        "at_or_above": 0.8,
+        "coverage": 0.4457831325301205,
+        "answers": 185,
+        "wrong": 21,
+        "error_rate": 0.11351351351351352
+      },
+      {
+        "at_or_above": 0.78,
+        "coverage": 0.4602409638554217,
+        "answers": 191,
+        "wrong": 22,
+        "error_rate": 0.11518324607329843
+      },
+      {
+        "at_or_above": 0.75,
+        "coverage": 0.6216867469879518,
+        "answers": 258,
+        "wrong": 31,
+        "error_rate": 0.12015503875968993
+      },
+      {
+        "at_or_above": 0.72,
+        "coverage": 0.6939759036144578,
+        "answers": 288,
+        "wrong": 39,
+        "error_rate": 0.13541666666666666
+      },
+      {
+        "at_or_above": 0.7,
+        "coverage": 0.7662650602409639,
+        "answers": 318,
+        "wrong": 42,
+        "error_rate": 0.1320754716981132
+      },
+      {
+        "at_or_above": 0.68,
+        "coverage": 0.7759036144578313,
+        "answers": 322,
+        "wrong": 43,
+        "error_rate": 0.13354037267080746
+      },
+      {
+        "at_or_above": 0.65,
+        "coverage": 0.7927710843373494,
+        "answers": 329,
+        "wrong": 48,
+        "error_rate": 0.1458966565349544
+      },
+      {
+        "at_or_above": 0.62,
+        "coverage": 0.8265060240963855,
+        "answers": 343,
+        "wrong": 59,
+        "error_rate": 0.17201166180758018
+      },
+      {
+        "at_or_above": 0.6,
+        "coverage": 0.9421686746987952,
+        "answers": 391,
+        "wrong": 85,
+        "error_rate": 0.21739130434782608
+      },
+      {
+        "at_or_above": 0.55,
+        "coverage": 0.9975903614457832,
+        "answers": 414,
+        "wrong": 97,
+        "error_rate": 0.23429951690821257
+      },
+      {
+        "at_or_above": 0.45,
+        "coverage": 1.0,
+        "answers": 415,
+        "wrong": 98,
+        "error_rate": 0.236144578313253
+      }
+    ],
+    "confident_errors": [
+      {
+        "id": "r-003",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "mission-control",
+        "answer": "efformism",
+        "runs": 5
+      },
+      {
+        "id": "r-034",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "books",
+        "answer": "delete",
+        "runs": 5
+      },
+      {
+        "id": "r-071",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "reference",
+        "answer": "delete",
+        "runs": 3
+      },
+      {
+        "id": "r-074",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "reference",
+        "answer": "mission-control",
+        "runs": 3
+      },
+      {
+        "id": "r-080",
+        "title": "[withheld]",
+        "path": "[withheld]",
+        "label": "reference",
+        "answer": "mission-control",
+        "runs": 5
+      }
+    ]
+  }
+}

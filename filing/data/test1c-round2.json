@@ -1,0 +1,25 @@
+{
+  "round": 2,
+  "shape": "choice",
+  "instructions": "This note is in the inbox of Jamie Watters's second-brain vault. Decide which home it should be filed to under the vault's filing rules. `title` is the note's title and `note` is the start of its text. `examples` are similar notes already filed in this vault, each with the home it was filed to.",
+  "options": {
+    "mission-control": "About a specific project, product, sprint task, operational decision or the direction of Jamie's work: project specs, briefs, product status files. Not a piece being written for publication, not material belonging to a book Jamie is writing, and not product research data, even when those are about a project.",
+    "income-bridge": "Outward-facing work products for income opportunities: board papers, proposals, scoping docs, applications and the like, written for a third party rather than for Jamie, where a third party is meant to read it and it exists to win or deliver paid work. This is also the life-domain folder for Jamie's income bridge, so the working material for winning paid work files here too. That includes notes about a specific paid-work opportunity or the people on the other side of it.",
+    "books": "A book manuscript or chapter, or anything that belongs to a book Jamie is writing (for example The Way Within), including the plans and research for that book. Not notes about books he has read.",
+    "efformism": "Anything relating to the Efformism framework: treatise, papers, notes, drafts. A per-product status file for Efformism is a product file and lives in mission-control.",
+    "content": "Anything being created for publication, whatever its subject: an idea for a post, a draft being written, or a shipped piece and its social variants. A draft about a project or product still files here.",
+    "knowledge": "Learning material Jamie has read or watched and wants to retain: highlights, article notes, video, book and course notes, research cards and deep dives, research insights, transcripts, topic pages. Research done for a project still files here.",
+    "reference": "Reusable reference material to look up again, copy or follow: templates, instruction blocks, how-to docs, SOPs, runbooks, and product research: market intelligence, benchmarks, competitor data and portfolio strategy, even when it names one of Jamie's products. A rule or procedure Jamie follows files here even when it concerns paid work. Not project-specific, not learning material.",
+    "delete": "Junk, stale, or duplicated elsewhere."
+  },
+  "changes": {
+    "mission-control": "Added the 'Not ...' sentence. Source: BRAIN-SCHEMA content/ rule ('anything being created for publication'), books/ rule ('anything that is or belongs to a manuscript'), reference/ sub-home 'reference/product-research/'.",
+    "income-bridge": "Added the life-domain sentence. Source: BRAIN-SCHEMA income-bridge/ ([schema quotation withheld for publication: it names private folders]). Round 2: added the opportunity-notes sentence. Source: BRAIN-SCHEMA income-bridge/ (\"One subfolder per counterparty\", [project code withheld]).",
+    "books": "'anything that belongs to', 'including the plans and research for that book'. Source: BRAIN-SCHEMA books/ filing rule ('anything that is or belongs to a manuscript').",
+    "efformism": "Added the product-file sentence. Source: BRAIN-SCHEMA mission-control/ ('products/ holds per-product status files').",
+    "content": "'whatever its subject', and the draft-about-a-project sentence. Source: BRAIN-SCHEMA content/ filing rule ('anything being created for publication').",
+    "knowledge": "Added 'Research done for a project still files here.' Source: BRAIN-SCHEMA income-bridge/ ('The research behind it still files to knowledge/').",
+    "reference": "Added the product-research clause. Source: BRAIN-SCHEMA reference/ sub-home 'reference/product-research/ — market intelligence, benchmarks, competitor data, portfolio strategy'. Round 2: added the rule-or-procedure sentence. Source: BRAIN-SCHEMA reference/ filing rule (\"anything you would look up again to copy, follow, or reference\")."
+  },
+  "redaction": "Published 24 Sep 2026. instructions and options are exactly as run. Two passages in changes.income-bridge are withheld, so this file does not hash to the recorded sha256 (see frozen-facts.json)."
+}
