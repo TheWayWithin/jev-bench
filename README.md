@@ -32,6 +32,24 @@ cost](https://jamiewatters.work/journey/jev-ties-gpt-5-4)**. Earlier:
 
 ☕ **[Buy me a coffee](https://buymeacoffee.com/jamiewatters)** if this saved you an afternoon.
 
+## Filing tests: Jev on a real notes vault (23 and 24 September)
+
+A second job, in `filing/`: which of eight folders a note from my own vault belongs in. Three
+pre-registered tests, five runs per model arm. On 75 fresh notes, **Jev keeping its 80%-sure
+answers and passing the rest to Claude Sonnet 5 got the same 65 of 75 notes right as Claude
+alone** on majority answers, at $0.00340 a note against $0.00909: 37% of Claude's cost. Per run
+it averaged 85.9% against Claude's 86.4%, and 75 notes cannot rule out a gap of up to about 4%.
+Jev's cost is its price table (input tokens only), Claude's is OpenRouter's charge. Neither
+passes the bar for acting unsupervised. Write-up: "Let Jev pass what it isn't sure of: Claude's accuracy at 37% of the
+cost".
+
+The notes are private, so `filing/` publishes every answer, figure and script with no note text.
+`python3 filing/reproduce.py` recomputes the figures in the three verdicts from the published
+runs, with no keys; the few it takes as given, such as the size of the private pool, are listed
+in `filing/README.md`. `filing/check_public.py` is the leak check the folder was published
+against; it needs the private notes, so only their holder can run it. Details, and what was
+withheld, in `filing/README.md`.
+
 ---
 
 ## First run, 20 September (single run, superseded)
