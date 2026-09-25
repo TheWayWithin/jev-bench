@@ -221,6 +221,65 @@ wording errors there (the cause of the yes/no arm's 57.1% passed on; "held back 
 stated at run level). The two facts it added are now above: the 54 held-out notes seen as examples,
 and Claude's run-level answers on the six notes.
 
+## Added after six peer reviews (24 Sep, evening)
+
+Two limits the reviews found, checked here against the runs:
+
+1. **The escalation pass rule had no margin.** "Not significantly worse" by two-sided exact McNemar,
+   under Holm, could not fail by much on 75 notes: a 6-to-0 or 7-to-0 result in Claude's favour gives
+   p = 0.031 or 0.016, above the 0.0125 threshold the smallest p would face, so a hand-off 7 notes
+   worse with every disagreement one way would still have "paid". **Corrected 25 Sep (round-2
+   review):** that is the one-directional case only. Claude's majority answer was wrong on 10 notes,
+   so the hand-off could also have been right on up to 10 where Claude was wrong; 24-to-9 gives
+   p = 0.0135 and 25-to-10 gives p = 0.0167, both passing, so the rule would have accepted a hand-off
+   up to **15 notes (20 points) worse**. The evidence for escalation is the observed 0-to-0 and
+   the 3.9% bound, not the rule. Future "not worse than" rules state a margin in advance.
+2. **The solo "don't" hinges on the six disputed notes.** Removing k of them gives (30 − 5k)/253 kept
+   answers wrong: k = 3 gives 5.9%, k = 4 gives 4.0%, under the 5% bar. Jamie has not judged them.
+
+Also confirmed from the runs: Jev's confidence is its own field, lower than its top probability on
+289 of 375 B answers, equal on 85 and higher on 1 (the "never higher" written here on 24 Sep was
+wrong by one; recounted 25 Sep); Claude's confidence was self-stated (`LLM_PROMPT`). The
+reviewer hypothesis that rewording moved h-023 and h-028 is refuted: G's gains over B are h-021 and
+h-074, and h-023 and h-028 stay kept-and-wrong in G.
+
+## Added after the round-2 reviews (25 Sep)
+
+Five reviews of the published article; every figure below recomputed from the B and D runs and
+`test1c-neighbours.jsonl`.
+
+1. **Held-out notes were examples for each other during the test.** 109 of the 750 example slots
+   (75 notes × 10) held another held-out note: 57 distinct held-out notes served as examples, and
+   63 of the 75 queries received at least one. Never a note for itself. This is the leave-one-out
+   pool as pre-registered and it mirrors use, where every filed note is a candidate example; it is
+   not a corpus-level separation of the test set from the retrieval bank, and a stricter
+   replication would exclude every held-out note from every held-out query's examples.
+2. **Deviation 11: the confidence field is not the one Test 1 pre-registered.** Test 1's
+   pre-registration defined Jev's confidence as "Jev's probability for its answer"; `test1.py`
+   read Jev's separate `confidence` field, which TypeSafe computes from the shape of the whole
+   probability distribution. Test 1b and 1c pre-registered "Jev's reported confidence, as in
+   Test 1", so all three tests ran the same rule. 22 of 375 B answers had a top probability of
+   0.80 or more and were passed on; the field is lower than the top probability on 289 answers,
+   so the mismatch errs towards passing more on, and no threshold was tuned. Found by a
+   round-2 reviewer.
+3. **Keep varies by run.** 47 held-out notes were kept in all five B runs, 20 in none, 8 in some
+   (h-008, h-033, h-037, h-052, h-061, h-067, h-068, h-071); Jev's folder never changed, its
+   confidence did. All 8 were filed right by both models in every run.
+4. **Kept-answer agreement with Claude:** Jev's kept answers matched D's paired answer on 251 of
+   253; both exceptions were h-028 (D right in r2 and r3). Per run, hand-off v Claude: 64 v 64,
+   64 v 65, 65 v 66, 65 v 65, 64 v 64. All 120 pairings of B runs to D runs give the hand-off
+   65 of 75 on majority answers.
+5. **The 3.9% bound rests on 55 notes.** The 20 notes passed on in every run are Claude's by
+   construction; 0 disagreements in 55 gives a one-sided 95% bound of 5.3% on those, which is
+   the same 3.9% when scaled to all 75.
+6. **Calibration, for the record:** on kept B answers, mean confidence 0.936, agreement with the
+   label 88.1%. Six clustered notes cannot settle whether that gap is the model or the labels.
+7. **Claude's cost on passed-on notes:** $0.0101 per note against $0.00909 overall. The
+   saving falls as the pass share rises.
+8. **Confident-error interval:** the 11.9% is 6 wrong among the 47 always-kept notes; 95%
+   Clopper-Pearson 4.8% to 25.7%. Showing a rate under 5% with no errors needs 59 distinct kept
+   items.
+
 ## What this can't show
 
 Everything Test 1b couldn't: labels mostly chosen by Claude sessions and accepted by Jamie; a

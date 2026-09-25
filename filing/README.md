@@ -4,8 +4,8 @@ Three pre-registered tests, run 23 and 24 September 2026, of one job: given a no
 second-brain vault, which of eight folders does it belong in? Jev (`jev-1.13.0`) against Claude
 Sonnet 5 (`anthropic/claude-sonnet-5` via OpenRouter), five runs of each model arm and one of
 the deterministic retrieval arm. The folder a note
-was filed in is its label. They are the numbers behind the write-up "Let Jev pass what it isn't
-sure of: Claude's accuracy at 37% of the cost".
+was filed in is its label. They are the numbers behind the write-up [Jev, a cheap AI, did two
+thirds of my filing: same result as Claude, 63% cheaper](https://jamiewatters.work/journey/jev-files-my-notes).
 
 The notes are private, so what is published here is every model answer, every figure and every
 script, with no note text. Anyone can recompute the figures in the three verdicts from the

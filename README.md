@@ -40,8 +40,11 @@ answers and passing the rest to Claude Sonnet 5 got the same 65 of 75 notes righ
 alone** on majority answers, at $0.00340 a note against $0.00909: 37% of Claude's cost. Per run
 it averaged 85.9% against Claude's 86.4%, and 75 notes cannot rule out a gap of up to about 4%.
 Jev's cost is its price table (input tokens only), Claude's is OpenRouter's charge. Neither
-passes the bar for acting unsupervised. Write-up: "Let Jev pass what it isn't sure of: Claude's accuracy at 37% of the
-cost".
+passes the bar for acting unsupervised. And the hand-off is not a check: the six notes Jev was
+confidently wrong about, Claude's usual answer got wrong too. Write-up: **[Jev, a cheap AI, did two
+thirds of my filing: same result as Claude, 63% cheaper](https://jamiewatters.work/journey/jev-files-my-notes)**
+(peer-reviewed twice; the round-two reviews found the pass rule would have accepted a hand-off up
+to 15 notes worse, which the verdict now records).
 
 The notes are private, so `filing/` publishes every answer, figure and script with no note text.
 `python3 filing/reproduce.py` recomputes the figures in the three verdicts from the published
